@@ -2,8 +2,8 @@ Tuntikirjanpito
 
 Viikko 3
 
-Gitin käyttämisen harjoittelua ja ekan viikon tehtävien tekeminen.
-(Harjoitelin Gitin kayttämistä toiseen repositorioon, joka löytyy Github-profiilistani nimellä Muistipeli)
+Gitin käyttämisen harjoittelua ja ensimmäisen viikon tehtävien tekeminen. 
+(Harjoittelin Gitin käyttämistä toiseen repositorioon, joka löytyy GitHub-profiilistani nimellä Muistipeli)
 
 Keskiviikko: 2 tuntia
 
