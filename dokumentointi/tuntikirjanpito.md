@@ -9,3 +9,6 @@ Keskiviikko: 2 tuntia
 
 Torstai: 6 tuntia
 
+Viikko 4
+
+Tiistai: 2 tuntia
