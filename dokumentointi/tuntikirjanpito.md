@@ -11,4 +11,8 @@ Torstai: 6 tuntia
 
 Viikko 4
 
+Testauksen kertaaminen ja ohjelman koodauksen aloittaminen.
+
 Tiistai: 2 tuntia
+
+Torstai: 2 tuntia
