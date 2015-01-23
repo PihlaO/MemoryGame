@@ -13,28 +13,28 @@ import java.util.List;
  *
  * @author okpiok
  */
-public class Pelitilasto{
+public class Pelitilasto {
 
-    String nimi; 
+    String nimi;
     List<Pelaaja> tilasto;
 
     public Pelitilasto(String nimi) {
-        this.nimi= nimi;
+        this.nimi = nimi;
         this.tilasto = new ArrayList<>();
     }
-    
-    public String getNimi(){
+
+    public String getNimi() {
         return this.nimi;
     }
-    
-    public void tallennaTilastoon(Pelaaja pelaaja){
+
+    public void tallennaTilastoon(Pelaaja pelaaja) {
         tilasto.add(pelaaja);
     }
-    
-    public void tulostaTilasto(){
+
+    public void tulostaTilasto() {
         for (int i = 0; i < tilasto.size(); i++) {
             System.out.println(tilasto.get(i));
-            
+
         }
     }
 
