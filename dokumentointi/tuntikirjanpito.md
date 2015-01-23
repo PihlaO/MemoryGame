@@ -10,6 +10,7 @@ Keskiviikko: 2 tuntia
 Torstai: 6 tuntia
 
 Viikko 4
+
 Ohjelman koodauksen aloittaminen. Lisäksi testauksen kertaamista ja testien tekemistä.
 
 Tiistai: 2 tuntia
