@@ -33,7 +33,8 @@ public class Pelitilasto{
     
     public void tulostaTilasto(){
         for (int i = 0; i < tilasto.size(); i++) {
-            tilasto.get(i).toString();
+            System.out.println(tilasto.get(i));
+            
         }
     }
 
