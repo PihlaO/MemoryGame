@@ -15,3 +15,14 @@ Ohjelman koodauksen aloittaminen. Lisäksi testauksen kertaamista ja testien tek
 Tiistai: 2 tuntia
 
 Torstai: 2 tuntia
+
+Viikko 5
+
+Muistipelin koodausta ja testien tekemistä. Lisäksi graaffisen käyttöliittymän kertaamista.
+
+Tiistai: 2 tuntia
+
+Torstai: 2 tuntia
+
+Perjantai: 2 tuntia
+
