@@ -18,7 +18,7 @@ Torstai: 2 tuntia
 
 Viikko 5
 
-Muistipelin koodausta ja testien tekemistä. Lisäksi graaffisen käyttöliittymän kertaamista.
+Muistipelin koodausta ja testien tekemistä. Lisäksi graafisen käyttöliittymän kertaamista.
 
 Tiistai: 2 tuntia
 
