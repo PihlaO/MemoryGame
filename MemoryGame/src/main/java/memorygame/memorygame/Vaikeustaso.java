@@ -23,7 +23,7 @@ public class Vaikeustaso {
         return tasonTunnus;
     }
 
-    public int haeKorttienLukumaara() { // korjaa tämä metodi!
+    public int haeKorttienLukumaara() { // Oletuksena 12 korttia
         if (tasonTunnus == 1) {
             return 12;
         }
@@ -33,8 +33,9 @@ public class Vaikeustaso {
         if (tasonTunnus == 3) {
             return 20;
         } else {
-            return 0;
+            return 12;
         }
     }
+    
 
 }

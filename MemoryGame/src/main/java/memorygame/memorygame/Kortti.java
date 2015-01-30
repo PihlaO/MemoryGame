@@ -25,5 +25,16 @@ public class Kortti {
     public String toString() {
         return "Kortin tyyppi on " + this.tyyppi;
     }
+    
+    public boolean onkoKortitSamat(Kortti kortti){
+        if(this.getTyyppi()== kortti.getTyyppi()){
+            return true;         
+        }
+        else {
+            return false;
+        }
+    }
+            
+            
 
 }

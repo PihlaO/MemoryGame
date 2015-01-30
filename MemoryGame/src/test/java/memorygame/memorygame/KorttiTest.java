@@ -20,7 +20,7 @@ import org.junit.Test;
 public class KorttiTest {
 
     Kortti kortti;
-    
+
     public KorttiTest() {
     }
 
@@ -53,6 +53,19 @@ public class KorttiTest {
         assertEquals("Kortin tyyppi on 1", kortti.toString());
     }
 
+    @Test
+    public void tarkistaakoSamatKortitOikein() {
+        Kortti kortti = new Kortti(1);
+        Kortti kortinPari = new Kortti(1);
+        assertEquals(true, kortti.onkoKortitSamat(kortinPari));
+    }
+
+    @Test
+    public void tarkistaakoErillaisetKortitOikein() {
+        Kortti kortti = new Kortti(1);
+        Kortti kortinPari = new Kortti(2);
+        assertEquals(false, kortti.onkoKortitSamat(kortinPari));
+    }
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //

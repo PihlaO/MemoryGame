@@ -64,4 +64,21 @@ public class KorttipakkaTest {
         assertEquals(20, korttipakkaVaikea.vaikeustaso.haeKorttienLukumaara());
 
     }
+
+    @Test
+    public void luodaankoOletusPakkaOikein() {
+        Korttipakka oletusPakka= new Korttipakka(0);
+        oletusPakka.luoKortit();
+        assertEquals(12, oletusPakka.vaikeustaso.haeKorttienLukumaara());
+
+    }
+    
+    @Test 
+    public void luodaankoKortitOikein(){
+        int pakassaKortteja=0;
+        korttipakkaHelppo.luoKortit();
+        pakassaKortteja= korttipakkaHelppo.pakka.size();
+        assertEquals(12, pakassaKortteja);
+        
+    }
 }

@@ -3,45 +3,44 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-package memorygame.memorygame;
-
+package memorygame.memorygame.kayttoliittyma;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author okpiok
  */
-public class VaikeustasoTest {
-    
-    public VaikeustasoTest() {
+public class KayttoliittymaTest {
+
+    public KayttoliittymaTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
-
-     @Test
-     public void palauttaaTasonTunnuksenOikein() {
-         Vaikeustaso helppo = new Vaikeustaso(1);
-         assertEquals(1, helppo.getTasonTunnus());
-     }
+    // TODO add test methods here.
+    // The methods must be annotated with annotation @Test. For example:
+    //
+    @Test
+    public void kayttoliittyma() {
+   
+    }
 }

@@ -5,6 +5,9 @@
  */
 package memorygame.memorygame;
 
+import memorygame.memorygame.kayttoliittymat.Kayttoliittyma;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author okpiok
@@ -15,12 +18,8 @@ public class Paaohjelma {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Pelaaja p = new Pelaaja("Pekka");
-        Pelaaja p2 = new Pelaaja("Anna");
-        Pelitilasto tilasto= new Pelitilasto("top5");
-        tilasto.tallennaTilastoon(p);
-        tilasto.tallennaTilastoon(p2);
-        tilasto.tulostaTilasto();
+        Kayttoliittyma kayttoliittyma = new Kayttoliittyma();
+        SwingUtilities.invokeLater(kayttoliittyma);
     }
 
 }
