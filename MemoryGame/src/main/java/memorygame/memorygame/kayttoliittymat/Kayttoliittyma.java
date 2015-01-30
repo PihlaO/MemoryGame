@@ -43,7 +43,9 @@ public class Kayttoliittyma implements Runnable {
 
         GridLayout layout = new GridLayout(2, 2);
         container.setLayout(layout);
-        container.add(new MuistikorttiPanel());
+        //container.add(new MuistikorttiPanel());
+        //Hiirenkuuntelija kuuntelija = new Hiirenkuuntelija();
+        //container.addContainerListener(kuuntelija);
 
     }
 
