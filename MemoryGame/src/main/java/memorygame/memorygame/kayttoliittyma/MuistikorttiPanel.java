@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package memorygame.memorygame.kayttoliittymat;
+package memorygame.memorygame.kayttoliittyma;
 
 import java.awt.GridLayout;
 import javax.swing.JButton;

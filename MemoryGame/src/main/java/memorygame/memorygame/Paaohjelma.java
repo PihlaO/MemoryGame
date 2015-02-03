@@ -5,7 +5,7 @@
  */
 package memorygame.memorygame;
 
-import memorygame.memorygame.kayttoliittymat.Kayttoliittyma;
+import memorygame.memorygame.kayttoliittyma.Kayttoliittyma;
 import javax.swing.SwingUtilities;
 
 /**

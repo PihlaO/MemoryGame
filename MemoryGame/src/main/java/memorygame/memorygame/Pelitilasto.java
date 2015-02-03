@@ -30,6 +30,10 @@ public class Pelitilasto {
     public void tallennaTilastoon(Pelaaja pelaaja) {
         tilasto.add(pelaaja);
     }
+    
+    public void tyhjennaTilasto(){
+        tilasto.clear();
+    }
 
     public void tulostaTilasto() {
         for (int i = 0; i < tilasto.size(); i++) {

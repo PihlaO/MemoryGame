@@ -5,13 +5,20 @@
  */
 package memorygame.memorygame;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+
 /**
  *
  * @author okpiok
  */
-public class Kortti {
+public class Kortti extends Image{
 
     private int tyyppi;
+    private Image kansikuva;
+    private Image kuva;
   
 
     public Kortti(int tyyppi) {
@@ -33,6 +40,31 @@ public class Kortti {
         else {
             return false;
         }
+    }
+
+    @Override
+    public int getWidth(ImageObserver observer) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getHeight(ImageObserver observer) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ImageProducer getSource() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Graphics getGraphics() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object getProperty(String arg0, ImageObserver arg1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
             
             
