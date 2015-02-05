@@ -24,8 +24,8 @@ public class Piirtoalusta extends JPanel {
     Pelilauta pelilauta;
     
     
-    public Piirtoalusta(Pelilauta p) {
-        this.pelilauta = p;
+    public Piirtoalusta(Pelilauta pelilauta) {
+        this.pelilauta = pelilauta;
         super.setBackground(Color.WHITE);
         
     }

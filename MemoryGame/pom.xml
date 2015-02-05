@@ -40,11 +40,11 @@
                 <version>0.30</version>
                 <configuration>
                     <targetClasses>
-                        <param>memorygame.memorygame.domain.*</param>
+                        <param>memorygame.memorygame.*</param>
                        
                     </targetClasses>
                     <targetTests>
-                        <param>memorygame.memorygame.domain*</param>
+                        <param>memorygame.memorygame.*</param>
              
                     </targetTests>
                 </configuration>

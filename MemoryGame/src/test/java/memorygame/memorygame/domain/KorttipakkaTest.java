@@ -66,13 +66,12 @@ public class KorttipakkaTest {
 
     }
 
-    
-    @Test 
-    public void luodaankoKortitOikein(){
-        int pakassaKortteja=0;
+    @Test
+    public void luodaankoKortitOikein() {
+        int pakassaKortteja = 0;
         korttipakkaHelppo.luoKortit();
-        pakassaKortteja= korttipakkaHelppo.haeKorttipakka().size();
+        pakassaKortteja = korttipakkaHelppo.haeKorttipakka().size();
         assertEquals(12, pakassaKortteja);
-        
+
     }
 }

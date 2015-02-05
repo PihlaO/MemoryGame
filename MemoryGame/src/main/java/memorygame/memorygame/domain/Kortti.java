@@ -18,7 +18,7 @@ import java.awt.image.ImageProducer;
 /* 
  * Mustipelikorttin luokka. 
  */
-public class Kortti extends Image {
+public class Kortti {
 
     private int tyyppi;
     private boolean kaannettu;
@@ -103,31 +103,6 @@ public class Kortti extends Image {
 
     public String toString() {
         return "Kortin tyyppi on " + this.tyyppi;
-    }
-
-    @Override
-    public int getWidth(ImageObserver observer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int getHeight(ImageObserver observer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ImageProducer getSource() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Graphics getGraphics() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Object getProperty(String arg0, ImageObserver arg1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
