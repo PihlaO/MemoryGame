@@ -32,6 +32,6 @@ Muistipelin koodausta ja testien tekemistä. Lisäksi aloitin JavaDocin tekemise
 
 Tiistai: 4 tuntia
 
-Keskiviikkona: 2,5 tuntia
+Keskiviikko: 2,5 tuntia
 
-Torstaina: 2 tuntia
+Torstai: 2 tuntia
