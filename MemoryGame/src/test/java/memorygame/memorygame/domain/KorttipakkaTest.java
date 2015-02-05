@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package memorygame.memorygame;
+package memorygame.memorygame.domain;
 
+import memorygame.memorygame.domain.Korttipakka;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -47,37 +48,30 @@ public class KorttipakkaTest {
     @Test
     public void luodaankoHelppoPakkaOikein() {
         korttipakkaHelppo.luoKortit();
-        assertEquals(12, korttipakkaHelppo.vaikeustaso.haeKorttienLukumaara());
+        assertEquals(12, korttipakkaHelppo.haeVaikeustaso().haeKorttienLukumaara());
 
     }
 
     @Test
     public void luodaankoKeskitasonPakkaOikein() {
         korttipakkaKeskitaso.luoKortit();
-        assertEquals(16, korttipakkaKeskitaso.vaikeustaso.haeKorttienLukumaara());
+        assertEquals(16, korttipakkaKeskitaso.haeVaikeustaso().haeKorttienLukumaara());
 
     }
 
     @Test
     public void luodaankoVaikeaPakkaOikein() {
         korttipakkaVaikea.luoKortit();
-        assertEquals(20, korttipakkaVaikea.vaikeustaso.haeKorttienLukumaara());
+        assertEquals(20, korttipakkaVaikea.haeVaikeustaso().haeKorttienLukumaara());
 
     }
 
-    @Test
-    public void luodaankoOletusPakkaOikein() {
-        Korttipakka oletusPakka= new Korttipakka(0);
-        oletusPakka.luoKortit();
-        assertEquals(12, oletusPakka.vaikeustaso.haeKorttienLukumaara());
-
-    }
     
     @Test 
     public void luodaankoKortitOikein(){
         int pakassaKortteja=0;
         korttipakkaHelppo.luoKortit();
-        pakassaKortteja= korttipakkaHelppo.pakka.size();
+        pakassaKortteja= korttipakkaHelppo.haeKorttipakka().size();
         assertEquals(12, pakassaKortteja);
         
     }

@@ -3,15 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package memorygame.memorygame;
+package memorygame.memorygame.domain;
 
 /**
  *
  * @author okpiok
  */
+/* 
+ * Pelin vaikeustaso. 
+ * Tasot ja niitä vastaavat korttien lukumäärät:
+ * 1 = helppo (3*4 korttia=12), 2 = keskitaso (4*4 korttia= 16), 3 = vaikea (4*5 korttia=20)
+ */
 public class Vaikeustaso {
-    // Tänne tasot ja niitä vastaavat korttien lukumäärät
-    // 1 = helppo (3*4 korttia), 2 = keskitaso (4*4 korttia), 3 = vaikea (4*5 korttia)
 
     int tasonTunnus;
 
@@ -22,8 +25,6 @@ public class Vaikeustaso {
     public int getTasonTunnus() {
         return tasonTunnus;
     }
-
-
 
     public int haeKorttienLukumaara() { // Oletuksena 12 korttia
         if (tasonTunnus == 1) {

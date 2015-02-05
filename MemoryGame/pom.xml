@@ -29,7 +29,7 @@
                 </configuration>
                 <version>2.5</version>
             </plugin>
-                    <plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
                 <version>2.6</version>
@@ -40,10 +40,12 @@
                 <version>0.30</version>
                 <configuration>
                     <targetClasses>
-                        <param>memorygame.memorygame.*</param>
+                        <param>memorygame.memorygame.domain.*</param>
+                       
                     </targetClasses>
                     <targetTests>
-                        <param>memorygame.memorygame.*</param>
+                        <param>memorygame.memorygame.domain*</param>
+             
                     </targetTests>
                 </configuration>
             </plugin>

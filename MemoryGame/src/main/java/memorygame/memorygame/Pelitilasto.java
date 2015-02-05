@@ -5,6 +5,7 @@
  */
 package memorygame.memorygame;
 
+import memorygame.memorygame.domain.Pelaaja;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +13,9 @@ import java.util.List;
 /**
  *
  * @author okpiok
+ */
+/*
+ * Muistipelin tilasto, jossa luodaan lista pelaajista.
  */
 public class Pelitilasto {
 
@@ -33,6 +37,10 @@ public class Pelitilasto {
     
     public void tyhjennaTilasto(){
         tilasto.clear();
+    }
+    
+    public List<Pelaaja> haeTilastolista(){
+        return this.tilasto;
     }
 
     public void tulostaTilasto() {

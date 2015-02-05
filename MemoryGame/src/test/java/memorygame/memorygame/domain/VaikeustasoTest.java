@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 
-package memorygame.memorygame;
+package memorygame.memorygame.domain;
 
+import memorygame.memorygame.domain.Vaikeustaso;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,6 +19,8 @@ import static org.junit.Assert.*;
  * @author okpiok
  */
 public class VaikeustasoTest {
+    
+    Vaikeustaso vaikeustaso;
     
     public VaikeustasoTest() {
     }
@@ -37,11 +40,17 @@ public class VaikeustasoTest {
     @After
     public void tearDown() {
     }
+    
+    @Test 
+    public void palauttaaTasonTunnuksenOikein(){
+        this.vaikeustaso = new Vaikeustaso(1);
+        assertEquals(1, vaikeustaso.getTasonTunnus());
+    }
+    public void palauttaaOletusPakanKorttienLukumaaran(){
+        vaikeustaso = new Vaikeustaso(-1);
+        assertEquals(12, vaikeustaso.haeKorttienLukumaara());
+    }
 
 
-     @Test
-     public void palauttaaTasonTunnuksenOikein() {
-         Vaikeustaso helppo = new Vaikeustaso(1);
-         assertEquals(1, helppo.getTasonTunnus());
-     }
+
 }

@@ -3,11 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package memorygame.memorygame;
+package memorygame.memorygame.domain;
 
 /**
  *
  * @author okpiok
+ */
+/* 
+ * Pelaaja luokka. 
+ * Pelaajalla on nimi ja pisteet. 
  */
 public class Pelaaja {
 

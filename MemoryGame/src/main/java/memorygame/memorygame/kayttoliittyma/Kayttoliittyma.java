@@ -13,23 +13,29 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
+import memorygame.memorygame.Muistipeli;
+import memorygame.memorygame.domain.Pelilauta;
 
 /**
  *
  * @author okpiok
  */
+/*
+ *Luodaan muistipelin käyttöliittymä.
+ */
 public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
+    Pelilauta pelilauta;
 
-    public Kayttoliittyma() {
-
+    public Kayttoliittyma(Pelilauta pelilauta) {
+        this.pelilauta = pelilauta;
     }
 
     @Override
     public void run() {
         frame = new JFrame("Muistipeli");
-        frame.setPreferredSize(new Dimension(500, 500));
+        frame.setPreferredSize(new Dimension(600, 600));
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,13 +46,9 @@ public class Kayttoliittyma implements Runnable {
     }
 
     private void luoKomponentit(Container container) {
-
-        GridLayout layout = new GridLayout(2, 2);
-        container.setLayout(layout);
-        container.add(new MuistikorttiPanel());
-        //Hiirenkuuntelija kuuntelija = new Hiirenkuuntelija();
-        //container.addContainerListener(kuuntelija);
-
+        Piirtoalusta piirtoalusta = new Piirtoalusta(this.pelilauta);
+        container.add(piirtoalusta);
+        frame.addMouseListener(new Kuuntelija(piirtoalusta, pelilauta)); /// Mihin kuuntelija?
     }
 
 }

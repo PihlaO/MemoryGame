@@ -5,6 +5,9 @@ package memorygame.memorygame;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import java.util.ArrayList;
+import java.util.List;
+import memorygame.memorygame.domain.Pelaaja;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -58,17 +61,25 @@ public class PelitilastoTest {
     @Test
     public void lisaaPelaajanTilastoon() {
         pelitilasto.tallennaTilastoon(pelaaja);
-        String teksti="";
+        String teksti = "";
         for (Pelaaja pelaaja : this.pelitilasto.tilasto) {
             teksti = pelaaja.toString();
         }
         assertEquals("Anna 0", teksti);
     }
-    
-    @Test 
-    public void tulostaaTilastonOikein(){
-        
+
+    @Test
+    public void tyhjentaaTilaston() {
+        pelitilasto.tallennaTilastoon(pelaaja);
+        pelitilasto.tyhjennaTilasto();
+        List<Pelaaja> tyhjaLista = new ArrayList<>();
+        assertEquals(tyhjaLista, pelitilasto.haeTilastolista());
+
+    }
+
+    @Test
+    public void tulostaaTilastonOikein() {
+
     }
 
 }
-
