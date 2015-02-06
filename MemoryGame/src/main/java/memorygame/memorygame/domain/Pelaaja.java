@@ -30,7 +30,12 @@ public class Pelaaja {
     public int getPisteet() {
         return this.pisteet;
     }
-
+/**
+ * Metodi asettaa pelaajalle pisteet
+ *
+ * @param   luku   Pelin antama luku
+ * 
+ */
     public void setPisteet(int luku) {
         if (luku >= 0) {
             this.pisteet = luku;
