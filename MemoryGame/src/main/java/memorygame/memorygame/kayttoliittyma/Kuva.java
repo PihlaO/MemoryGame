@@ -16,6 +16,9 @@ import memorygame.memorygame.domain.Kortti;
  *
  * @author okpiok
  */
+/* 
+ * Luokka muistipelin korttien kuville.
+ */
 public class Kuva extends Image{
     
         Image kuva;

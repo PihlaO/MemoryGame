@@ -9,6 +9,9 @@ package memorygame.memorygame.domain;
  *
  * @author okpiok
  */
+/* 
+ * Luokka kuvaa keskivaikeaa vaikeustasoa.
+ */
 public class Keskitaso {
 
     int korttienLukumaara;

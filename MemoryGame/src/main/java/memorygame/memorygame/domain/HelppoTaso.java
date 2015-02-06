@@ -10,6 +10,9 @@ package memorygame.memorygame.domain;
  *
  * @author okpiok
  */
+/* 
+ * Luokka kuvaa helppoa vaikeustasoa.
+ */
 public class HelppoTaso {
     
     int korttienLukumaara;

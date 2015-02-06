@@ -16,7 +16,7 @@ import java.awt.image.ImageProducer;
  */
 
 /* 
- * Mustipelikorttin luokka. 
+ * Mustipelikortin luokka. 
  */
 public class Kortti {
 
