@@ -32,7 +32,6 @@ public class Pelilauta {
         this.luoTaulukkoKorteilla();
     }
 
-
     public void luoPakka() {
         this.korttipakka.luoKortit();
         korttipakka.sekoitaPakka();
@@ -103,6 +102,22 @@ public class Pelilauta {
 
     public Korttipakka getKorttipakka() {
         return this.korttipakka;
+    }
+
+    public void setValittuKortti1(Kortti k) {
+        this.valittuKortti1 = k;
+    }
+
+    public Kortti getValittuKortti1() {
+        return this.valittuKortti1;
+    }
+
+    public Kortti getValittuKortti2() {
+        return this.valittuKortti2;
+    }
+
+    public void setValittuKortti2(Kortti k) {
+        this.valittuKortti2 = k;
     }
 
 }

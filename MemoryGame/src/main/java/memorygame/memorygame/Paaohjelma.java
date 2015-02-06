@@ -24,7 +24,7 @@ public class Paaohjelma {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Pelilauta pelilauta = new Pelilauta(new Korttipakka(1));
+        Pelilauta pelilauta = new Pelilauta(new Korttipakka(3));
         pelilauta.luoPakkaJaTaulukkoKorteista();
         
         Kayttoliittyma kayttoliittyma = new Kayttoliittyma(pelilauta);
