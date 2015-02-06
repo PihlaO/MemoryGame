@@ -13,6 +13,7 @@ package memorygame.memorygame.domain;
  * Pelin vaikeustaso. 
  * Tasot ja niitä vastaavat korttien lukumäärät:
  * 1 = helppo (3*4 korttia=12), 2 = keskitaso (4*4 korttia= 16), 3 = vaikea (4*5 korttia=20)
+ * Oletuksena on helppotaso (12 korttia)
  */
 public class Vaikeustaso {
 
@@ -26,7 +27,7 @@ public class Vaikeustaso {
         return tasonTunnus;
     }
 
-    public int haeKorttienLukumaara() { // Oletuksena 12 korttia
+    public int haeKorttienLukumaara() {
         if (tasonTunnus == 1) {
             return 12;
         }
