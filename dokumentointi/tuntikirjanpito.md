@@ -35,3 +35,9 @@ Tiistai: 4 tuntia
 Keskiviikko: 2,5 tuntia
 
 Torstai: 2 tuntia
+
+Viikko 7
+
+Muistipelin koodausta, testien tekemistä sekä JavaDocin kirjoittamista.
+
+Torstai: 4 tuntia
