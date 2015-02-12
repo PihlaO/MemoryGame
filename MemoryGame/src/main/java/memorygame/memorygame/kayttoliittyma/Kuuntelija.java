@@ -26,6 +26,7 @@ public class Kuuntelija implements MouseListener {
     Component piirtoalusta;
     Pelilauta pelilauta;
     List<Kuva> kuvallisetKortit;
+    
 
     public Kuuntelija(Component piirtoalusta, Pelilauta lauta, List<Kuva> kuvallisetKortit) {
         this.piirtoalusta = piirtoalusta;
@@ -45,24 +46,34 @@ public class Kuuntelija implements MouseListener {
             System.out.println(kortti);
             if (kortti.onkoKaannetu() == false) {
                 kortti.kaannaKortti();
+                System.out.println(kortti);
+
+                this.piirtoalusta.repaint();
                 if (pelilauta.getValittuKortti1() == null) {
                     pelilauta.setValittuKortti1(kortti);
+
                     System.out.println("eka valittu:" + this.pelilauta.getValittuKortti1());
 
                 } else if (!(pelilauta.getValittuKortti1() == null)) {
                     if (pelilauta.getValittuKortti2() == null) {
                         pelilauta.setValittuKortti2(kortti);
+
                         System.out.println("toka valittu" + this.pelilauta.getValittuKortti2());
                     }
                 }
+
+                this.piirtoalusta.repaint();
+                
                 if (!(pelilauta.getValittuKortti1() == null) && !(pelilauta.getValittuKortti2() == null)) {
                     boolean pari = pelilauta.getValittuKortti1().onkoKortitSamat(pelilauta.getValittuKortti2());
+                        this.piirtoalusta.repaint();
                     if (pari == false) {
                         pelilauta.getValittuKortti1().kaannaKortti();
                         pelilauta.setValittuKortti1(null);
                         pelilauta.getValittuKortti2().kaannaKortti();
                         pelilauta.setValittuKortti2(null);
                     }
+
                     System.out.println(this.pelilauta.getValittuKortti1());
                     System.out.println(this.pelilauta.getValittuKortti2());
 
@@ -70,11 +81,13 @@ public class Kuuntelija implements MouseListener {
                     pelilauta.setValittuKortti2(null);
 
                     System.out.println("ok");
-//        piirtoalusta.repaint();
+
                 }
             }
 
-        }
+        }                
+        this.piirtoalusta.repaint();
+
     }
 
     @Override

@@ -64,14 +64,16 @@ public class Piirtoalusta extends JPanel {
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
 
-//        for (Kortti kortti : this.pelilauta.getKorttipakka().haeKorttipakka()) {
-//            this.piirraKortinKansi(kortti, graphics);
-//
-//        }
         for (Kortti kortti : this.pelilauta.getKorttipakka().haeKorttipakka()) {
-            haeKuvaTiedostosta(kortti.getTyyppi());
-            this.piirraKortinKuva(kortti, graphics);
+            this.piirraKortinKansi(kortti, graphics);
 
+        }
+        for (Kuva k : this.kuvallisetKortit) {
+            Kortti kortti = k.getKortti();
+            if (kortti.onkoKaannetu() == true) {
+                haeKuvaTiedostosta(kortti.getTyyppi());
+                this.piirraKortinKuva(kortti, graphics);
+            }
         }
 
     }
@@ -105,7 +107,6 @@ public class Piirtoalusta extends JPanel {
 //            haeKuvaTiedostosta(k.getTyyppi());
 //        }
 //    }
-
     private void haeKuvaTiedostosta(int tyyppi) {
 
         try {
