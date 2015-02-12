@@ -30,6 +30,7 @@ public class Piirtoalusta extends JPanel {
 
     Pelilauta pelilauta;
     private BufferedImage kansikuva;
+    private BufferedImage kuva;
     List<Kuva> kuvallisetKortit;
 
     public Piirtoalusta(Pelilauta pelilauta) {
@@ -38,6 +39,7 @@ public class Piirtoalusta extends JPanel {
         this.kuvallisetKortit = new ArrayList<>();
 
         haeKansikuvaTiedostosta();
+//        haeKuvatTiedostosta();
         this.luoKuvallisetKortit();
 
         lisaaKuuntelija(this);
@@ -62,8 +64,13 @@ public class Piirtoalusta extends JPanel {
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
 
+//        for (Kortti kortti : this.pelilauta.getKorttipakka().haeKorttipakka()) {
+//            this.piirraKortinKansi(kortti, graphics);
+//
+//        }
         for (Kortti kortti : this.pelilauta.getKorttipakka().haeKorttipakka()) {
-            this.piirraKortinKansi(kortti, graphics);
+            haeKuvaTiedostosta(kortti.getTyyppi());
+            this.piirraKortinKuva(kortti, graphics);
 
         }
 
@@ -71,12 +78,11 @@ public class Piirtoalusta extends JPanel {
 
     public void luoKuvallisetKortit() {
         for (Kortti kortti : pelilauta.getKorttipakka().haeKorttipakka()) {
-            Kuva kuvallinenkortti = new Kuva(kansikuva, kortti);
+            Kuva kuvallinenkortti = new Kuva(kansikuva, kuva, kortti);
             kuvallisetKortit.add(kuvallinenkortti);
 
         }
         System.out.println("koko:" + kuvallisetKortit.size());
-      
 
     }
 
@@ -86,11 +92,28 @@ public class Piirtoalusta extends JPanel {
     }
 
     public void piirraKortinKuva(Kortti k, Graphics graphics) {
+        graphics.drawImage(kuva, k.getX() * 100 + 50, k.getY() * 100 + 50, k.getKorkeus(), k.getLeveys(), this);
 
     }
 
     public List<Kuva> haeKuvallisetKortit() {
         return this.kuvallisetKortit;
+    }
+
+//    private void haeKuvatTiedostosta() {
+//        for (Kortti k : pelilauta.getKorttipakka().haeKorttipakka()) {
+//            haeKuvaTiedostosta(k.getTyyppi());
+//        }
+//    }
+
+    private void haeKuvaTiedostosta(int tyyppi) {
+
+        try {
+            File kuvatiedosto = new File("./kuva" + tyyppi + ".jpg");
+            kuva = ImageIO.read(kuvatiedosto);
+        } catch (IOException e) {
+            System.out.println("tiedoston luku ei onnistu.");
+        }
     }
 
 }

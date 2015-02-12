@@ -21,10 +21,12 @@ import memorygame.memorygame.domain.Kortti;
  */
 public class Kuva extends Image{
     
+        Image kansikuva;
         Image kuva;
         Kortti kortti;
   
-    public Kuva(Image kuva, Kortti kortti){
+    public Kuva(Image kansikuva, Image kuva, Kortti kortti){
+        this.kansikuva = kansikuva;
         this.kuva = kuva;
         this.kortti = kortti;
     }
