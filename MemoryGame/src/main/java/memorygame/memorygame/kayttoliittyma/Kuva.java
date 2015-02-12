@@ -29,6 +29,12 @@ public class Kuva extends Image{
         this.kortti = kortti;
     }
     
+    public Kortti getKortti(){
+        return this.kortti;
+    }
+    public String toString(){
+        return this.kortti.toString();
+    }
 
     @Override
     public int getWidth(ImageObserver observer) {

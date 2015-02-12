@@ -36,7 +36,7 @@ public class MuistipeliTest {
     
     @Before
     public void setUp() {
-        muistipeli = new Muistipeli(new Pelilauta(new Korttipakka(1)));
+        muistipeli = new Muistipeli(1);
     }
     
     @After

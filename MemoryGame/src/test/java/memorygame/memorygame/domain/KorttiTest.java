@@ -51,7 +51,7 @@ public class KorttiTest {
 
     @Test
     public void toStringToimiiOikein() {
-        assertEquals("Kortin tyyppi on 1", kortti.toString());
+        assertEquals("Kortin tyyppi on 1käännettyfalse", kortti.toString());
     }
 
     @Test

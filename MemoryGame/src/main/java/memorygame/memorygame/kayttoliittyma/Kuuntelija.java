@@ -25,65 +25,89 @@ public class Kuuntelija implements MouseListener {
 
     Component piirtoalusta;
     Pelilauta pelilauta;
+    List<Kuva> kuvallisetKortit;
 
-    public Kuuntelija(Component piirtoalusta, Pelilauta lauta) {
+    public Kuuntelija(Component piirtoalusta, Pelilauta lauta, List<Kuva> kuvallisetKortit) {
         this.piirtoalusta = piirtoalusta;
         this.pelilauta = lauta;
+        this.kuvallisetKortit = kuvallisetKortit;
 
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        // if(!(this.klikattuKortti(e)==null)){
-        System.out.println("Korttia painettu");
-        //}
+        System.out.println(e.getX() + " " + e.getY());
 
-        // if(!(this.klikattuKortti(e)==null)){
-        //Kortti kortti = klikattuKortti(e);
-        //if (kortti.onkoKaannetu() == false) {
-        //    kortti.kaannaKortti();
-        //    if (pelilauta.getValittuKortti1() == null) {
-        //        pelilauta.setValittuKortti1(kortti);
-        //    } else if (!(pelilauta.getValittuKortti1() == null)) {
-        //        if (pelilauta.getValittuKortti2() == null) {
-        //           pelilauta.setValittuKortti2(kortti);
-        //       }
-        //   }
-        // if (!(pelilauta.getValittuKortti1() == null && pelilauta.getValittuKortti2() == null)) {
-        //    boolean pari = pelilauta.getValittuKortti1().onkoKortitSamat(pelilauta.getValittuKortti2());
-        //    if (pari == false) {
-        //        pelilauta.getValittuKortti1().kaannaKortti();
-        //        pelilauta.setValittuKortti1(null);
-        //        pelilauta.getValittuKortti2().kaannaKortti();
-        //       pelilauta.setValittuKortti2(null);
-        //    }
+        if (!(this.klikattuKortti(e) == null)) {
+            System.out.println("Korttia painettu");
+            Kuva kuvakortti = klikattuKortti(e);
+            Kortti kortti = kuvakortti.getKortti();
+            System.out.println(kortti);
+            if (kortti.onkoKaannetu() == false) {
+                kortti.kaannaKortti();
+                if (pelilauta.getValittuKortti1() == null) {
+                    pelilauta.setValittuKortti1(kortti);
+                    System.out.println("eka valittu:" + this.pelilauta.getValittuKortti1());
+
+                } else if (!(pelilauta.getValittuKortti1() == null)) {
+                    if (pelilauta.getValittuKortti2() == null) {
+                        pelilauta.setValittuKortti2(kortti);
+                        System.out.println("toka valittu" + this.pelilauta.getValittuKortti2());
+                    }
+                }
+                if (!(pelilauta.getValittuKortti1() == null) && !(pelilauta.getValittuKortti2() == null)) {
+                    boolean pari = pelilauta.getValittuKortti1().onkoKortitSamat(pelilauta.getValittuKortti2());
+                    if (pari == false) {
+                        pelilauta.getValittuKortti1().kaannaKortti();
+                        pelilauta.setValittuKortti1(null);
+                        pelilauta.getValittuKortti2().kaannaKortti();
+                        pelilauta.setValittuKortti2(null);
+                    }
+                    System.out.println(this.pelilauta.getValittuKortti1());
+                    System.out.println(this.pelilauta.getValittuKortti2());
+
+                    pelilauta.setValittuKortti1(null);
+                    pelilauta.setValittuKortti2(null);
+
+                    System.out.println("ok");
+//        piirtoalusta.repaint();
+                }
+            }
+
+        }
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
+    public void mousePressed(MouseEvent e
+    ) {
     }
 
     @Override
-    public void mouseReleased(MouseEvent e) {
+    public void mouseReleased(MouseEvent e
+    ) {
     }
 
     @Override
-    public void mouseEntered(MouseEvent e) {
+    public void mouseEntered(MouseEvent e
+    ) {
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
     }
 
-    public Kortti klikattuKortti(MouseEvent e) { // tarkista toimiiko oikein!
-        for (Kortti kortti : pelilauta.getKorttipakka().haeKorttipakka()) {
-            if (e.getX() > kortti.getX() && e.getX() <= kortti.getX() + kortti.getLeveys()) {
-                if (e.getY() < kortti.getY() && e.getY() >= kortti.getY() + kortti.getKorkeus()) {
-                    return kortti;
+    public Kuva klikattuKortti(MouseEvent e) {
+        for (Kuva kuva : kuvallisetKortit) {
+            Kortti kortti = kuva.getKortti();
+
+            if (e.getX() > kortti.getX() * 100 + 50 && e.getY() > kortti.getY() * 100 + 50) {
+                if (e.getX() < kortti.getX() * 100 + 50 + kortti.getKorkeus() && e.getY() < kortti.getY() * 100 + 50 + kortti.getLeveys()) {
+
+                    return kuva;
                 }
             }
+
         }
         return null;
     }
-
 }

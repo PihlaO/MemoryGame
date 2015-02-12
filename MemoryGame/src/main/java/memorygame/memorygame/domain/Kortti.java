@@ -102,7 +102,7 @@ public class Kortti {
     }
 
     public String toString() {
-        return "Kortin tyyppi on " + this.tyyppi;
+        return "Kortin tyyppi on " + this.tyyppi + "käännetty" + this.kaannettu;
     }
 
 }

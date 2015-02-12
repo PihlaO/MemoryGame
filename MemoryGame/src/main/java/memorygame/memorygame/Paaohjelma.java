@@ -12,8 +12,6 @@ import memorygame.memorygame.domain.Korttipakka;
 import memorygame.memorygame.domain.Pelilauta;
 import memorygame.memorygame.kayttoliittyma.Kayttoliittyma;
 
-
-
 /**
  *
  * @author okpiok
@@ -24,32 +22,12 @@ public class Paaohjelma {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Pelilauta pelilauta = new Pelilauta(new Korttipakka(3));
-        pelilauta.luoPakkaJaTaulukkoKorteista();
-        
-        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(pelilauta);
-        SwingUtilities.invokeLater(kayttoliittyma);
 
-        //Korttipakka korttipakka = new Korttipakka(1);
-        // Pelilauta pelilauta = new Pelilauta(korttipakka);
-        //pelilauta.luoPelilauta();
-        // pelilauta.tulostaPelilauta();
-        //Kortti k = pelilauta.getKorttiXY(2,1);
-        // System.out.println(k.getX());
-        // System.out.println(k.getY());
-       // for (int i = 0; i < pelilauta.pelilaudanRivienLukumaara(); i++) {
-        //   for (int j = 0; j < pelilauta.pelilaudanSarakkeidenLukumaara(); j++) {
-        //        System.out.println(pelilauta.getKorttiXY(i, j));
-        //        }
-        //    }
-        //System.out.println("");
-        // System.out.println(k);
-        //}
-        //for(Kortti k : korttipakka.pakka){
-        //    System.out.println(k);
-        //}
-        //pelilauta.muistikortitkortit[0][0] = korttipakka.pakka.get(0);
-        //System.out.println(pelilauta.muistikortitkortit[0][0]);
-        //System.out.println(pelilauta.muistikortitkortit[0][1]);
+        Muistipeli peli = new Muistipeli(1);
+        peli.kaynnista();
+        
+        
     }
 }
+
+

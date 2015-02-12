@@ -48,7 +48,7 @@ public class Kayttoliittyma implements Runnable {
     private void luoKomponentit(Container container) {
         Piirtoalusta piirtoalusta = new Piirtoalusta(this.pelilauta);
         container.add(piirtoalusta);
-        frame.addMouseListener(new Kuuntelija(piirtoalusta, pelilauta)); /// Mihin kuuntelija? Yksi kaikkiin kuviin.
+        frame.addMouseListener(new Kuuntelija(piirtoalusta, pelilauta, piirtoalusta.haeKuvallisetKortit())); /// Mihin kuuntelija? Yksi kaikkiin kuviin.
     }
 
 }
