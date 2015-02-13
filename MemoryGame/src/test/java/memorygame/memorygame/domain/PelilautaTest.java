@@ -82,7 +82,7 @@ public class PelilautaTest {
     }
 
     @Test
-    public void asettaaEkaksiValitunKortinOikein() {
+    public void asettaaEnsinmaisenaValitunKortinOikein() {
         Kortti vallittu = new Kortti(1);
         pelilauta.setValittuKortti1(vallittu);
         assertEquals(vallittu, pelilauta.getValittuKortti1());
