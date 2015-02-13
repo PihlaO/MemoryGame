@@ -19,14 +19,16 @@ import memorygame.memorygame.kayttoliittyma.Kayttoliittyma;
  */
 public class Muistipeli {
 
-    /// Kokeilu
-
     Pelilauta pelilauta;
 
     public Muistipeli(int vaikeustaso) {
-        this.pelilauta =  new Pelilauta(new Korttipakka(vaikeustaso));
+        this.pelilauta = new Pelilauta(new Korttipakka(vaikeustaso));
     }
 
+    /**
+     * Metodi käynnistää muistipelin.
+     *
+     */
     public void kaynnista() {
         pelilauta.luoPakkaJaTaulukkoKorteista();
 

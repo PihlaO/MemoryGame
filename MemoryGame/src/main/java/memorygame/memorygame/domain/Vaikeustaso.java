@@ -27,6 +27,11 @@ public class Vaikeustaso {
         return tasonTunnus;
     }
 
+    /**
+     * Metodi hakee tason korttien lukumäärän.
+     *
+     * @return korttien lukumäärä
+     */
     public int haeKorttienLukumaara() {
         if (tasonTunnus == 1) {
             return 12;

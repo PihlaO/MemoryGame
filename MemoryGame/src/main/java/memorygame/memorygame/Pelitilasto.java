@@ -31,18 +31,36 @@ public class Pelitilasto {
         return this.nimi;
     }
 
+    /**
+     * Metodi tallentaa pelaajan pelitilastoon.
+     *
+     * @param pelaaja Pelin pelaaja
+     */
     public void tallennaTilastoon(Pelaaja pelaaja) {
         tilasto.add(pelaaja);
     }
-    
-    public void tyhjennaTilasto(){
+
+    /**
+     * Metodi tyhjentää pelitilaston eli poistaa kaikki pelaajat listasta.
+     *
+     */
+    public void tyhjennaTilasto() {
         tilasto.clear();
     }
     
-    public List<Pelaaja> haeTilastolista(){
+        /**
+     * Metodi palautta listan tilastossa olevista pelaajista.
+     *
+     * @return lista pelaajista
+     */
+
+    public List<Pelaaja> haeTilastolista() {
         return this.tilasto;
     }
-
+    /**
+     * Metodi tulostaa pelitilaston.
+     *
+     */
     public void tulostaTilasto() {
         for (int i = 0; i < tilasto.size(); i++) {
             System.out.println(tilasto.get(i));

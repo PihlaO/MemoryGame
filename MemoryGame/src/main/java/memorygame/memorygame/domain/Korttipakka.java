@@ -18,7 +18,6 @@ import java.util.List;
 /* 
  * Korttipakan luokka. Tässä luokassa luodaan korttipakka ja pelin vaikeustaso.
  */
-
 public class Korttipakka {
 
     List<Kortti> pakka;
@@ -29,6 +28,10 @@ public class Korttipakka {
         this.vaikeustaso = new Vaikeustaso(tunnus);
     }
 
+    /**
+     * Metodi luo muistipelikortit ja tallentaa ne korttipakkaan.
+     *
+     */
     public void luoKortit() {
         int uniikkienKorttienLukumaara = 0;
         uniikkienKorttienLukumaara = this.haeVaikeustaso().haeKorttienLukumaara() / 2;
@@ -41,17 +44,30 @@ public class Korttipakka {
         }
 
     }
-    
 
+    /**
+     * Metodi sekoittaa korttipakan.
+     *
+     */
     public void sekoitaPakka() {
         Collections.shuffle(pakka);
 
     }
-    
-    public Vaikeustaso haeVaikeustaso(){
+
+    /**
+     * Metodi palauttaa pelin vaikeustason
+     *
+     * @return pelin vaikeustaso
+     */
+    public Vaikeustaso haeVaikeustaso() {
         return this.vaikeustaso;
     }
 
+    /**
+     * Metodi palauttaa korttipakan eli listan korteista
+     *
+     * @return pelin korttipakka
+     */
     public List<Kortti> haeKorttipakka() {
         return this.pakka;
     }

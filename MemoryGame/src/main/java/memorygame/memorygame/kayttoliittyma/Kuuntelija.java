@@ -26,7 +26,6 @@ public class Kuuntelija implements MouseListener {
     Component piirtoalusta;
     Pelilauta pelilauta;
     List<Kuva> kuvallisetKortit;
-    
 
     public Kuuntelija(Component piirtoalusta, Pelilauta lauta, List<Kuva> kuvallisetKortit) {
         this.piirtoalusta = piirtoalusta;
@@ -63,10 +62,10 @@ public class Kuuntelija implements MouseListener {
                 }
 
                 this.piirtoalusta.repaint();
-                
+
                 if (!(pelilauta.getValittuKortti1() == null) && !(pelilauta.getValittuKortti2() == null)) {
                     boolean pari = pelilauta.getValittuKortti1().onkoKortitSamat(pelilauta.getValittuKortti2());
-                        this.piirtoalusta.repaint();
+                    this.piirtoalusta.repaint();
                     if (pari == false) {
                         pelilauta.getValittuKortti1().kaannaKortti();
                         pelilauta.setValittuKortti1(null);
@@ -85,7 +84,7 @@ public class Kuuntelija implements MouseListener {
                 }
             }
 
-        }                
+        }
         this.piirtoalusta.repaint();
 
     }
@@ -109,6 +108,12 @@ public class Kuuntelija implements MouseListener {
     public void mouseExited(MouseEvent e) {
     }
 
+    /**
+     * Metodi hakee klikatun kortin.
+     *
+     * @param MouseEvent
+     * @return kuvallinen kortin
+     */
     public Kuva klikattuKortti(MouseEvent e) {
         for (Kuva kuva : kuvallisetKortit) {
             Kortti kortti = kuva.getKortti();

@@ -64,7 +64,6 @@ public class Kortti {
         return this.tyyppi;
     }
 
-
     public void setKansikuva(Image i) {
 
     }
@@ -81,10 +80,20 @@ public class Kortti {
         return this.kuva;
     }
 
+    /**
+     * Metodi kertoo, onko kortti käännetty. Jos kortti on käännetty, niin
+     * metodi palauttaa true, muulloin false.
+     *
+     * @return Kortin tila
+     */
     public boolean onkoKaannetu() {
         return this.kaannettu;
     }
 
+    /**
+     * Metodi kääntää kortin.
+     *
+     */
     public void kaannaKortti() {
         if (this.onkoKaannetu() == true) {
             this.kaannettu = false;
@@ -93,6 +102,13 @@ public class Kortti {
         }
     }
 
+    /**
+     * Metodi vertaa kahden kortin tyyppejä ja selvittää onko kortit samat.
+     *
+     * @param kortti varrattava kortti
+     * @return totuusarvo
+     *
+     */
     public boolean onkoKortitSamat(Kortti kortti) {
         if (this.getTyyppi() == kortti.getTyyppi()) {
             return true;

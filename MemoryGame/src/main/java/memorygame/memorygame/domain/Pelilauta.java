@@ -27,16 +27,28 @@ public class Pelilauta {
         this.TaulukkoKorteista = new Kortti[pelilaudanSarakkeidenLukumaara()][pelilaudanRivienLukumaara()];
     }
 
+    /**
+     * Metodi luo korttipakan ja taulukon korteille.
+     *
+     */
     public void luoPakkaJaTaulukkoKorteista() {
         this.luoPakka();
         this.luoTaulukkoKorteilla();
     }
 
+    /**
+     * Metodi luo korttipakan.
+     *
+     */
     public void luoPakka() {
         this.korttipakka.luoKortit();
         korttipakka.sekoitaPakka();
     }
 
+    /**
+     * Metodi luo taulukon korteille.
+     *
+     */
     public void luoTaulukkoKorteilla() {
         asetaKorttiTaulukkoon();
         this.AsetaPakanKorteilleKoordinaatit();
@@ -46,6 +58,10 @@ public class Pelilauta {
         return this.TaulukkoKorteista;
     }
 
+    /**
+     * Metodi asettaa kortit taulukkoon.
+     *
+     */
     private void asetaKorttiTaulukkoon() {
         int kortinIndeksiPakassa = 0;
         for (int i = 0; i < pelilaudanSarakkeidenLukumaara(); i++) {
@@ -58,6 +74,10 @@ public class Pelilauta {
         }
     }
 
+    /**
+     * Metodi asettaa korteille koordinaatit.
+     *
+     */
     public void AsetaPakanKorteilleKoordinaatit() {
         for (Kortti kortti : this.korttipakka.haeKorttipakka()) {
             AsetaKortilleKoordinaatit(kortti);
@@ -65,6 +85,10 @@ public class Pelilauta {
 
     }
 
+    /**
+     * Metodi asettaa yksittäiselle kortille koordinaatit.
+     *
+     */
     private void AsetaKortilleKoordinaatit(Kortti kortti) {
         for (int i = 0; i < this.pelilaudanSarakkeidenLukumaara(); i++) {
             for (int j = 0; j < pelilaudanRivienLukumaara(); j++) {

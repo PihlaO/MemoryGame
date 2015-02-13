@@ -46,6 +46,10 @@ public class Piirtoalusta extends JPanel {
 
     }
 
+    /**
+     * Metodi lukee tiedostosta kansikuvan.
+     *
+     */
     private void haeKansikuvaTiedostosta() {
         try {
             File kuvatiedosto = new File("./kansikuva.png");
@@ -55,6 +59,12 @@ public class Piirtoalusta extends JPanel {
         }
     }
 
+    /**
+     * Metodi lisaa kuuntelijan.
+     *
+     * @param muistipelin piirtoalusta
+     *
+     */
     private void lisaaKuuntelija(Piirtoalusta piirtoalusta) {
         Kuuntelija k = new Kuuntelija(piirtoalusta, pelilauta, kuvallisetKortit);
         this.addMouseListener(k);
@@ -78,6 +88,10 @@ public class Piirtoalusta extends JPanel {
 
     }
 
+    /**
+     * Metodi luo kuvalliset kortit.
+     *
+     */
     public void luoKuvallisetKortit() {
         for (Kortti kortti : pelilauta.getKorttipakka().haeKorttipakka()) {
             Kuva kuvallinenkortti = new Kuva(kansikuva, kuva, kortti);
@@ -88,16 +102,30 @@ public class Piirtoalusta extends JPanel {
 
     }
 
+    /**
+     * Metodi piirtää kortin kansikuvan.
+     *
+     */
     public void piirraKortinKansi(Kortti k, Graphics graphics) {
 
         graphics.drawImage(kansikuva, k.getX() * 100 + 50, k.getY() * 100 + 50, k.getKorkeus(), k.getLeveys(), this);
     }
 
+    /**
+     * Metodi piirtää kortin kuvan.
+     *
+     */
     public void piirraKortinKuva(Kortti k, Graphics graphics) {
         graphics.drawImage(kuva, k.getX() * 100 + 50, k.getY() * 100 + 50, k.getKorkeus(), k.getLeveys(), this);
 
     }
 
+    /**
+     * Metodi hakee listan kuvallisita korteista.
+     *
+     * @return kuvalliset kortit
+     *
+     */
     public List<Kuva> haeKuvallisetKortit() {
         return this.kuvallisetKortit;
     }
@@ -107,6 +135,10 @@ public class Piirtoalusta extends JPanel {
 //            haeKuvaTiedostosta(k.getTyyppi());
 //        }
 //    }
+    /**
+     * Metodi lukee tiedostosta kuvan.
+     *
+     */
     private void haeKuvaTiedostosta(int tyyppi) {
 
         try {
