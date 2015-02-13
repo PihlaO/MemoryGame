@@ -62,7 +62,7 @@ public class Pelilauta {
      * Metodi asettaa kortit taulukkoon.
      *
      */
-    private void asetaKorttiTaulukkoon() {
+    public void asetaKorttiTaulukkoon() {
         int kortinIndeksiPakassa = 0;
         for (int i = 0; i < pelilaudanSarakkeidenLukumaara(); i++) {
 
@@ -89,7 +89,7 @@ public class Pelilauta {
      * Metodi asettaa yksittäiselle kortille koordinaatit.
      *
      */
-    private void AsetaKortilleKoordinaatit(Kortti kortti) {
+    public void AsetaKortilleKoordinaatit(Kortti kortti) {
         for (int i = 0; i < this.pelilaudanSarakkeidenLukumaara(); i++) {
             for (int j = 0; j < pelilaudanRivienLukumaara(); j++) {
                 if (kortti.equals(this.getKorttiXY(i, j))) {

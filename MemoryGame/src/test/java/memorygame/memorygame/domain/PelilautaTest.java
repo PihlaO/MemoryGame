@@ -65,7 +65,35 @@ public class PelilautaTest {
     }
 
     @Test
-    public void asettaaKortilleOikeinKoordinaatit() {
+    public void asettaaKortinTaulukkoonOikein() {
+        pelilauta.korttipakka.luoKortit();
+        Kortti k = pelilauta.korttipakka.haeKorttipakka().get(0);
+        this.pelilauta.asetaKorttiTaulukkoon();
+        assertEquals(this.pelilauta.getTaulukkoKorteista()[0][0], k);
+    }
+
+    @Test
+    public void asettaaKortinTaulukkoonOikein2() {
+        pelilauta.korttipakka.luoKortit();
+        Kortti k = pelilauta.korttipakka.haeKorttipakka().get(0);
+        this.pelilauta.asetaKorttiTaulukkoon();
+        assertEquals(this.pelilauta.getTaulukkoKorteista()[0][0].getX(), k.getX());
+
+    }
+
+    @Test
+    public void asettaaEkaksiValitunKortinOikein() {
+        Kortti vallittu = new Kortti(1);
+        pelilauta.setValittuKortti1(vallittu);
+        assertEquals(vallittu, pelilauta.getValittuKortti1());
+
+    }
+
+    @Test
+    public void asettaaToisenaValitunKortinOikein() {
+        Kortti vallittu = new Kortti(1);
+        pelilauta.setValittuKortti2(vallittu);
+        assertEquals(vallittu, pelilauta.getValittuKortti2());
 
     }
 
