@@ -23,7 +23,7 @@ public class Paaohjelma {
      */
     public static void main(String[] args) {
 
-        Muistipeli peli = new Muistipeli(3);
+        Muistipeli peli = new Muistipeli(1);
         peli.kaynnista();
         
         
