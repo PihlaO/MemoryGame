@@ -43,3 +43,5 @@ Muistipelin koodausta, testien tekemistä sekä JavaDocin kirjoittamista.
 Torstai: 4 tuntia
 
 Perjantai: 2 tuntia
+
+Viikko 8
