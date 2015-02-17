@@ -7,7 +7,6 @@ package memorygame.memorygame.kayttoliittyma;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-import memorygame.memorygame.Muistipeli;
 import memorygame.memorygame.domain.Kortti;
 import memorygame.memorygame.domain.Pelilauta;
 
@@ -31,7 +29,7 @@ public class Piirtoalusta extends JPanel {
     Pelilauta pelilauta;
     private BufferedImage kansikuva;
     private BufferedImage kuva;
-    List<Kuva> kuvallisetKortit;
+    List<KuvallinenKortti> kuvallisetKortit;
 
     public Piirtoalusta(Pelilauta pelilauta) {
         this.pelilauta = pelilauta;
@@ -78,7 +76,7 @@ public class Piirtoalusta extends JPanel {
             this.piirraKortinKansi(kortti, graphics);
 
         }
-        for (Kuva k : this.kuvallisetKortit) {
+        for (KuvallinenKortti k : this.kuvallisetKortit) {
             Kortti kortti = k.getKortti();
             if (kortti.onkoKaannetu() == true) {
                 haeKuvaTiedostosta(kortti.getTyyppi());
@@ -94,7 +92,7 @@ public class Piirtoalusta extends JPanel {
      */
     public void luoKuvallisetKortit() {
         for (Kortti kortti : pelilauta.getKorttipakka().haeKorttipakka()) {
-            Kuva kuvallinenkortti = new Kuva(kansikuva, kuva, kortti);
+            KuvallinenKortti kuvallinenkortti = new KuvallinenKortti(kansikuva, kuva, kortti);
             kuvallisetKortit.add(kuvallinenkortti);
 
         }
@@ -126,7 +124,7 @@ public class Piirtoalusta extends JPanel {
      * @return kuvalliset kortit
      *
      */
-    public List<Kuva> haeKuvallisetKortit() {
+    public List<KuvallinenKortti> haeKuvallisetKortit() {
         return this.kuvallisetKortit;
     }
 

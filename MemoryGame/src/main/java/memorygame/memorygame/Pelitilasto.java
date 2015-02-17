@@ -7,7 +7,6 @@ package memorygame.memorygame;
 
 import memorygame.memorygame.domain.Pelaaja;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**

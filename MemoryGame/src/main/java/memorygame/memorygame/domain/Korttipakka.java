@@ -5,7 +5,6 @@
  */
 package memorygame.memorygame.domain;
 
-import memorygame.memorygame.domain.Kortti;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

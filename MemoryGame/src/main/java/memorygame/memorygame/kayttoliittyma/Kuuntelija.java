@@ -6,7 +6,6 @@
 package memorygame.memorygame.kayttoliittyma;
 
 import java.awt.Component;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -25,9 +24,9 @@ public class Kuuntelija implements MouseListener {
 
     Component piirtoalusta;
     Pelilauta pelilauta;
-    List<Kuva> kuvallisetKortit;
+    List<KuvallinenKortti> kuvallisetKortit;
 
-    public Kuuntelija(Component piirtoalusta, Pelilauta lauta, List<Kuva> kuvallisetKortit) {
+    public Kuuntelija(Component piirtoalusta, Pelilauta lauta, List<KuvallinenKortti> kuvallisetKortit) {
         this.piirtoalusta = piirtoalusta;
         this.pelilauta = lauta;
         this.kuvallisetKortit = kuvallisetKortit;
@@ -40,7 +39,7 @@ public class Kuuntelija implements MouseListener {
 
         if (!(this.klikattuKortti(e) == null)) {
             System.out.println("Korttia painettu");
-            Kuva kuvakortti = klikattuKortti(e);
+            KuvallinenKortti kuvakortti = klikattuKortti(e);
             Kortti kortti = kuvakortti.getKortti();
             System.out.println(kortti);
             if (kortti.onkoKaannetu() == false) {
@@ -114,8 +113,8 @@ public class Kuuntelija implements MouseListener {
      * @param MouseEvent
      * @return kuvallinen kortin
      */
-    public Kuva klikattuKortti(MouseEvent e) {
-        for (Kuva kuva : kuvallisetKortit) {
+    public KuvallinenKortti klikattuKortti(MouseEvent e) {
+        for (KuvallinenKortti kuva : kuvallisetKortit) {
             Kortti kortti = kuva.getKortti();
 
             if (e.getX() > kortti.getX() * 100 + 50 && e.getY() > kortti.getY() * 100 + 50) {

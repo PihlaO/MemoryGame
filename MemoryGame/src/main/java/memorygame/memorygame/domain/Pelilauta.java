@@ -5,8 +5,6 @@
  */
 package memorygame.memorygame.domain;
 
-import memorygame.memorygame.domain.Korttipakka;
-import memorygame.memorygame.domain.Kortti;
 
 /**
  *

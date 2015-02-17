@@ -19,13 +19,13 @@ import memorygame.memorygame.domain.Kortti;
 /* 
  * Luokka muistipelin korttien kuville.
  */
-public class Kuva extends Image{
+public class KuvallinenKortti extends Image{
     
         Image kansikuva;
         Image kuva;
         Kortti kortti;
   
-    public Kuva(Image kansikuva, Image kuva, Kortti kortti){
+    public KuvallinenKortti(Image kansikuva, Image kuva, Kortti kortti){
         this.kansikuva = kansikuva;
         this.kuva = kuva;
         this.kortti = kortti;

@@ -6,11 +6,8 @@
 package memorygame.memorygame;
 
 import javax.swing.SwingUtilities;
-import memorygame.memorygame.domain.HelppoTaso;
-import memorygame.memorygame.domain.Kortti;
-import memorygame.memorygame.domain.Korttipakka;
-import memorygame.memorygame.domain.Pelilauta;
-import memorygame.memorygame.kayttoliittyma.Kayttoliittyma;
+
+import memorygame.memorygame.valikot.AloitusKayttoliittyma;
 
 /**
  *
@@ -22,12 +19,10 @@ public class Paaohjelma {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        AloitusKayttoliittyma kayttoliittyma = new AloitusKayttoliittyma();
+        SwingUtilities.invokeLater(kayttoliittyma);
+//        Muistipeli peli = new Muistipeli(1);
+//        peli.kaynnista();
 
-        Muistipeli peli = new Muistipeli(1);
-        peli.kaynnista();
-        
-        
     }
 }
-
-

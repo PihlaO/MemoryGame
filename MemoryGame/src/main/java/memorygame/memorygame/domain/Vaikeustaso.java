@@ -45,5 +45,8 @@ public class Vaikeustaso {
             return 12;
         }
     }
+    public String toString(){
+        return ""+ this.tasonTunnus;
+    }
 
 }
