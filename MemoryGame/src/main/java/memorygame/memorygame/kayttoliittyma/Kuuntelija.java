@@ -46,7 +46,7 @@ public class Kuuntelija implements MouseListener {
             Kortti kortti = kuvakortti.getKortti();
             System.out.println(kortti);
             
-            if (kortti.onkoKaannetu() == false && !(kortti.equals(muistipeli.getPelilauta().getValittuKortti1()))) { //toinen ehto ei fiksu
+            if (kortti.onkoKaannetu() == false && !(kortti.equals(muistipeli.getPelilauta().getValittuKortti1()))) { 
                 kortti.kaannaKortti();
                 this.muistipeli.getPelaaja().lisaaPiste();
                 
@@ -59,7 +59,7 @@ public class Kuuntelija implements MouseListener {
                 } else if (!(muistipeli.getPelilauta().getValittuKortti1() == null)) {
                     if (muistipeli.getPelilauta().getValittuKortti2() == null) {
                         muistipeli.getPelilauta().setValittuKortti2(kortti);
-                        System.out.println("!!!!!!!!" +this.muistipeli.getPelilauta().getValittuKortti1());
+
                         this.piirtoalusta.repaint();
                         System.out.println("toka valittu" + this.muistipeli.getPelilauta().getValittuKortti2());
                     }
