@@ -141,5 +141,7 @@ public class Pelilauta {
     public void setValittuKortti2(Kortti k) {
         this.valittuKortti2 = k;
     }
+    
+
 
 }

@@ -7,13 +7,14 @@
 package memorygame.memorygame;
 
 import memorygame.memorygame.domain.Korttipakka;
+import memorygame.memorygame.domain.Pelaaja;
 import memorygame.memorygame.domain.Pelilauta;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -22,6 +23,7 @@ import static org.junit.Assert.*;
 public class MuistipeliTest {
 
     Muistipeli muistipeli;
+    Pelaaja pelaaja;
     
     public MuistipeliTest() {
     }
@@ -36,7 +38,8 @@ public class MuistipeliTest {
     
     @Before
     public void setUp() {
-        muistipeli = new Muistipeli(1);
+        this.pelaaja=new Pelaaja("Anna");
+        muistipeli = new Muistipeli(1, this.pelaaja);
     }
     
     @After

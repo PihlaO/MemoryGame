@@ -82,12 +82,12 @@ public class KorttiTest {
 
     @Test
     public void palauttaaKorkeudenoikein() {
-        assertEquals(70, kortti.getKorkeus());
+        assertEquals(120, kortti.getKorkeus());
     }
 
     @Test
     public void palauttaaLeveydenoikein() {
-        assertEquals(90, kortti.getLeveys());
+        assertEquals(100, kortti.getLeveys());
     }
 
     @Test 

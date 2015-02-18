@@ -22,16 +22,16 @@ public class Kortti {
     private boolean kaannettu;
     int x;
     int y;
-    int korkeus;
     int leveys;
+    int korkeus;
     private Image kansikuva;
     private Image kuva;
 
     public Kortti(int tyyppi) {
         this.tyyppi = tyyppi;
         this.kaannettu = false;
-        this.korkeus = 70;
-        this.leveys = 90;
+        this.leveys = 100;
+        this.korkeus = 120;
     }
 
     public int getX() {

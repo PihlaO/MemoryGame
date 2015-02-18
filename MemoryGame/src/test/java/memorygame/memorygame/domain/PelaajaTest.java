@@ -68,7 +68,7 @@ public class PelaajaTest {
     
     @Test 
     public void toStringToimiiOikein(){
-        assertEquals("Anna 0", pelaaja.toString());
+        assertEquals("Anna      Pisteet: 0", pelaaja.toString());
     }
 
 }

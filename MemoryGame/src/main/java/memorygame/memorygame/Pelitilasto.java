@@ -14,9 +14,9 @@ import java.util.List;
  * @author okpiok
  */
 /*
- * Muistipelin tilasto, jossa luodaan lista pelaajista.
+ * Muistipelin tilasto, jossa luodaan lista pelaajista. Tilastossa on aina 3 parasta tulosta kerrallaan.
  */
-public class Pelitilasto {
+public class Pelitilasto { // lisää metodi järjestä lista!!!!!
 
     String nimi;
     List<Pelaaja> tilasto;
@@ -36,7 +36,10 @@ public class Pelitilasto {
      * @param pelaaja Pelin pelaaja
      */
     public void tallennaTilastoon(Pelaaja pelaaja) {
-        tilasto.add(pelaaja);
+        if (tilasto.size() < 3) {
+            tilasto.add(pelaaja);
+        }
+        jarjetaTilasto();
     }
 
     /**
@@ -46,16 +49,16 @@ public class Pelitilasto {
     public void tyhjennaTilasto() {
         tilasto.clear();
     }
-    
-        /**
+
+    /**
      * Metodi palautta listan tilastossa olevista pelaajista.
      *
      * @return lista pelaajista
      */
-
     public List<Pelaaja> haeTilastolista() {
         return this.tilasto;
     }
+
     /**
      * Metodi tulostaa pelitilaston.
      *
@@ -66,5 +69,14 @@ public class Pelitilasto {
 
         }
     }
+    
+    public Pelaaja palautaPelaajaTilastosta(int indeksi){
+        return this.tilasto.get(indeksi);
+    }
 
+    private void jarjetaTilasto() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+ 
 }

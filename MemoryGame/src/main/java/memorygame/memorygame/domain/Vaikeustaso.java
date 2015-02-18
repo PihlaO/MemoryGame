@@ -18,13 +18,31 @@ package memorygame.memorygame.domain;
 public class Vaikeustaso {
 
     int tasonTunnus;
+    String nimi;
 
     public Vaikeustaso(int taso) {
         this.tasonTunnus = taso;
+        asetaTasolleNimi();
+    }
+
+    private void asetaTasolleNimi() {
+        if (tasonTunnus == 1) {
+            this.nimi = "Helppo";
+        }
+        if (tasonTunnus == 2) {
+            this.nimi = "Keskitaso";
+        }
+        if (tasonTunnus == 3) {
+            this.nimi = "Vaikea";
+        }
     }
 
     public int getTasonTunnus() {
         return tasonTunnus;
+    }
+
+    public String toString() {
+        return this.nimi;
     }
 
     /**
@@ -45,8 +63,9 @@ public class Vaikeustaso {
             return 12;
         }
     }
-    public String toString(){
-        return ""+ this.tasonTunnus;
-    }
+//
+//    public String toString() {
+//        return "" + this.tasonTunnus;
+//    }
 
 }

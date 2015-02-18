@@ -41,8 +41,13 @@ public class Pelaaja {
             this.pisteet = luku;
         }
     }
+    
+    public void lisaaPiste(){
+        int luku= getPisteet()+1;
+        setPisteet(luku);
+    }
 
     public String toString() {
-        return this.nimi + " " + getPisteet();
+        return this.nimi + " " + "     Pisteet: "+ getPisteet();
     }
 }

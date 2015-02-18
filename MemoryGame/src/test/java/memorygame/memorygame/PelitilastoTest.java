@@ -65,7 +65,7 @@ public class PelitilastoTest {
         for (Pelaaja pelaaja : this.pelitilasto.tilasto) {
             teksti = pelaaja.toString();
         }
-        assertEquals("Anna 0", teksti);
+        assertEquals("Anna      Pisteet: 0", teksti);
     }
 
     @Test

@@ -14,7 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import memorygame.memorygame.Muistipeli;
 import memorygame.memorygame.domain.Kortti;
+import memorygame.memorygame.domain.Korttipakka;
 import memorygame.memorygame.domain.Pelilauta;
 
 /**
@@ -26,22 +28,43 @@ import memorygame.memorygame.domain.Pelilauta;
  */
 public class Piirtoalusta extends JPanel {
 
-    Pelilauta pelilauta;
+    Muistipeli muistipeli;
     private BufferedImage kansikuva;
     private BufferedImage kuva;
     List<KuvallinenKortti> kuvallisetKortit;
 
-    public Piirtoalusta(Pelilauta pelilauta) {
-        this.pelilauta = pelilauta;
+    public Piirtoalusta(Muistipeli muistipeli) {
+        this.muistipeli = muistipeli;
         super.setBackground(Color.WHITE);
         this.kuvallisetKortit = new ArrayList<>();
 
         haeKansikuvaTiedostosta();
-//        haeKuvatTiedostosta();
         this.luoKuvallisetKortit();
 
         lisaaKuuntelija(this);
 
+    }
+
+    @Override
+    protected void paintComponent(Graphics graphics) {
+        super.paintComponent(graphics);
+
+        for (KuvallinenKortti k : this.kuvallisetKortit) {
+            Kortti kortti = k.getKortti();
+            if (kortti.onkoKaannetu() == true) {
+                haeKuvaTiedostosta(kortti.getTyyppi());
+                this.piirraKortinKuva(kortti, graphics);
+            } else {
+                this.piirraKortinKansi(kortti, graphics);
+            }
+        }
+
+//        Korttipakka pakka = this.pelilauta.getKorttipakka();
+//        for (Kortti k : pakka.haeKorttipakka()) {
+//            if (k.onkoKaannetu() == false) {
+//                piirraPakanKorteilleKansi(pakka, graphics);
+//            }
+//        }
     }
 
     /**
@@ -64,26 +87,15 @@ public class Piirtoalusta extends JPanel {
      *
      */
     private void lisaaKuuntelija(Piirtoalusta piirtoalusta) {
-        Kuuntelija k = new Kuuntelija(piirtoalusta, pelilauta, kuvallisetKortit);
+        Kuuntelija k = new Kuuntelija(piirtoalusta, muistipeli, kuvallisetKortit);
         this.addMouseListener(k);
     }
 
-    @Override
-    protected void paintComponent(Graphics graphics) {
-        super.paintComponent(graphics);
-
-        for (Kortti kortti : this.pelilauta.getKorttipakka().haeKorttipakka()) {
+    private void piirraPakanKorteilleKansi(Korttipakka pakka, Graphics graphics) {
+        for (Kortti kortti : this.muistipeli.getPelilauta().getKorttipakka().haeKorttipakka()) {
             this.piirraKortinKansi(kortti, graphics);
 
         }
-        for (KuvallinenKortti k : this.kuvallisetKortit) {
-            Kortti kortti = k.getKortti();
-            if (kortti.onkoKaannetu() == true) {
-                haeKuvaTiedostosta(kortti.getTyyppi());
-                this.piirraKortinKuva(kortti, graphics);
-            }
-        }
-
     }
 
     /**
@@ -91,10 +103,9 @@ public class Piirtoalusta extends JPanel {
      *
      */
     public void luoKuvallisetKortit() {
-        for (Kortti kortti : pelilauta.getKorttipakka().haeKorttipakka()) {
+        for (Kortti kortti : this.muistipeli.getPelilauta().getKorttipakka().haeKorttipakka()) {
             KuvallinenKortti kuvallinenkortti = new KuvallinenKortti(kansikuva, kuva, kortti);
             kuvallisetKortit.add(kuvallinenkortti);
-
         }
         System.out.println("koko:" + kuvallisetKortit.size());
 
@@ -106,7 +117,8 @@ public class Piirtoalusta extends JPanel {
      */
     public void piirraKortinKansi(Kortti k, Graphics graphics) {
 
-        graphics.drawImage(kansikuva, k.getX() * 100 + 50, k.getY() * 100 + 50, k.getKorkeus(), k.getLeveys(), this);
+        graphics.drawImage(kansikuva, k.getX() * 105 + 50, k.getY() * 123 + 50, k.getLeveys(), k.getKorkeus(), this);
+
     }
 
     /**
@@ -114,7 +126,7 @@ public class Piirtoalusta extends JPanel {
      *
      */
     public void piirraKortinKuva(Kortti k, Graphics graphics) {
-        graphics.drawImage(kuva, k.getX() * 100 + 50, k.getY() * 100 + 50, k.getKorkeus(), k.getLeveys(), this);
+        graphics.drawImage(kuva, k.getX() * 105 + 50, k.getY() * 123 + 50, k.getLeveys(), k.getKorkeus(), this);
 
     }
 
@@ -128,11 +140,6 @@ public class Piirtoalusta extends JPanel {
         return this.kuvallisetKortit;
     }
 
-//    private void haeKuvatTiedostosta() {
-//        for (Kortti k : pelilauta.getKorttipakka().haeKorttipakka()) {
-//            haeKuvaTiedostosta(k.getTyyppi());
-//        }
-//    }
     /**
      * Metodi lukee tiedostosta kuvan.
      *
