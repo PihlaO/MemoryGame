@@ -6,7 +6,6 @@
 package memorygame.memorygame.domain;
 
 import java.awt.Image;
-import java.awt.image.ImageProducer;
 
 /**
  *

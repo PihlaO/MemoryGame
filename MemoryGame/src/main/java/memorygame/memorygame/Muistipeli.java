@@ -11,7 +11,6 @@ import memorygame.memorygame.domain.Pelaaja;
 import memorygame.memorygame.domain.Pelilauta;
 import memorygame.memorygame.domain.Vaikeustaso;
 import memorygame.memorygame.kayttoliittyma.Kayttoliittyma;
-import memorygame.memorygame.valikot.AloitusKayttoliittyma;
 
 /**
  *
@@ -30,10 +29,10 @@ public class Muistipeli {
 
     public Muistipeli(int vaikeustaso, Pelaaja pelaaja) {
         this.pelilauta = new Pelilauta(new Korttipakka(vaikeustaso));
-        this.tilasto = new Pelitilasto("Top 5:");
+        this.tilasto = new Pelitilasto("top 3"); /// mieti tilaston luominen uudestaan.
         this.pelaaja = pelaaja;
         taso = new Vaikeustaso(vaikeustaso);
- 
+
     }
 
     /**
@@ -44,10 +43,11 @@ public class Muistipeli {
 
         pelilauta.luoPakkaJaTaulukkoKorteista();
         this.kayttoliittyma = new Kayttoliittyma(this);
-        SwingUtilities.invokeLater(kayttoliittyma);       
-        tilasto.tallennaTilastoon(new Pelaaja("Pekka"));
+        SwingUtilities.invokeLater(kayttoliittyma);
+        
+//        tilasto.tallennaTilastoon(new Pelaaja("Pekka"));
 //        tilasto.tallennaTilastoon(new Pelaaja("Anna"));
-        tilasto.tulostaTilasto();
+//        tilasto.tulostaTilasto();
     }
 
     public Pelilauta getPelilauta() {

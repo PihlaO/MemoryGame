@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package memorygame.memorygame.kayttoliittyma;
 
 import java.awt.Graphics;
@@ -19,22 +18,24 @@ import memorygame.memorygame.domain.Kortti;
 /* 
  * Luokka muistipelin korttien kuville.
  */
-public class KuvallinenKortti extends Image{
-    
-        Image kansikuva;
-        Image kuva;
-        Kortti kortti;
-  
-    public KuvallinenKortti(Image kansikuva, Image kuva, Kortti kortti){
+public class KuvallinenKortti extends Image {
+
+    Image kansikuva;
+    Image kuva;
+    Kortti kortti;
+
+    public KuvallinenKortti(Image kansikuva, Image kuva, Kortti kortti) {
         this.kansikuva = kansikuva;
         this.kuva = kuva;
         this.kortti = kortti;
     }
-    
-    public Kortti getKortti(){
+
+    public Kortti getKortti() {
         return this.kortti;
     }
-    public String toString(){
+
+    @Override
+    public String toString() {
         return this.kortti.toString();
     }
 

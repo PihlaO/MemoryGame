@@ -75,17 +75,7 @@ public class Pelitilasto { // lisää metodi järjestä lista!!!!!
     }
 
     public void jarjetaTilasto() {
-//        int luku = 0;
-//        List<Pelaaja> apulista = new ArrayList<>();
-//        int ekanPisteet =this.tilasto.get(0).getPisteet();
-//        int tokanPisteet = this.tilasto.get(1).getPisteet();
-//        int kolmannenPisteet = this.tilasto.get(2).getPisteet();
-//          int suuri = Math.max(ekanPisteet, tokanPisteet);
-//        int suurempi = Math.max(suuri,kolmannenPisteet);
-//        
-//        for (Pelaaja pelaaja : apulista) {
-//            System.out.println(pelaaja);
-//        }
+
     }
 
 }

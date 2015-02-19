@@ -60,12 +60,6 @@ public class Piirtoalusta extends JPanel {
             }
         }
 
-//        Korttipakka pakka = this.pelilauta.getKorttipakka();
-//        for (Kortti k : pakka.haeKorttipakka()) {
-//            if (k.onkoKaannetu() == false) {
-//                piirraPakanKorteilleKansi(pakka, graphics);
-//            }
-//        }
     }
 
     /**
@@ -76,6 +70,20 @@ public class Piirtoalusta extends JPanel {
         try {
             File kuvatiedosto = new File("./kansikuva.png");
             kansikuva = ImageIO.read(kuvatiedosto);
+        } catch (IOException e) {
+            System.out.println("tiedoston luku ei onnistu.");
+        }
+    }
+
+    /**
+     * Metodi lukee tiedostosta kuvan.
+     *
+     */
+    private void haeKuvaTiedostosta(int tyyppi) {
+
+        try {
+            File kuvatiedosto = new File("./kuva" + tyyppi + ".jpg");
+            kuva = ImageIO.read(kuvatiedosto);
         } catch (IOException e) {
             System.out.println("tiedoston luku ei onnistu.");
         }
@@ -100,18 +108,6 @@ public class Piirtoalusta extends JPanel {
     }
 
     /**
-     * Metodi luo kuvalliset kortit.
-     *
-     */
-    public void luoKuvallisetKortit() {
-        for (Kortti kortti : this.muistipeli.getPelilauta().getKorttipakka().haeKorttipakka()) {
-            KuvallinenKortti kuvallinenkortti = new KuvallinenKortti(kansikuva, kuva, kortti);
-            kuvallisetKortit.add(kuvallinenkortti);
-        }
-
-    }
-
-    /**
      * Metodi piirtää kortin kansikuvan.
      *
      */
@@ -131,6 +127,18 @@ public class Piirtoalusta extends JPanel {
     }
 
     /**
+     * Metodi luo kuvalliset kortit.
+     *
+     */
+    public void luoKuvallisetKortit() {
+        for (Kortti kortti : this.muistipeli.getPelilauta().getKorttipakka().haeKorttipakka()) {
+            KuvallinenKortti kuvallinenkortti = new KuvallinenKortti(kansikuva, kuva, kortti);
+            kuvallisetKortit.add(kuvallinenkortti);
+        }
+
+    }
+
+    /**
      * Metodi hakee listan kuvallisita korteista.
      *
      * @return kuvalliset kortit
@@ -138,20 +146,6 @@ public class Piirtoalusta extends JPanel {
      */
     public List<KuvallinenKortti> haeKuvallisetKortit() {
         return this.kuvallisetKortit;
-    }
-
-    /**
-     * Metodi lukee tiedostosta kuvan.
-     *
-     */
-    private void haeKuvaTiedostosta(int tyyppi) {
-
-        try {
-            File kuvatiedosto = new File("./kuva" + tyyppi + ".jpg");
-            kuva = ImageIO.read(kuvatiedosto);
-        } catch (IOException e) {
-            System.out.println("tiedoston luku ei onnistu.");
-        }
     }
 
 }

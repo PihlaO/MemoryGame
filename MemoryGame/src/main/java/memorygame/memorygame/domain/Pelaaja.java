@@ -47,6 +47,7 @@ public class Pelaaja {
         setPisteet(luku);
     }
 
+    @Override
     public String toString() {
         return this.nimi + " " + "     Pisteet: "+ getPisteet();
     }

@@ -38,7 +38,11 @@ public class PelinAloituksenKuuntelija implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         this.pelaaja = new Pelaaja(nimiKentta.getText());
+        luoJaKaynnistaPeli(e);
 
+    }
+
+    private void luoJaKaynnistaPeli(ActionEvent e) {
         if (e.getSource() == helppo) {
             luoJaKaynnistaHelppoPeli();
         }

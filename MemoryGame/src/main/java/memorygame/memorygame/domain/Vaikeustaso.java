@@ -41,6 +41,7 @@ public class Vaikeustaso {
         return tasonTunnus;
     }
 
+    @Override
     public String toString() {
         return this.nimi;
     }
@@ -63,9 +64,5 @@ public class Vaikeustaso {
             return 12;
         }
     }
-//
-//    public String toString() {
-//        return "" + this.tasonTunnus;
-//    }
 
 }

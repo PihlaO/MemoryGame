@@ -86,6 +86,7 @@ public class Pelilauta {
     /**
      * Metodi asettaa yksittäiselle kortille koordinaatit.
      *
+     * @param kortti
      */
     public void AsetaKortilleKoordinaatit(Kortti kortti) {
         for (int i = 0; i < this.pelilaudanSarakkeidenLukumaara(); i++) {

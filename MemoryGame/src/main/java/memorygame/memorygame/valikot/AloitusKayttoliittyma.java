@@ -25,7 +25,7 @@ public class AloitusKayttoliittyma implements Runnable { //miten voidaan sulkea
 
 
     public AloitusKayttoliittyma() {
-       
+    
     }
 
     @Override
@@ -50,7 +50,7 @@ public class AloitusKayttoliittyma implements Runnable { //miten voidaan sulkea
         JTextField nimiKentta = new JTextField();
 
         JLabel valitseTasoTeksti = new JLabel("Aloita peli valitsemalla vaikeustaso:");
-        JButton helppo = new JButton("Helppo");       
+        JButton helppo = new JButton("Helppo");
         JButton keskitaso = new JButton("Keskitaso");
         JButton vaikea = new JButton("Vaikea");
         lisaaKuuntelijat(nimiKentta, helppo, keskitaso, vaikea, this);
@@ -69,17 +69,17 @@ public class AloitusKayttoliittyma implements Runnable { //miten voidaan sulkea
 
     }
 
-    private void lisaaKuuntelijat(JTextField nimiKentta, JButton helppo, JButton keskitaso, JButton vaikea,AloitusKayttoliittyma kali) {
+    private void lisaaKuuntelijat(JTextField nimiKentta, JButton helppo, JButton keskitaso, JButton vaikea, AloitusKayttoliittyma kali) {
         helppo.addActionListener(new PelinAloituksenKuuntelija(nimiKentta, helppo, keskitaso, vaikea, kali));
-        keskitaso.addActionListener(new PelinAloituksenKuuntelija(nimiKentta, helppo, keskitaso, vaikea,kali));
-        vaikea.addActionListener(new PelinAloituksenKuuntelija(nimiKentta, helppo, keskitaso, vaikea,kali));
+        keskitaso.addActionListener(new PelinAloituksenKuuntelija(nimiKentta, helppo, keskitaso, vaikea, kali));
+        vaikea.addActionListener(new PelinAloituksenKuuntelija(nimiKentta, helppo, keskitaso, vaikea, kali));
     }
 
     public JFrame getFrame() {
         return frame;
     }
-    
-    public AloitusKayttoliittyma getAloitusKali(){
+
+    public AloitusKayttoliittyma getAloitusKali() {
         return this;
     }
 }
