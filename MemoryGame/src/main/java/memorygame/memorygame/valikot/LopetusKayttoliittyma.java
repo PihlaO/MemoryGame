@@ -52,7 +52,7 @@ public class LopetusKayttoliittyma implements Runnable {
         JLabel tulokset = new JLabel(muistipeli.getPelaaja().toString());
         JLabel tyhja1 = new JLabel("    ");
         JLabel tilastonListaus = new JLabel("Top 3 -tilasto:");
-        JLabel eka = new JLabel(muistipeli.getPelitilasto().palautaPelaajaTilastosta(0).toString());
+        JLabel eka = new JLabel("1. "+ muistipeli.getPelitilasto().palautaPelaajaTilastosta(0).toString());
 
         JLabel tyhja2 = new JLabel("   ");
         JButton uudelleen = new JButton("Pelaa uudestaan");
@@ -66,19 +66,23 @@ public class LopetusKayttoliittyma implements Runnable {
         container.add(tilastonListaus);
         container.add(eka);
         if (muistipeli.getPelitilasto().haeTilastolista().size() == 2) {
-            JLabel toka = new JLabel(muistipeli.getPelitilasto().palautaPelaajaTilastosta(1).toString());
+            JLabel toka = new JLabel("2. " +muistipeli.getPelitilasto().palautaPelaajaTilastosta(1).toString());
             container.add(toka);
         }
         if (muistipeli.getPelitilasto().haeTilastolista().size() == 3) {
-            JLabel toka = new JLabel(muistipeli.getPelitilasto().palautaPelaajaTilastosta(1).toString());
+            JLabel toka = new JLabel("2. " +muistipeli.getPelitilasto().palautaPelaajaTilastosta(1).toString());
             container.add(toka);
-            JLabel kolmas = new JLabel(muistipeli.getPelitilasto().palautaPelaajaTilastosta(2).toString());
+            JLabel kolmas = new JLabel("3. " +muistipeli.getPelitilasto().palautaPelaajaTilastosta(2).toString());
             container.add(kolmas);
         }
 //        
 //       
         container.add(uudelleen);
-        uudelleen.addActionListener(new PelinLopetuksenKuuntelija(uudelleen));
+        uudelleen.addActionListener(new PelinLopetuksenKuuntelija(uudelleen, this));
 
+    }
+    
+    public JFrame getFrame(){
+        return this.frame;
     }
 }

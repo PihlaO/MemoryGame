@@ -5,15 +5,11 @@
  */
 package memorygame.memorygame.kayttoliittyma;
 
-import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 import memorygame.memorygame.Muistipeli;
-import memorygame.memorygame.domain.Pelilauta;
 
 /**
  *
@@ -51,8 +47,6 @@ public class Kayttoliittyma implements Runnable {
     private void luoKomponentit(Container container) {
         Piirtoalusta piirtoalusta = new Piirtoalusta(this.muistipeli);
         container.add(piirtoalusta);
-        JLabel teksti = new JLabel("Muistipeli     " + "     Vaikeustaso: " + this.muistipeli.getTaso().toString() + "     Pelaaja: " + muistipeli.getPelaaja()); // EI PÄIVITÄ PISTEITÄ.
-        container.add(teksti, BorderLayout.SOUTH);
 
         frame.addMouseListener(new Kuuntelija(piirtoalusta, muistipeli, piirtoalusta.haeKuvallisetKortit()));
     }
@@ -60,5 +54,5 @@ public class Kayttoliittyma implements Runnable {
     public JFrame getFrame() {
         return frame;
     }
-    
+
 }

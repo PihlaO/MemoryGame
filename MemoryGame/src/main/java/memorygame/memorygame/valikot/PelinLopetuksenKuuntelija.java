@@ -17,17 +17,19 @@ import javax.swing.SwingUtilities;
 public class PelinLopetuksenKuuntelija implements ActionListener {
 
     JButton uudelleen;
+    LopetusKayttoliittyma lopetuskali;
 
-    public PelinLopetuksenKuuntelija(JButton uudelleen) {
+    public PelinLopetuksenKuuntelija(JButton uudelleen,LopetusKayttoliittyma lopetuskali ) {
         this.uudelleen = uudelleen;
-
+        this.lopetuskali = lopetuskali;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == uudelleen) {
+        if (e.getSource() == uudelleen) { 
             AloitusKayttoliittyma kayttoliittymaA = new AloitusKayttoliittyma();
             SwingUtilities.invokeLater(kayttoliittymaA);
+            lopetuskali.getFrame().setVisible(false);
         }
     }
 }

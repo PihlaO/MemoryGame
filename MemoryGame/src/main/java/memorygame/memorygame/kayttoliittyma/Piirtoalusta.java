@@ -17,7 +17,6 @@ import javax.swing.JPanel;
 import memorygame.memorygame.Muistipeli;
 import memorygame.memorygame.domain.Kortti;
 import memorygame.memorygame.domain.Korttipakka;
-import memorygame.memorygame.domain.Pelilauta;
 
 /**
  *
@@ -48,6 +47,8 @@ public class Piirtoalusta extends JPanel {
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
+
+        graphics.drawString("Muistipeli     " + "     Vaikeustaso: " + this.muistipeli.getTaso().toString() + "     Pelaaja: " + muistipeli.getPelaaja(), 17, 700);
 
         for (KuvallinenKortti k : this.kuvallisetKortit) {
             Kortti kortti = k.getKortti();

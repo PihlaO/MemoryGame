@@ -36,7 +36,7 @@ public class Pelitilasto { // lisää metodi järjestä lista!!!!!
      * @param pelaaja Pelin pelaaja
      */
     public void tallennaTilastoon(Pelaaja pelaaja) {
-        if (tilasto.size() < 3) {
+        if (tilasto.size() <= 3) {
             tilasto.add(pelaaja);
         }
         jarjetaTilasto();
@@ -69,14 +69,23 @@ public class Pelitilasto { // lisää metodi järjestä lista!!!!!
 
         }
     }
-    
-    public Pelaaja palautaPelaajaTilastosta(int indeksi){
+
+    public Pelaaja palautaPelaajaTilastosta(int indeksi) {
         return this.tilasto.get(indeksi);
     }
 
-    private void jarjetaTilasto() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void jarjetaTilasto() {
+//        int luku = 0;
+//        List<Pelaaja> apulista = new ArrayList<>();
+//        int ekanPisteet =this.tilasto.get(0).getPisteet();
+//        int tokanPisteet = this.tilasto.get(1).getPisteet();
+//        int kolmannenPisteet = this.tilasto.get(2).getPisteet();
+//          int suuri = Math.max(ekanPisteet, tokanPisteet);
+//        int suurempi = Math.max(suuri,kolmannenPisteet);
+//        
+//        for (Pelaaja pelaaja : apulista) {
+//            System.out.println(pelaaja);
+//        }
     }
 
- 
 }

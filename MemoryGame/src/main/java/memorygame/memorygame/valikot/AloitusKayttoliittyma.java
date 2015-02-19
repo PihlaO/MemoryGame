@@ -12,7 +12,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
@@ -24,7 +23,9 @@ public class AloitusKayttoliittyma implements Runnable { //miten voidaan sulkea
 
     private JFrame frame;
 
+
     public AloitusKayttoliittyma() {
+       
     }
 
     @Override
@@ -45,43 +46,40 @@ public class AloitusKayttoliittyma implements Runnable { //miten voidaan sulkea
         container.setLayout(layout);
 
         JLabel teksti = new JLabel("Muistipeli");
-
         JLabel nimiTeksti = new JLabel("Nimi: ");
         JTextField nimiKentta = new JTextField();
 
         JLabel valitseTasoTeksti = new JLabel("Aloita peli valitsemalla vaikeustaso:");
-        JButton helppo = new JButton("Helppo");
+        JButton helppo = new JButton("Helppo");       
         JButton keskitaso = new JButton("Keskitaso");
         JButton vaikea = new JButton("Vaikea");
-        lisaaKuuntelijat(nimiKentta, helppo, keskitaso, vaikea);
-
+        lisaaKuuntelijat(nimiKentta, helppo, keskitaso, vaikea, this);
         ButtonGroup buttonGroup = new ButtonGroup();
         buttonGroup.add(helppo);
         buttonGroup.add(keskitaso);
         buttonGroup.add(vaikea);
 
         container.add(teksti);
-        //container.add(new JLabel(""));
-        //container.add(new JLabel(""));
         container.add(nimiTeksti);
         container.add(nimiKentta);
-        //container.add(new JLabel(""));
         container.add(valitseTasoTeksti);
-        //container.add(new JLabel(""));
-        //container.add(new JLabel(""));
         container.add(helppo);
         container.add(keskitaso);
         container.add(vaikea);
 
     }
 
-    private void lisaaKuuntelijat(JTextField nimiKentta, JButton helppo, JButton keskitaso, JButton vaikea) {
-        helppo.addActionListener(new PelinAloituksenKuuntelija(nimiKentta, helppo, keskitaso, vaikea));
-        keskitaso.addActionListener(new PelinAloituksenKuuntelija(nimiKentta, helppo, keskitaso, vaikea));
-        vaikea.addActionListener(new PelinAloituksenKuuntelija(nimiKentta, helppo, keskitaso, vaikea));
+    private void lisaaKuuntelijat(JTextField nimiKentta, JButton helppo, JButton keskitaso, JButton vaikea,AloitusKayttoliittyma kali) {
+        helppo.addActionListener(new PelinAloituksenKuuntelija(nimiKentta, helppo, keskitaso, vaikea, kali));
+        keskitaso.addActionListener(new PelinAloituksenKuuntelija(nimiKentta, helppo, keskitaso, vaikea,kali));
+        vaikea.addActionListener(new PelinAloituksenKuuntelija(nimiKentta, helppo, keskitaso, vaikea,kali));
     }
 
     public JFrame getFrame() {
         return frame;
+    }
+    
+    public AloitusKayttoliittyma getAloitusKali(){
+        return this;
     }
 }

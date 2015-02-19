@@ -23,12 +23,14 @@ public class PelinAloituksenKuuntelija implements ActionListener {
     private JButton helppo;
     private JButton keskitaso;
     private JButton vaikea;
+    AloitusKayttoliittyma aloituskali;
 
-    public PelinAloituksenKuuntelija(JTextField nimiKentta, JButton helppo, JButton keskitaso, JButton vaikea) {
+    public PelinAloituksenKuuntelija(JTextField nimiKentta, JButton helppo, JButton keskitaso, JButton vaikea, AloitusKayttoliittyma aloituskali) {
         this.nimiKentta = nimiKentta;
         this.helppo = helppo;
         this.keskitaso = keskitaso;
         this.vaikea = vaikea;
+        this.aloituskali = aloituskali;
 
     }
 
@@ -47,26 +49,28 @@ public class PelinAloituksenKuuntelija implements ActionListener {
         if (e.getSource() == vaikea) {
             luoJaKaynnistaVaikeaPeli();
         }
-        
-        
+
     }
 
     private void luoJaKaynnistaVaikeaPeli() {
         Muistipeli m = new Muistipeli(3, this.pelaaja);
         m.kaynnista();
-//            System.out.println("v");
+        this.aloituskali.getFrame().setVisible(false);
+
     }
 
     private void luoJaKaynnistaKeskitasonPeli() {
-        //            System.out.println("k");
         Muistipeli m = new Muistipeli(2, this.pelaaja);
         m.kaynnista();
+        this.aloituskali.getFrame().setVisible(false);
     }
 
     private void luoJaKaynnistaHelppoPeli() {
-        //            System.out.println("h");
+
         Muistipeli m = new Muistipeli(1, this.pelaaja);
         m.kaynnista();
+        this.aloituskali.getFrame().setVisible(false);
+
     }
 
 }
