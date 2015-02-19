@@ -36,7 +36,7 @@ public class Paaohjelma {
 //        AloitusKayttoliittyma kayttoliittymaA = new AloitusKayttoliittyma();
 //        SwingUtilities.invokeLater(kayttoliittymaA);
         
-        Muistipeli peli = new Muistipeli(1, new Pelaaja("Anna"));
+        Muistipeli peli = new Muistipeli(1, new Pelaaja("pelaajan nimi"));
         peli.kaynnista();
 //          Pelitilasto tilasto = new Pelitilasto("top");
 //        Pelaaja p = new Pelaaja("antti");

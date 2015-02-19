@@ -43,8 +43,8 @@ public class Muistipeli {
         
         this.kayttoliittyma = new Kayttoliittyma(this);
         SwingUtilities.invokeLater(kayttoliittyma);
-//        tilasto.tallennaTilastoon(new Pelaaja("Pekka"));
-//        tilasto.tallennaTilastoon(new Pelaaja("Anna"));
+        tilasto.tallennaTilastoon(new Pelaaja("Pekka"));
+        tilasto.tallennaTilastoon(new Pelaaja("Anna"));
         tilasto.tulostaTilasto();
     }
     

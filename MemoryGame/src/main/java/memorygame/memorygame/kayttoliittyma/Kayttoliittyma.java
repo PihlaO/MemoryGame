@@ -51,8 +51,6 @@ public class Kayttoliittyma implements Runnable {
     private void luoKomponentit(Container container) {
         Piirtoalusta piirtoalusta = new Piirtoalusta(this.muistipeli);
         container.add(piirtoalusta);
-//        GridLayout layout = new GridLayout(1, 2);
-//        container.setLayout(layout);
         JLabel teksti = new JLabel("Muistipeli     " + "     Vaikeustaso: " + this.muistipeli.getTaso().toString() + "     Pelaaja: " + muistipeli.getPelaaja()); // EI PÄIVITÄ PISTEITÄ.
         container.add(teksti, BorderLayout.SOUTH);
 

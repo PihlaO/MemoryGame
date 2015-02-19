@@ -51,7 +51,7 @@ public class Piirtoalusta extends JPanel {
 
         for (KuvallinenKortti k : this.kuvallisetKortit) {
             Kortti kortti = k.getKortti();
-            if (kortti.onkoKaannetu() == true) {
+            if (kortti.onkoKaannetu()) {
                 haeKuvaTiedostosta(kortti.getTyyppi());
                 this.piirraKortinKuva(kortti, graphics);
             } else {
@@ -107,7 +107,6 @@ public class Piirtoalusta extends JPanel {
             KuvallinenKortti kuvallinenkortti = new KuvallinenKortti(kansikuva, kuva, kortti);
             kuvallisetKortit.add(kuvallinenkortti);
         }
-        System.out.println("koko:" + kuvallisetKortit.size());
 
     }
 
