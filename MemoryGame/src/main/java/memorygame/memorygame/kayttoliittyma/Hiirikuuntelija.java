@@ -63,7 +63,7 @@ public class Hiirikuuntelija implements MouseListener {
 //                    Logger.getLogger(Hiirikuuntelija.class.getName()).log(Level.SEVERE, null, ex);
 //                }
 //                System.out.println("piirretty");
-                
+
                 if (pelilaudanKortitValittu()) {
 
                     if (!pari()) {

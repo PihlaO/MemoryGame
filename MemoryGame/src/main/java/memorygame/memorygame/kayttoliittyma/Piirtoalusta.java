@@ -48,11 +48,12 @@ public class Piirtoalusta extends JPanel {
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
-//        haePohjaTiedostosta();
+
+//        haePohjaTiedostosta();  // ei vielä pohjakuvaa
 //        this.piirraTausta(graphics);
-        String x ="Muistipeli     " + "     Vaikeustaso: " + this.muistipeli.getKorttipakka().haeVaikeustaso().toString() + "     Pelaaja: " + muistipeli.getPelaaja();
-       
+        
         graphics.drawString("Muistipeli     " + "     Vaikeustaso: " + this.muistipeli.getKorttipakka().haeVaikeustaso().toString() + "     Pelaaja: " + muistipeli.getPelaaja(), 17, 700);
+        
         for (KuvallinenKortti k : this.kuvallisetKortit) {
             Kortti kortti = k.getKortti();
             if (kortti.kaannetty()) {
@@ -64,10 +65,6 @@ public class Piirtoalusta extends JPanel {
         }
 
     }
-
-//    private boolean piirraTausta(Graphics graphics) {
-//        return graphics.drawImage(pohja, 0 ,0, 750, 750, this);
-//    }
 
     /**
      * Metodi lukee tiedostosta kansikuvan.
@@ -154,8 +151,12 @@ public class Piirtoalusta extends JPanel {
     public List<KuvallinenKortti> haeKuvallisetKortit() {
         return this.kuvallisetKortit;
     }
+
+//    private boolean piirraTausta(Graphics graphics) {
+//        return graphics.drawImage(pohja, 0 ,0, 750, 750, this);
+//    }
     
-//        private void haePohjaTiedostosta() {  // ei vielä pohjakuvaa
+//        private void haePohjaTiedostosta() {  
 //        try {
 //            File kuvatiedosto = new File("./******.jpg");
 //            pohja = ImageIO.read(kuvatiedosto);
@@ -163,5 +164,4 @@ public class Piirtoalusta extends JPanel {
 //            System.out.println("tiedoston luku ei onnistu.");
 //        }
 //    }
-
 }
