@@ -36,15 +36,15 @@ public class Kuuntelija implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
 
-        if (!(this.klikattuKortti(e) == null)) {
+        if (korttiaKlikattu(e)) {
             KuvallinenKortti kuvakortti = klikattuKortti(e);
             Kortti kortti = kuvakortti.getKortti();
-            
-            if (kortti.onkoKaannetu() == false) {
+
+            if (!kortti.onkoKaannetu()) {
                 kortti.kaannaKortti();
                 this.piirtoalusta.repaint();
-                this.muistipeli.getPelaaja().lisaaPiste();
-                
+                lisaaPistePelaajalle();
+
                 if (muistipeli.getPelilauta().getValittuKortti1() == null) {
                     muistipeli.getPelilauta().setValittuKortti1(kortti);
                     this.piirtoalusta.repaint();
@@ -61,15 +61,12 @@ public class Kuuntelija implements MouseListener {
                     }
                 }
 
-                if (!(muistipeli.getPelilauta().getValittuKortti1() == null) && !(muistipeli.getPelilauta().getValittuKortti2() == null)) {
-                    boolean pari = muistipeli.getPelilauta().getValittuKortti1().onkoKortitSamat(muistipeli.getPelilauta().getValittuKortti2());
+                if (pelilaudanKortitValittu()) {
 
-                    if (pari == false) {
-                        muistipeli.getPelilauta().getValittuKortti1().kaannaKortti();
-                        muistipeli.getPelilauta().getValittuKortti2().kaannaKortti();
+                    if (!pari()) {
+                        kaannaPelilaudanValitutKortit();
                     }
-                    muistipeli.getPelilauta().setValittuKortti1(null);
-                    muistipeli.getPelilauta().setValittuKortti2(null);
+                    tyhjennaPelilaudanValitutKortit();
                 }
             }
         }
@@ -79,6 +76,48 @@ public class Kuuntelija implements MouseListener {
 
         }
 
+    }
+
+    private boolean korttiaKlikattu(MouseEvent e) {
+        return !(this.klikattuKortti(e) == null);
+    }
+
+    /**
+     * Metodi pelilaudanKortitValittu palauttaa true, jos Pelilaudan kortti1 ja
+     * kortti 2 on valittu ja muulloin false.
+     *
+     * @return boolean
+     */
+    private boolean pelilaudanKortitValittu() {
+        return !(muistipeli.getPelilauta().getValittuKortti1() == null) && !(muistipeli.getPelilauta().getValittuKortti2() == null);
+    }
+
+    /**
+     * Metodi tyhjennaPelilaudanValitusKortit asettaa null Pelilaudan kortti1 ja
+     * kortti2 arvoiksi.
+     *
+     */
+    private void tyhjennaPelilaudanValitutKortit() {
+        muistipeli.getPelilauta().setValittuKortti1(null);
+        muistipeli.getPelilauta().setValittuKortti2(null);
+    }
+
+    /**
+     * Metodi kaannaPelilaudanValitutKortit kääntää Pelilaudan kortti1 ja
+     * kortti2.
+     *
+     */
+    private void kaannaPelilaudanValitutKortit() {
+        muistipeli.getPelilauta().getValittuKortti1().kaannaKortti();
+        muistipeli.getPelilauta().getValittuKortti2().kaannaKortti();
+    }
+
+    private boolean pari() {
+        return muistipeli.getPelilauta().getValittuKortti1().onkoKortitSamat(muistipeli.getPelilauta().getValittuKortti2());
+    }
+
+    private void lisaaPistePelaajalle() {
+        this.muistipeli.getPelaaja().lisaaPiste();
     }
 
     private void TallennaPelaajaTilastoon() {
