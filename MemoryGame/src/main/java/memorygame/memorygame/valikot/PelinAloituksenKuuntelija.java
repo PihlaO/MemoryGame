@@ -39,7 +39,7 @@ public class PelinAloituksenKuuntelija implements ActionListener {
         String teksti = nimiKentta.getText();
 //        teksti.trim();
 
-        if (!(teksti.length() < 16)) {
+        if (!(teksti.length() < 13)) {
             return;
         } else {
 

@@ -5,7 +5,6 @@
  */
 package memorygame.memorygame.kayttoliittyma;
 
-import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
@@ -25,11 +24,11 @@ import memorygame.memorygame.valikot.LopetusKayttoliittyma;
  */
 public class Hiirikuuntelija implements MouseListener {
 
-    Component piirtoalusta;
+    Piirtoalusta piirtoalusta;
     Muistipeli muistipeli;
     List<KuvallinenKortti> kuvallisetKortit;
 
-    public Hiirikuuntelija(Component piirtoalusta, Muistipeli muistipeli, List<KuvallinenKortti> kuvallisetKortit) {
+    public Hiirikuuntelija(Piirtoalusta piirtoalusta, Muistipeli muistipeli, List<KuvallinenKortti> kuvallisetKortit) {
         this.piirtoalusta = piirtoalusta;
         this.muistipeli = muistipeli;
         this.kuvallisetKortit = kuvallisetKortit;
