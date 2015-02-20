@@ -5,8 +5,6 @@
  */
 package memorygame.memorygame.domain;
 
-import java.awt.Image;
-
 /**
  *
  * @author okpiok
@@ -23,8 +21,6 @@ public class Kortti {
     int y;
     int leveys;
     int korkeus;
-    private Image kansikuva;
-    private Image kuva;
 
     public Kortti(int tyyppi) {
         this.tyyppi = tyyppi;
@@ -59,22 +55,6 @@ public class Kortti {
 
     public int getTyyppi() {
         return this.tyyppi;
-    }
-
-    public void setKansikuva(Image i) {
-
-    }
-
-    public void setKuva(Image i) {
-
-    }
-
-    public Image getKansikuva() {
-        return this.kansikuva;
-    }
-
-    public Image getKuva() {
-        return this.kuva;
     }
 
     /**

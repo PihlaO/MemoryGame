@@ -35,26 +35,19 @@ public class Kuuntelija implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-//        System.out.println(e.getX() + " " + e.getY());
 
         if (!(this.klikattuKortti(e) == null)) {
-//            System.out.println("Korttia painettu");
             KuvallinenKortti kuvakortti = klikattuKortti(e);
             Kortti kortti = kuvakortti.getKortti();
-//            System.out.println(kortti);
-            this.piirtoalusta.repaint();
-
+            
             if (kortti.onkoKaannetu() == false) {
                 kortti.kaannaKortti();
                 this.piirtoalusta.repaint();
                 this.muistipeli.getPelaaja().lisaaPiste();
-
+                
                 if (muistipeli.getPelilauta().getValittuKortti1() == null) {
                     muistipeli.getPelilauta().setValittuKortti1(kortti);
                     this.piirtoalusta.repaint();
-//                    System.out.println(this.muistipeli.getPelilauta().getValittuKortti1());
-//                    System.out.println("eka valittu:" + this.muistipeli.getPelilauta().getValittuKortti1());
-
                 } else if (!(muistipeli.getPelilauta().getValittuKortti1() == null)) {
                     if (muistipeli.getPelilauta().getValittuKortti2() == null) {
                         muistipeli.getPelilauta().setValittuKortti2(kortti);
@@ -65,7 +58,6 @@ public class Kuuntelija implements MouseListener {
 //                        } catch (InterruptedException ex) {
 //                            Logger.getLogger(Kuuntelija.class.getName()).log(Level.SEVERE, null, ex);
 //                        }
-//                        System.out.println("toka valittu" + this.muistipeli.getPelilauta().getValittuKortti2());
                     }
                 }
 
@@ -74,21 +66,12 @@ public class Kuuntelija implements MouseListener {
 
                     if (pari == false) {
                         muistipeli.getPelilauta().getValittuKortti1().kaannaKortti();
-//                        muistipeli.getPelilauta().setValittuKortti1(null);
                         muistipeli.getPelilauta().getValittuKortti2().kaannaKortti();
-//                        muistipeli.getPelilauta().setValittuKortti2(null);
-//                        System.out.println("eivät ole pari");
                     }
-
-//                    System.out.println(muistipeli.getPelilauta().getValittuKortti1());
-//                    System.out.println(muistipeli.getPelilauta().getValittuKortti2());
                     muistipeli.getPelilauta().setValittuKortti1(null);
                     muistipeli.getPelilauta().setValittuKortti2(null);
-
                 }
-
             }
-
         }
         if (peliPaattyi()) {
             TallennaPelaajaTilastoon();
@@ -117,6 +100,33 @@ public class Kuuntelija implements MouseListener {
 
     }
 
+    private void AvaaLopetusValikko() {
+        this.muistipeli.getKayttoliittyma().getFrame().setVisible(false);
+        LopetusKayttoliittyma lopetusvalikko = new LopetusKayttoliittyma(muistipeli);
+        SwingUtilities.invokeLater(lopetusvalikko);
+    }
+
+    /**
+     * Metodi hakee klikatun kortin.
+     *
+     * @param e Hiiren klikkaus
+     * @return kuvallinen kortin
+     */
+    public KuvallinenKortti klikattuKortti(MouseEvent e) {
+        for (KuvallinenKortti kuva : kuvallisetKortit) {
+            Kortti kortti = kuva.getKortti();
+
+            if (e.getX() > kortti.getX() * 100 + 50 && e.getY() > kortti.getY() * 100 + 50) {
+                if (e.getX() < kortti.getX() * 105 + 50 + kortti.getLeveys() && e.getY() < kortti.getY() * 123 + 50 + kortti.getKorkeus()) {
+
+                    return kuva;
+                }
+            }
+
+        }
+        return null;
+    }
+
     @Override
     public void mousePressed(MouseEvent e
     ) {
@@ -136,37 +146,4 @@ public class Kuuntelija implements MouseListener {
     public void mouseExited(MouseEvent e) {
     }
 
-    /**
-     * Metodi hakee klikatun kortin.
-     *
-     * @param MouseEvent
-     * @return kuvallinen kortin
-     */
-    public KuvallinenKortti klikattuKortti(MouseEvent e) {
-        for (KuvallinenKortti kuva : kuvallisetKortit) {
-            Kortti kortti = kuva.getKortti();
-
-            if (e.getX() > kortti.getX() * 100 + 50 && e.getY() > kortti.getY() * 100 + 50) {
-                if (e.getX() < kortti.getX() * 105 + 50 + kortti.getLeveys() && e.getY() < kortti.getY() * 123 + 50 + kortti.getKorkeus()) {
-
-                    return kuva;
-                }
-            }
-
-        }
-        return null;
-    }
-
-//    public void kokeilu() {
-//        Timer t = new Timer(1000 * 5, new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                // do your reoccuring task
-//            }
-//        });
-//    }
-    private void AvaaLopetusValikko() {
-        this.muistipeli.getKayttoliittyma().getFrame().setVisible(false);
-        LopetusKayttoliittyma lopetusvalikko = new LopetusKayttoliittyma(muistipeli);
-        SwingUtilities.invokeLater(lopetusvalikko);
-    }
 }

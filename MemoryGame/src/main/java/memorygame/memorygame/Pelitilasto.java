@@ -16,7 +16,7 @@ import java.util.List;
 /*
  * Muistipelin tilasto, jossa luodaan lista pelaajista. Tilastossa on aina 3 parasta tulosta kerrallaan.
  */
-public class Pelitilasto { // lisää metodi järjestä lista!!!!!
+public class Pelitilasto { 
 
     String nimi;
     List<Pelaaja> tilasto;
@@ -53,7 +53,7 @@ public class Pelitilasto { // lisää metodi järjestä lista!!!!!
     /**
      * Metodi palautta listan tilastossa olevista pelaajista.
      *
-     * @return lista pelaajista
+     * @return lista pelaajalista
      */
     public List<Pelaaja> haeTilastolista() {
         return this.tilasto;
@@ -70,6 +70,12 @@ public class Pelitilasto { // lisää metodi järjestä lista!!!!!
         }
     }
 
+    /**
+     * Metodi palauttaa pelaajan listasta indeksin perusteella.
+     * @param indeksi
+     * @return Pelaaja
+     * 
+     */
     public Pelaaja palautaPelaajaTilastosta(int indeksi) {
         return this.tilasto.get(indeksi);
     }

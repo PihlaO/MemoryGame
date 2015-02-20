@@ -72,8 +72,7 @@ public class LopetusKayttoliittyma implements Runnable {
             JLabel kolmas = new JLabel("3. " + muistipeli.getPelitilasto().palautaPelaajaTilastosta(2).toString());
             container.add(kolmas);
         }
-//        
-//       
+
         container.add(uudelleen);
         uudelleen.addActionListener(new PelinLopetuksenKuuntelija(uudelleen, this));
 
