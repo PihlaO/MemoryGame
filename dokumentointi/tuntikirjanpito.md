@@ -45,3 +45,12 @@ Torstai: 4 tuntia
 Perjantai: 2 tuntia
 
 Viikko 8
+Muistipelin koodausta, testien tekemistä sekä JavaDocin kirjoittamista. Lisäksi sekvenssikaavioiden tekemistä ja päivittämistä.
+
+Tiistai: 6 tuntia
+
+Keskiviikko: 2 tuntia
+
+Torstai: 4 tuntia
+
+Perjantai: 3 tuntia
