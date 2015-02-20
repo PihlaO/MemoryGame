@@ -13,7 +13,7 @@ package memorygame.memorygame.domain;
  * Pelaaja luokka. 
  * Pelaajalla on nimi ja pisteet. 
  */
-public class Pelaaja {
+public class Pelaaja implements Comparable<Pelaaja> {
 
     String nimi;
     int pisteet;
@@ -30,25 +30,31 @@ public class Pelaaja {
     public int getPisteet() {
         return this.pisteet;
     }
-/**
- * Metodi asettaa pelaajalle pisteet
- *
- * @param   luku   Pelin antama luku
- * 
- */
+
+    /**
+     * Metodi asettaa pelaajalle pisteet
+     *
+     * @param luku Pelin antama luku
+     *
+     */
     public void setPisteet(int luku) {
         if (luku >= 0) {
             this.pisteet = luku;
         }
     }
-    
-    public void lisaaPiste(){
-        int luku= getPisteet()+1;
+
+    public void lisaaPiste() {
+        int luku = getPisteet() + 1;
         setPisteet(luku);
     }
 
     @Override
     public String toString() {
-        return this.nimi + " " + "     Pisteet: "+ getPisteet();
+        return this.nimi + " " + "     Pisteet: " + getPisteet();
+    }
+
+    @Override
+    public int compareTo(Pelaaja o) {
+        return this.pisteet - o.getPisteet();
     }
 }

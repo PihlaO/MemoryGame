@@ -101,8 +101,8 @@ public class Kuuntelija implements MouseListener {
     }
 
     private void AvaaLopetusValikko() {
-        this.muistipeli.getKayttoliittyma().getFrame().setVisible(false);
-        LopetusKayttoliittyma lopetusvalikko = new LopetusKayttoliittyma(muistipeli);
+        this.muistipeli.getPelinKayttoliittyma().getFrame().setVisible(false);
+        LopetusKayttoliittyma lopetusvalikko = new LopetusKayttoliittyma(muistipeli, this.muistipeli.getAloitusKayttoliittyma());
         SwingUtilities.invokeLater(lopetusvalikko);
     }
 

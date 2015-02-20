@@ -57,21 +57,21 @@ public class PelinAloituksenKuuntelija implements ActionListener {
     }
 
     private void luoJaKaynnistaVaikeaPeli() {
-        Muistipeli m = new Muistipeli(3, this.pelaaja);
+        Muistipeli m = new Muistipeli(3, this.pelaaja, this.aloituskali);
         m.kaynnista();
         this.aloituskali.getFrame().setVisible(false);
 
     }
 
     private void luoJaKaynnistaKeskitasonPeli() {
-        Muistipeli m = new Muistipeli(2, this.pelaaja);
+        Muistipeli m = new Muistipeli(2, this.pelaaja, this.aloituskali);
         m.kaynnista();
         this.aloituskali.getFrame().setVisible(false);
     }
 
     private void luoJaKaynnistaHelppoPeli() {
 
-        Muistipeli m = new Muistipeli(1, this.pelaaja);
+        Muistipeli m = new Muistipeli(1, this.pelaaja, this.aloituskali);
         m.kaynnista();
         this.aloituskali.getFrame().setVisible(false);
 

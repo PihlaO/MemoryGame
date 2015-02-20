@@ -11,6 +11,7 @@ import memorygame.memorygame.domain.Pelaaja;
 import memorygame.memorygame.domain.Pelilauta;
 import memorygame.memorygame.domain.Vaikeustaso;
 import memorygame.memorygame.kayttoliittyma.Kayttoliittyma;
+import memorygame.memorygame.valikot.AloitusKayttoliittyma;
 
 /**
  *
@@ -23,15 +24,17 @@ public class Muistipeli {
 
     Pelilauta pelilauta;
     Pelaaja pelaaja;
-    Vaikeustaso taso;
-    Kayttoliittyma kayttoliittyma;
     Pelitilasto tilasto;
+    Korttipakka korttipakka;
+    Kayttoliittyma kayttoliittyma;
+    AloitusKayttoliittyma aloituskali;
 
-    public Muistipeli(int vaikeustaso, Pelaaja pelaaja) {
-        this.pelilauta = new Pelilauta(new Korttipakka(vaikeustaso));
-        this.tilasto = new Pelitilasto("top 3"); /// mieti tilaston luominen uudestaan.
+    public Muistipeli(int vaikeustaso, Pelaaja pelaaja, AloitusKayttoliittyma aloituskali) {
+        this.korttipakka = new Korttipakka(vaikeustaso);
+        this.pelilauta = new Pelilauta(this.korttipakka);
         this.pelaaja = pelaaja;
-        taso = new Vaikeustaso(vaikeustaso);
+        this.aloituskali = aloituskali;
+        tilastonValinta(vaikeustaso, aloituskali);
 
     }
 
@@ -44,10 +47,7 @@ public class Muistipeli {
         pelilauta.luoPakkaJaTaulukkoKorteista();
         this.kayttoliittyma = new Kayttoliittyma(this);
         SwingUtilities.invokeLater(kayttoliittyma);
-        
-//        tilasto.tallennaTilastoon(new Pelaaja("Pekka"));
-//        tilasto.tallennaTilastoon(new Pelaaja("Anna"));
-//        tilasto.tulostaTilasto();
+
     }
 
     public Pelilauta getPelilauta() {
@@ -58,15 +58,31 @@ public class Muistipeli {
         return this.pelaaja;
     }
 
-    public Vaikeustaso getTaso() {
-        return this.taso;
+    public Kayttoliittyma getPelinKayttoliittyma() {
+        return this.kayttoliittyma;
     }
 
-    public Kayttoliittyma getKayttoliittyma() {
-        return this.kayttoliittyma;
+    public AloitusKayttoliittyma getAloitusKayttoliittyma() {
+        return this.aloituskali;
     }
 
     public Pelitilasto getPelitilasto() {
         return this.tilasto;
+    }
+    
+    public Korttipakka getKorttipakka(){
+        return this.korttipakka;
+    }
+
+    private void tilastonValinta(int vaikeustaso, AloitusKayttoliittyma aloituskali1) {
+        if (vaikeustaso == 1) {
+            this.tilasto = aloituskali1.getHelponTasonTilasto();
+        }
+        if (vaikeustaso == 2) {
+            this.tilasto = aloituskali1.getKeskiTasonTilasto();
+        }
+        if (vaikeustaso == 3) {
+            this.tilasto = aloituskali1.getVaikeanTasonTilasto();
+        }
     }
 }

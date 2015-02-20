@@ -48,7 +48,7 @@ public class Piirtoalusta extends JPanel {
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
 
-        graphics.drawString("Muistipeli     " + "     Vaikeustaso: " + this.muistipeli.getTaso().toString() + "     Pelaaja: " + muistipeli.getPelaaja(), 17, 700);
+        graphics.drawString("Muistipeli     " + "     Vaikeustaso: " + this.muistipeli.getKorttipakka().haeVaikeustaso().toString() + "     Pelaaja: " + muistipeli.getPelaaja(), 17, 700);
 
         for (KuvallinenKortti k : this.kuvallisetKortit) {
             Kortti kortti = k.getKortti();

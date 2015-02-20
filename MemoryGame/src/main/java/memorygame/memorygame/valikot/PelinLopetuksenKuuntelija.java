@@ -18,17 +18,19 @@ public class PelinLopetuksenKuuntelija implements ActionListener {
 
     JButton uudelleen;
     LopetusKayttoliittyma lopetuskali;
+    AloitusKayttoliittyma aloituskali;
 
-    public PelinLopetuksenKuuntelija(JButton uudelleen, LopetusKayttoliittyma lopetuskali) {
+    public PelinLopetuksenKuuntelija(JButton uudelleen, LopetusKayttoliittyma lopetuskali, AloitusKayttoliittyma aloituskali) {
         this.uudelleen = uudelleen;
         this.lopetuskali = lopetuskali;
+        this.aloituskali = aloituskali;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == uudelleen) {
-            AloitusKayttoliittyma kayttoliittymaA = new AloitusKayttoliittyma();
-            SwingUtilities.invokeLater(kayttoliittymaA);
+
+            this.aloituskali.getFrame().setVisible(true);
             lopetuskali.getFrame().setVisible(false);
         }
     }

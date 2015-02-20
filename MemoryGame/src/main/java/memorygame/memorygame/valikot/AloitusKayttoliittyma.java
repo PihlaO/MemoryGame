@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+import memorygame.memorygame.Pelitilasto;
 
 /**
  *
@@ -22,10 +23,14 @@ import javax.swing.WindowConstants;
 public class AloitusKayttoliittyma implements Runnable { //miten voidaan sulkea
 
     private JFrame frame;
+    Pelitilasto helppotaso;
+    Pelitilasto keskitaso;
+    Pelitilasto vaikeataso;
 
-
-    public AloitusKayttoliittyma() {
-    
+    public AloitusKayttoliittyma(Pelitilasto helppotaso, Pelitilasto keskitaso, Pelitilasto vaikeataso) {
+        this.helppotaso = helppotaso;
+        this.keskitaso = keskitaso;
+        this.vaikeataso = vaikeataso;
     }
 
     @Override
@@ -77,6 +82,16 @@ public class AloitusKayttoliittyma implements Runnable { //miten voidaan sulkea
 
     public JFrame getFrame() {
         return frame;
+    }
+    
+    public Pelitilasto getHelponTasonTilasto(){
+        return this.helppotaso;
+    }
+    public Pelitilasto getKeskiTasonTilasto(){
+        return this.keskitaso;
+    }
+    public Pelitilasto getVaikeanTasonTilasto(){
+        return this.vaikeataso;
     }
 
     public AloitusKayttoliittyma getAloitusKali() {

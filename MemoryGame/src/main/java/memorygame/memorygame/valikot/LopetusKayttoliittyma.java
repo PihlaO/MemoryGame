@@ -22,9 +22,11 @@ public class LopetusKayttoliittyma implements Runnable {
 
     private JFrame frame;
     Muistipeli muistipeli;
+    AloitusKayttoliittyma alotuskali;
 
-    public LopetusKayttoliittyma(Muistipeli muistipeli) {
+    public LopetusKayttoliittyma(Muistipeli muistipeli,AloitusKayttoliittyma alotuskali) {
         this.muistipeli = muistipeli;
+        this.alotuskali = alotuskali;
     }
 
     @Override
@@ -62,19 +64,17 @@ public class LopetusKayttoliittyma implements Runnable {
         container.add(tyhja2);
         container.add(tilastonListaus);
         container.add(eka);
-        if (muistipeli.getPelitilasto().haeTilastolista().size() == 2) {
+         if (muistipeli.getPelitilasto().haeTilastolista().size()>1) {
             JLabel toka = new JLabel("2. " + muistipeli.getPelitilasto().palautaPelaajaTilastosta(1).toString());
             container.add(toka);
         }
-        if (muistipeli.getPelitilasto().haeTilastolista().size() == 3) {
-            JLabel toka = new JLabel("2. " + muistipeli.getPelitilasto().palautaPelaajaTilastosta(1).toString());
-            container.add(toka);
+        if (muistipeli.getPelitilasto().haeTilastolista().size()>2) {
             JLabel kolmas = new JLabel("3. " + muistipeli.getPelitilasto().palautaPelaajaTilastosta(2).toString());
             container.add(kolmas);
         }
 
         container.add(uudelleen);
-        uudelleen.addActionListener(new PelinLopetuksenKuuntelija(uudelleen, this));
+        uudelleen.addActionListener(new PelinLopetuksenKuuntelija(uudelleen, this, this.alotuskali));
 
     }
 

@@ -5,9 +5,12 @@
  */
 package memorygame.memorygame;
 
-import memorygame.memorygame.domain.Pelaaja;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import memorygame.memorygame.domain.Pelaaja;
 
 /**
  *
@@ -16,7 +19,7 @@ import java.util.List;
 /*
  * Muistipelin tilasto, jossa luodaan lista pelaajista. Tilastossa on aina 3 parasta tulosta kerrallaan.
  */
-public class Pelitilasto { 
+public class Pelitilasto {
 
     String nimi;
     List<Pelaaja> tilasto;
@@ -36,9 +39,7 @@ public class Pelitilasto {
      * @param pelaaja Pelin pelaaja
      */
     public void tallennaTilastoon(Pelaaja pelaaja) {
-        if (tilasto.size() <= 3) {
-            tilasto.add(pelaaja);
-        }
+        tilasto.add(pelaaja);
         jarjetaTilasto();
     }
 
@@ -72,16 +73,17 @@ public class Pelitilasto {
 
     /**
      * Metodi palauttaa pelaajan listasta indeksin perusteella.
+     *
      * @param indeksi
      * @return Pelaaja
-     * 
+     *
      */
     public Pelaaja palautaPelaajaTilastosta(int indeksi) {
         return this.tilasto.get(indeksi);
     }
 
     public void jarjetaTilasto() {
-
+        Collections.sort(this.tilasto);
     }
 
 }

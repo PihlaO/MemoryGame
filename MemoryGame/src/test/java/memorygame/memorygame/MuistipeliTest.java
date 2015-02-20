@@ -9,6 +9,7 @@ package memorygame.memorygame;
 import memorygame.memorygame.domain.Korttipakka;
 import memorygame.memorygame.domain.Pelaaja;
 import memorygame.memorygame.domain.Pelilauta;
+import memorygame.memorygame.valikot.AloitusKayttoliittyma;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.*;
@@ -39,7 +40,7 @@ public class MuistipeliTest {
     @Before
     public void setUp() {
         this.pelaaja=new Pelaaja("Anna");
-        muistipeli = new Muistipeli(1, this.pelaaja);
+        muistipeli = new Muistipeli(1, this.pelaaja, new AloitusKayttoliittyma(new Pelitilasto("top3"),new Pelitilasto("top3"),new Pelitilasto("top3")));
     }
     
     @After
