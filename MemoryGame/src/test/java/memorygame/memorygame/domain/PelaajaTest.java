@@ -5,7 +5,6 @@ package memorygame.memorygame.domain;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import memorygame.memorygame.domain.Pelaaja;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -65,9 +64,26 @@ public class PelaajaTest {
         pelaaja.setPisteet(0);
         assertEquals(0, pelaaja.getPisteet());
     }
-    
-    @Test 
-    public void toStringToimiiOikein(){
+
+    @Test
+    public void lisaakoPisteenOikein() {
+        pelaaja.lisaaPiste();
+        assertEquals(1, pelaaja.getPisteet());
+    }
+
+    @Test
+    public void vertaakoPelaajiaOikein() {
+        Pelaaja pelaaja2 = new Pelaaja("Pekka");
+        pelaaja.setPisteet(6);
+        boolean x = false;
+        if(pelaaja.compareTo(pelaaja2)>0){
+           x = true;
+        }
+        assertEquals(true, x);
+    }
+
+    @Test
+    public void toStringToimiiOikein() {
         assertEquals("Anna      Pisteet: 0", pelaaja.toString());
     }
 

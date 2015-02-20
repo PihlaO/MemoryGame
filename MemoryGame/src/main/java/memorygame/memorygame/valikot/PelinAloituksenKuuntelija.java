@@ -36,8 +36,16 @@ public class PelinAloituksenKuuntelija implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        String teksti = nimiKentta.getText();
+//        teksti.trim();
 
-        this.pelaaja = new Pelaaja(nimiKentta.getText());
+        if (!(teksti.length() < 16)) {
+            return;
+        } else {
+
+            this.pelaaja = new Pelaaja(teksti);
+
+        }
         luoJaKaynnistaPeli(e);
 
     }

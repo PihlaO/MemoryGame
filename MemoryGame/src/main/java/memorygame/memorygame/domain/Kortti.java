@@ -63,7 +63,7 @@ public class Kortti {
      *
      * @return Kortin tila
      */
-    public boolean onkoKaannetu() {
+    public boolean kaannetty() {
         return this.kaannettu;
     }
 
@@ -72,7 +72,7 @@ public class Kortti {
      *
      */
     public void kaannaKortti() {
-        if (this.onkoKaannetu() == true) {
+        if (this.kaannetty() == true) {
             this.kaannettu = false;
         } else {
             this.kaannettu = true;

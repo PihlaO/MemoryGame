@@ -64,7 +64,7 @@ public class LopetusKayttoliittyma implements Runnable {
         container.add(tyhja2);
         container.add(tilastonListaus);
         container.add(eka);
-         if (muistipeli.getPelitilasto().haeTilastolista().size()>1) {
+        if (muistipeli.getPelitilasto().haeTilastolista().size()>1) {
             JLabel toka = new JLabel("2. " + muistipeli.getPelitilasto().palautaPelaajaTilastosta(1).toString());
             container.add(toka);
         }

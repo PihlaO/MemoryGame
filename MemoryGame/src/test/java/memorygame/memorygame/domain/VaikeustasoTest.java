@@ -46,11 +46,18 @@ public class VaikeustasoTest {
         this.vaikeustaso = new Vaikeustaso(1);
         assertEquals(1, vaikeustaso.getTasonTunnus());
     }
+    @Test 
     public void palauttaaOletusPakanKorttienLukumaaran(){
         vaikeustaso = new Vaikeustaso(-1);
         assertEquals(12, vaikeustaso.haeKorttienLukumaara());
     }
-
+    @Test 
+    public void nimeaaHelpontasonPoikein(){
+        vaikeustaso = new Vaikeustaso(1);
+        assertEquals("Helppo", vaikeustaso.toString());
+    }
+    
+ 
 
 
 }

@@ -74,4 +74,5 @@ public class KorttipakkaTest {
         assertEquals(12, pakassaKortteja);
 
     }
+
 }

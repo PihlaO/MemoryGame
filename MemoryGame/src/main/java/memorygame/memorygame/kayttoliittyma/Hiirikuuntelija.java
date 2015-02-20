@@ -5,9 +5,12 @@
  */
 package memorygame.memorygame.kayttoliittyma;
 
+import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 import memorygame.memorygame.Muistipeli;
 import memorygame.memorygame.domain.Kortti;
@@ -22,11 +25,11 @@ import memorygame.memorygame.valikot.LopetusKayttoliittyma;
  */
 public class Hiirikuuntelija implements MouseListener {
 
-    Piirtoalusta piirtoalusta;
+    Component piirtoalusta;
     Muistipeli muistipeli;
     List<KuvallinenKortti> kuvallisetKortit;
 
-    public Hiirikuuntelija(Piirtoalusta piirtoalusta, Muistipeli muistipeli, List<KuvallinenKortti> kuvallisetKortit) {
+    public Hiirikuuntelija(Component piirtoalusta, Muistipeli muistipeli, List<KuvallinenKortti> kuvallisetKortit) {
         this.piirtoalusta = piirtoalusta;
         this.muistipeli = muistipeli;
         this.kuvallisetKortit = kuvallisetKortit;
@@ -40,27 +43,27 @@ public class Hiirikuuntelija implements MouseListener {
             KuvallinenKortti kuvakortti = klikattuKortti(e);
             Kortti kortti = kuvakortti.getKortti();
 
-            if (!kortti.onkoKaannetu()) {
+            if (!kortti.kaannetty()) {
                 kortti.kaannaKortti();
-                this.piirtoalusta.repaint();
                 lisaaPistePelaajalle();
 
-                if (muistipeli.getPelilauta().getValittuKortti1() == null) {
-                    muistipeli.getPelilauta().setValittuKortti1(kortti);
-                    this.piirtoalusta.repaint();
-                } else if (!(muistipeli.getPelilauta().getValittuKortti1() == null)) {
-                    if (muistipeli.getPelilauta().getValittuKortti2() == null) {
-                        muistipeli.getPelilauta().setValittuKortti2(kortti);
+                if (!PelilaudanEkaKorttiValittu()) {
+                    ValitaanEkaksiKortiksi(kortti);
+                } else if (PelilaudanEkaKorttiValittu()) {
+                    if (!PelilaudanTokaKorttiValittu()) {
+                        ValitaanTokaksiKortiksi(kortti);
 
-//                        this.piirtoalusta.repaint();
-//                        try {
-//                            Thread.sleep(3000);
-//                        } catch (InterruptedException ex) {
-//                            Logger.getLogger(Kuuntelija.class.getName()).log(Level.SEVERE, null, ex);
-//                        }
                     }
                 }
-
+//                System.out.println("piirrä");
+                this.piirtoalusta.repaint();
+//                try {
+//                    Thread.sleep(3000);
+//                } catch (InterruptedException ex) {
+//                    Logger.getLogger(Hiirikuuntelija.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//                System.out.println("piirretty");
+                
                 if (pelilaudanKortitValittu()) {
 
                     if (!pari()) {
@@ -76,6 +79,23 @@ public class Hiirikuuntelija implements MouseListener {
 
         }
 
+    }
+
+    private void ValitaanTokaksiKortiksi(Kortti kortti) {
+        muistipeli.getPelilauta().setValittuKortti2(kortti);
+
+    }
+
+    private void ValitaanEkaksiKortiksi(Kortti kortti) {
+        muistipeli.getPelilauta().setValittuKortti1(kortti);
+    }
+
+    private boolean PelilaudanEkaKorttiValittu() {
+        return !(muistipeli.getPelilauta().getValittuKortti1() == null);
+    }
+
+    private boolean PelilaudanTokaKorttiValittu() {
+        return !(muistipeli.getPelilauta().getValittuKortti2() == null);
     }
 
     private boolean korttiaKlikattu(MouseEvent e) {
@@ -127,7 +147,7 @@ public class Hiirikuuntelija implements MouseListener {
     private boolean peliPaattyi() {
         int i = 0;
         for (KuvallinenKortti kortti : kuvallisetKortit) {
-            if (kortti.getKortti().onkoKaannetu() == true) {
+            if (kortti.getKortti().kaannetty() == true) {
                 i++;
             }
         }

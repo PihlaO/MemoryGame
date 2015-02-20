@@ -51,7 +51,7 @@ public class AloitusKayttoliittyma implements Runnable { //miten voidaan sulkea
         container.setLayout(layout);
 
         JLabel teksti = new JLabel("Muistipeli");
-        JLabel nimiTeksti = new JLabel("Nimi: ");
+        JLabel nimiTeksti = new JLabel("Nimi (max. 15 merkkiä): ");
         JTextField nimiKentta = new JTextField();
 
         JLabel valitseTasoTeksti = new JLabel("Aloita peli valitsemalla vaikeustaso:");

@@ -91,13 +91,13 @@ public class KorttiTest {
     @Test 
     public void kaantaaKortinOikeinpain(){
         kortti.kaannaKortti();
-        assertEquals(true, kortti.onkoKaannetu());
+        assertEquals(true, kortti.kaannetty());
     }
     
     @Test 
     public void kaantaaKortinVaarinpain(){
         kortti.kaannaKortti();
         kortti.kaannaKortti();
-        assertEquals(false, kortti.onkoKaannetu());
+        assertEquals(false, kortti.kaannetty());
     }
 }

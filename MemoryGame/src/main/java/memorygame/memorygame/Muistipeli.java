@@ -9,7 +9,6 @@ import javax.swing.SwingUtilities;
 import memorygame.memorygame.domain.Korttipakka;
 import memorygame.memorygame.domain.Pelaaja;
 import memorygame.memorygame.domain.Pelilauta;
-import memorygame.memorygame.domain.Vaikeustaso;
 import memorygame.memorygame.kayttoliittyma.Kayttoliittyma;
 import memorygame.memorygame.valikot.AloitusKayttoliittyma;
 
