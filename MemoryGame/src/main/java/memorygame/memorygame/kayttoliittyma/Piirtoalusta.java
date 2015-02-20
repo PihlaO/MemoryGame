@@ -96,7 +96,7 @@ public class Piirtoalusta extends JPanel {
      *
      */
     private void lisaaKuuntelija(Piirtoalusta piirtoalusta) {
-        Kuuntelija k = new Kuuntelija(piirtoalusta, muistipeli, kuvallisetKortit);
+        Hiirikuuntelija k = new Hiirikuuntelija(piirtoalusta, muistipeli, kuvallisetKortit);
         this.addMouseListener(k);
     }
 

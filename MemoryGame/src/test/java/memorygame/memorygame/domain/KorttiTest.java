@@ -5,10 +5,8 @@ package memorygame.memorygame.domain;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import memorygame.memorygame.domain.Kortti;
 import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Assert;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;

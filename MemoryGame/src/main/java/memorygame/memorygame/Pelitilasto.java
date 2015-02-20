@@ -17,7 +17,7 @@ import memorygame.memorygame.domain.Pelaaja;
  * @author okpiok
  */
 /*
- * Muistipelin tilasto, jossa luodaan lista pelaajista. Tilastossa on aina 3 parasta tulosta kerrallaan.
+ * Muistipelin tilasto, jossa luodaan lista pelaajista.
  */
 public class Pelitilasto {
 

@@ -20,13 +20,13 @@ import memorygame.memorygame.valikot.LopetusKayttoliittyma;
 /*
  *Luodaan muistipelille hiirenkuuntelija.
  */
-public class Kuuntelija implements MouseListener {
+public class Hiirikuuntelija implements MouseListener {
 
     Piirtoalusta piirtoalusta;
     Muistipeli muistipeli;
     List<KuvallinenKortti> kuvallisetKortit;
 
-    public Kuuntelija(Piirtoalusta piirtoalusta, Muistipeli muistipeli, List<KuvallinenKortti> kuvallisetKortit) {
+    public Hiirikuuntelija(Piirtoalusta piirtoalusta, Muistipeli muistipeli, List<KuvallinenKortti> kuvallisetKortit) {
         this.piirtoalusta = piirtoalusta;
         this.muistipeli = muistipeli;
         this.kuvallisetKortit = kuvallisetKortit;
