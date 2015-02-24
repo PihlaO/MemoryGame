@@ -31,16 +31,12 @@ public class Piirtoalusta extends JPanel {
     private BufferedImage kansikuva;
     private BufferedImage kuva;
     private BufferedImage pohja;
-    List<KuvallinenKortti> kuvallisetKortit;
+    List<Kortti> kokeilu;
 
     public Piirtoalusta(Muistipeli muistipeli) {
         this.muistipeli = muistipeli;
         super.setBackground(Color.WHITE);
-        this.kuvallisetKortit = new ArrayList<>();
-
-        haeKansikuvaTiedostosta();
         this.luoKuvallisetKortit();
-
         lisaaKuuntelija(this);
 
     }
@@ -52,15 +48,16 @@ public class Piirtoalusta extends JPanel {
 //        haePohjaTiedostosta();  // ei vielä pohjakuvaa
 //        this.piirraTausta(graphics);
         
-        graphics.drawString("Muistipeli     " + "     Vaikeustaso: " + this.muistipeli.getKorttipakka().haeVaikeustaso().toString() + "     Pelaaja: " + muistipeli.getPelaaja(), 17, 700);
-        
-        for (KuvallinenKortti k : this.kuvallisetKortit) {
-            Kortti kortti = k.getKortti();
+        graphics.drawString("Muistipeli     " + "     Vaikeustaso: " + this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().toString() + "     Pelaaja: " + muistipeli.getPelaaja(), 17, 700);
+
+        for (Kortti k : this.muistipeli.getPelilauta().getKorttipakka().haeKorttipakka()) {
+            Kortti kortti = k;
             if (kortti.kaannetty()) {
                 haeKuvaTiedostosta(kortti.getTyyppi());
                 this.piirraKortinKuva(kortti, graphics);
             } else {
-                this.piirraKortinKansi(kortti, graphics);
+                haeKansikuvaTiedostosta();
+                this.piirraKortinKansi(k, graphics);
             }
         }
 
@@ -70,29 +67,10 @@ public class Piirtoalusta extends JPanel {
      * Metodi lukee tiedostosta kansikuvan.
      *
      */
-    private void haeKansikuvaTiedostosta() {
-        try {
-            File kuvatiedosto = new File("./kansikuva.png");
-            kansikuva = ImageIO.read(kuvatiedosto);
-        } catch (IOException e) {
-            System.out.println("tiedoston luku ei onnistu.");
-        }
-    }
-
     /**
      * Metodi lukee tiedostosta kuvan.
      *
      */
-    private void haeKuvaTiedostosta(int tyyppi) {
-
-        try {
-            File kuvatiedosto = new File("./kuva" + tyyppi + ".jpg");
-            kuva = ImageIO.read(kuvatiedosto);
-        } catch (IOException e) {
-            System.out.println("tiedoston luku ei onnistu.");
-        }
-    }
-
     /**
      * Metodi lisaa kuuntelijan.
      *
@@ -100,7 +78,7 @@ public class Piirtoalusta extends JPanel {
      *
      */
     private void lisaaKuuntelija(Piirtoalusta piirtoalusta) {
-        Hiirikuuntelija k = new Hiirikuuntelija(piirtoalusta, muistipeli, kuvallisetKortit);
+        Hiirikuuntelija k = new Hiirikuuntelija(piirtoalusta, muistipeli);
         this.addMouseListener(k);
     }
 
@@ -114,6 +92,8 @@ public class Piirtoalusta extends JPanel {
     /**
      * Metodi piirtää kortin kansikuvan.
      *
+     * @param k
+     * @param graphics
      */
     public void piirraKortinKansi(Kortti k, Graphics graphics) {
 
@@ -135,9 +115,11 @@ public class Piirtoalusta extends JPanel {
      *
      */
     public void luoKuvallisetKortit() {
+
         for (Kortti kortti : this.muistipeli.getPelilauta().getKorttipakka().haeKorttipakka()) {
-            KuvallinenKortti kuvallinenkortti = new KuvallinenKortti(kansikuva, kuva, kortti);
-            kuvallisetKortit.add(kuvallinenkortti);
+            KuvallinenKortti kuvallinenkortti = new KuvallinenKortti(kortti);
+            this.muistipeli.getKuvallisetKortit().add(kuvallinenkortti);
+
         }
 
     }
@@ -148,14 +130,30 @@ public class Piirtoalusta extends JPanel {
      * @return kuvalliset kortit
      *
      */
-    public List<KuvallinenKortti> haeKuvallisetKortit() {
-        return this.kuvallisetKortit;
+    public void haeKuvaTiedostosta(int tyyppi) {
+
+        try {
+            File kuvatiedosto = new File("./kuva" + tyyppi + ".jpg");
+            kuva = ImageIO.read(kuvatiedosto);
+        } catch (IOException e) {
+            System.out.println("tiedoston luku ei onnistu.");
+        }
+    }
+//
+
+    public void haeKansikuvaTiedostosta() {
+        try {
+            File kuvatiedosto = new File("./kansikuva.png");
+            kansikuva = ImageIO.read(kuvatiedosto);
+        } catch (IOException e) {
+            System.out.println("tiedoston luku ei onnistu.");
+        }
+
     }
 
 //    private boolean piirraTausta(Graphics graphics) {
 //        return graphics.drawImage(pohja, 0 ,0, 750, 750, this);
 //    }
-    
 //        private void haePohjaTiedostosta() {  
 //        try {
 //            File kuvatiedosto = new File("./******.jpg");

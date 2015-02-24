@@ -23,6 +23,8 @@ public class Pelilauta {
     public Pelilauta(Korttipakka pakka) {
         this.korttipakka = pakka;
         this.TaulukkoKorteista = new Kortti[pelilaudanSarakkeidenLukumaara()][pelilaudanRivienLukumaara()];
+        this.valittuKortti1=null;
+        this.valittuKortti2= null;
     }
 
     /**
@@ -143,6 +145,7 @@ public class Pelilauta {
         this.valittuKortti2 = k;
     }
     
+
 
 
 }

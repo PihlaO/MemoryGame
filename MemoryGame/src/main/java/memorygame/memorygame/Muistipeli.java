@@ -5,12 +5,16 @@
  */
 package memorygame.memorygame;
 
+import java.util.List;
 import javax.swing.SwingUtilities;
+import memorygame.memorygame.domain.Kortti;
 import memorygame.memorygame.domain.Korttipakka;
 import memorygame.memorygame.domain.Pelaaja;
 import memorygame.memorygame.domain.Pelilauta;
 import memorygame.memorygame.kayttoliittyma.Kayttoliittyma;
+import memorygame.memorygame.kayttoliittyma.KuvallinenKortti;
 import memorygame.memorygame.valikot.AloitusKayttoliittyma;
+import memorygame.memorygame.valikot.LopetusKayttoliittyma;
 
 /**
  *
@@ -24,16 +28,19 @@ public class Muistipeli {
     Pelilauta pelilauta;
     Pelaaja pelaaja;
     Pelitilasto tilasto;
-    Korttipakka korttipakka;
     Kayttoliittyma kayttoliittyma;
     AloitusKayttoliittyma aloituskali;
+    List<KuvallinenKortti> kuvallisetKortit;
+    List<Kortti> kokeilu;
 
-    public Muistipeli(int vaikeustaso, Pelaaja pelaaja, AloitusKayttoliittyma aloituskali) {
-        this.korttipakka = new Korttipakka(vaikeustaso);
-        this.pelilauta = new Pelilauta(this.korttipakka);
+    public Muistipeli(int vaikeustaso, Pelaaja pelaaja, AloitusKayttoliittyma aloituskali, List<KuvallinenKortti> kuvallisetKortit) {
+
+        this.pelilauta = new Pelilauta(new Korttipakka(vaikeustaso));
         this.pelaaja = pelaaja;
         this.aloituskali = aloituskali;
-        tilastonValinta(vaikeustaso, aloituskali);
+        this.kuvallisetKortit = kuvallisetKortit;
+        this.tilasto= valitunVaikeustasonTilasto(vaikeustaso, aloituskali);
+        this.kokeilu= this.pelilauta.getKorttipakka().haeKorttipakka();
 
     }
 
@@ -68,20 +75,108 @@ public class Muistipeli {
     public Pelitilasto getPelitilasto() {
         return this.tilasto;
     }
-    
-    public Korttipakka getKorttipakka(){
-        return this.korttipakka;
+
+
+    public List<KuvallinenKortti> getKuvallisetKortit() {
+        return this.kuvallisetKortit;
     }
 
-    private void tilastonValinta(int vaikeustaso, AloitusKayttoliittyma aloituskali1) {
+    private Pelitilasto valitunVaikeustasonTilasto(int vaikeustaso, AloitusKayttoliittyma aloituskali1) {
         if (vaikeustaso == 1) {
-            this.tilasto = aloituskali1.getHelponTasonTilasto();
+            return aloituskali1.getHelponTasonTilasto();
         }
         if (vaikeustaso == 2) {
-            this.tilasto = aloituskali1.getKeskiTasonTilasto();
+            return aloituskali1.getKeskiTasonTilasto();
+        } else {
+            return aloituskali1.getVaikeanTasonTilasto();
         }
-        if (vaikeustaso == 3) {
-            this.tilasto = aloituskali1.getVaikeanTasonTilasto();
+    }
+
+    public void ValitaanTokaksiKortiksi(Kortti kortti) {
+        this.getPelilauta().setValittuKortti2(kortti);
+
+    }
+
+    public void ValitaanEkaksiKortiksi(Kortti kortti) {
+        this.getPelilauta().setValittuKortti1(kortti);
+    }
+
+    public boolean PelilaudanEkaKorttiValittu() {
+        return !(this.getPelilauta().getValittuKortti1() == null);
+    }
+
+    public boolean PelilaudanTokaKorttiValittu() {
+        return !(this.getPelilauta().getValittuKortti2() == null);
+    }
+
+    /**
+     * Metodi pelilaudanKortitValittu palauttaa true, jos Pelilaudan kortti1 ja
+     * kortti 2 on valittu ja muulloin false.
+     *
+     * @return boolean
+     */
+    public boolean pelilaudanKortitValittu() {
+        return !(this.getPelilauta().getValittuKortti1() == null) && !(this.getPelilauta().getValittuKortti2() == null);
+    }
+
+    /**
+     * Metodi tyhjennaPelilaudanValitusKortit asettaa null Pelilaudan kortti1 ja
+     * kortti2 arvoiksi.
+     *
+     */
+    public void tyhjennaPelilaudanValitutKortit() {
+        this.getPelilauta().setValittuKortti1(null);
+        this.getPelilauta().setValittuKortti2(null);
+    }
+
+    /**
+     * Metodi kaannaPelilaudanValitutKortit kääntää Pelilaudan kortti1 ja
+     * kortti2.
+     *
+     */
+    public void kaannaPelilaudanValitutKortit() {
+        this.getPelilauta().getValittuKortti1().kaannaKortti();
+        this.getPelilauta().getValittuKortti2().kaannaKortti();
+    }
+
+    public boolean pari() {
+        return this.getPelilauta().getValittuKortti1().onkoKortitSamat(this.getPelilauta().getValittuKortti2());
+    }
+
+    public void lisaaPistePelaajalle() {
+        this.getPelaaja().lisaaPiste();
+    }
+
+    public void TallennaPelaajaTilastoon() {
+        this.getPelitilasto().tallennaTilastoon(this.getPelaaja());
+    }
+
+    public boolean peliPaattyi() {
+        int i = 0;
+        for (KuvallinenKortti kortti : this.getKuvallisetKortit()) {
+            if (kortti.getKortti().kaannetty() == true) {
+                i++;
+            }
         }
+        if (i == this.getKuvallisetKortit().size()) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public void AvaaLopetusValikko() {
+        this.getPelinKayttoliittyma().getFrame().setVisible(false);
+        LopetusKayttoliittyma lopetusvalikko = new LopetusKayttoliittyma(this, this.getAloitusKayttoliittyma());
+        SwingUtilities.invokeLater(lopetusvalikko);
+    }
+
+    public void setKuvallisetKortit(List<KuvallinenKortti> kuvallisetKortit) {
+        this.kuvallisetKortit = kuvallisetKortit;
+    }
+    
+    public List<Kortti> getKokeilu(){
+        return this.kokeilu;
     }
 }

@@ -7,10 +7,12 @@ package memorygame.memorygame.valikot;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import memorygame.memorygame.Muistipeli;
 import memorygame.memorygame.domain.Pelaaja;
+import memorygame.memorygame.kayttoliittyma.KuvallinenKortti;
 
 /**
  *
@@ -18,7 +20,6 @@ import memorygame.memorygame.domain.Pelaaja;
  */
 public class PelinAloituksenKuuntelija implements ActionListener {
 
-    private Pelaaja pelaaja;
     private JTextField nimiKentta;
     private JButton helppo;
     private JButton keskitaso;
@@ -43,47 +44,45 @@ public class PelinAloituksenKuuntelija implements ActionListener {
             return;
         } else {
 
-            this.pelaaja = new Pelaaja(teksti);
-
+            Pelaaja pelaaja = new Pelaaja(teksti);
+            luoJaKaynnistaPeli(e, pelaaja);
         }
-        luoJaKaynnistaPeli(e);
 
     }
 
-    private void luoJaKaynnistaPeli(ActionEvent e) {
+    private void luoJaKaynnistaPeli(ActionEvent e, Pelaaja pelaaja) {
         if (e.getSource() == helppo) {
-            luoJaKaynnistaHelppoPeli();
+            luoJaKaynnistaHelppoPeli(pelaaja);
         }
         if (e.getSource() == keskitaso) {
-            luoJaKaynnistaKeskitasonPeli();
+            luoJaKaynnistaKeskitasonPeli(pelaaja);
         }
 
         if (e.getSource() == vaikea) {
-            luoJaKaynnistaVaikeaPeli();
+            luoJaKaynnistaVaikeaPeli(pelaaja);
         }
 
     }
 
-    private void luoJaKaynnistaVaikeaPeli() {
-        Muistipeli m = new Muistipeli(3, this.pelaaja, this.aloituskali);
+    private void luoJaKaynnistaVaikeaPeli(Pelaaja pelaaja) {
+        Muistipeli m = new Muistipeli(3, pelaaja, this.aloituskali, new ArrayList<KuvallinenKortti>());
         m.kaynnista();
         this.aloituskali.getFrame().setVisible(false);
 
     }
 
-    private void luoJaKaynnistaKeskitasonPeli() {
-        Muistipeli m = new Muistipeli(2, this.pelaaja, this.aloituskali);
+    private void luoJaKaynnistaKeskitasonPeli(Pelaaja pelaaja) {
+        Muistipeli m = new Muistipeli(2, pelaaja, this.aloituskali, new ArrayList<KuvallinenKortti>());
         m.kaynnista();
         this.aloituskali.getFrame().setVisible(false);
     }
 
-    private void luoJaKaynnistaHelppoPeli() {
+    private void luoJaKaynnistaHelppoPeli(Pelaaja pelaaja) {
 
-        Muistipeli m = new Muistipeli(1, this.pelaaja, this.aloituskali);
+        Muistipeli m = new Muistipeli(1, pelaaja, this.aloituskali, new ArrayList<KuvallinenKortti>());
         m.kaynnista();
         this.aloituskali.getFrame().setVisible(false);
 
     }
 
-    
 }

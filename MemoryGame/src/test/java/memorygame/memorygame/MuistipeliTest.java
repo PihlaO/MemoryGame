@@ -5,8 +5,10 @@
  */
 package memorygame.memorygame;
 
+import java.util.ArrayList;
 import memorygame.memorygame.domain.Pelaaja;
 import memorygame.memorygame.kayttoliittyma.Kayttoliittyma;
+import memorygame.memorygame.kayttoliittyma.KuvallinenKortti;
 import memorygame.memorygame.valikot.AloitusKayttoliittyma;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -39,7 +41,7 @@ public class MuistipeliTest {
     @Before
     public void setUp() {
         this.pelaaja = new Pelaaja("Anna");
-        muistipeli = new Muistipeli(1, this.pelaaja, new AloitusKayttoliittyma(new Pelitilasto("top3"), new Pelitilasto("top3"), new Pelitilasto("top3")));
+        muistipeli = new Muistipeli(1, this.pelaaja, new AloitusKayttoliittyma(new Pelitilasto("top3"), new Pelitilasto("top3"),new Pelitilasto("top3")),new ArrayList<KuvallinenKortti>());
         this.pelikali = new Kayttoliittyma(muistipeli);
     }
 

@@ -9,6 +9,9 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.ImageObserver;
 import java.awt.image.ImageProducer;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import memorygame.memorygame.domain.Kortti;
 
 /**
@@ -20,13 +23,10 @@ import memorygame.memorygame.domain.Kortti;
  */
 public class KuvallinenKortti extends Image {
 
-    Image kansikuva;
-    Image kuva;
     Kortti kortti;
 
-    public KuvallinenKortti(Image kansikuva, Image kuva, Kortti kortti) {
-        this.kansikuva = kansikuva;
-        this.kuva = kuva;
+    public KuvallinenKortti(Kortti kortti) {
+
         this.kortti = kortti;
     }
 
@@ -64,4 +64,5 @@ public class KuvallinenKortti extends Image {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+   
 }

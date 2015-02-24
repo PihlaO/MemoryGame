@@ -22,7 +22,7 @@ public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
     Muistipeli muistipeli;
-    
+    Piirtoalusta piirtoalusta;
 
     public Kayttoliittyma(Muistipeli muistipeli) {
         this.muistipeli = muistipeli;
@@ -46,13 +46,18 @@ public class Kayttoliittyma implements Runnable {
      *
      */
     private void luoKomponentit(Container container) {
-        Piirtoalusta piirtoalusta = new Piirtoalusta(this.muistipeli);
+        this.piirtoalusta = new Piirtoalusta(this.muistipeli);
         container.add(piirtoalusta);
-        frame.addMouseListener(new Hiirikuuntelija(piirtoalusta, muistipeli, piirtoalusta.haeKuvallisetKortit()));
+        frame.addMouseListener(new Hiirikuuntelija(piirtoalusta, this.muistipeli));
     }
 
     public JFrame getFrame() {
         return frame;
     }
 
+    public Piirtoalusta getPiirtoalusta() {
+        return this.piirtoalusta;
+    }
 }
+
+
