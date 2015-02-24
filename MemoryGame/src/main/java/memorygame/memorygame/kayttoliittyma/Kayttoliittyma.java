@@ -48,7 +48,7 @@ public class Kayttoliittyma implements Runnable {
     private void luoKomponentit(Container container) {
         this.piirtoalusta = new Piirtoalusta(this.muistipeli);
         container.add(piirtoalusta);
-        frame.addMouseListener(new Hiirikuuntelija(piirtoalusta, this.muistipeli));
+        frame.addMouseListener(new Hiirikuuntelija(piirtoalusta));
     }
 
     public JFrame getFrame() {
@@ -59,5 +59,3 @@ public class Kayttoliittyma implements Runnable {
         return this.piirtoalusta;
     }
 }
-
-

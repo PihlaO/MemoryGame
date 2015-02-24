@@ -98,4 +98,6 @@ public class Kortti {
         return "Kortin tyyppi on " + this.tyyppi + "käännetty" + this.kaannettu;
     }
 
+
+
 }

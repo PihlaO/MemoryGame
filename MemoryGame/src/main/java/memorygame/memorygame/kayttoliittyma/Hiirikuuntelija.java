@@ -24,13 +24,10 @@ import memorygame.memorygame.domain.Kortti;
 public class Hiirikuuntelija implements MouseListener {
 
     Piirtoalusta piirtoalusta;
-    Muistipeli muistipeli;
 
-    
 
-    public Hiirikuuntelija(Piirtoalusta piirtoalusta, Muistipeli muistipeli) {
+    public Hiirikuuntelija(Piirtoalusta piirtoalusta) {
         this.piirtoalusta = piirtoalusta;
-        this.muistipeli = muistipeli;
 
 
     }
@@ -39,47 +36,50 @@ public class Hiirikuuntelija implements MouseListener {
     public void mouseClicked(MouseEvent e) {
 
         if (korttiaKlikattu(e)) {
-            KuvallinenKortti kuvakortti = klikattuKortti(e);
-            Kortti kortti = kuvakortti.getKortti();
-
-            if (!kortti.kaannetty()) {
-                kortti.kaannaKortti();
-                this.muistipeli.lisaaPistePelaajalle();
-
-                if (!this.muistipeli.PelilaudanEkaKorttiValittu()) {
-                    this.muistipeli.ValitaanEkaksiKortiksi(kortti);
-                } else if (this.muistipeli.PelilaudanEkaKorttiValittu()) {
-                    if (!this.muistipeli.PelilaudanTokaKorttiValittu()) {
-                        this.muistipeli.ValitaanTokaksiKortiksi(kortti);
-
-                    }
-                }
-                System.out.println("piirrä");
-                 this.piirtoalusta.validate();
-                this.piirtoalusta.repaint();
-               
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Hiirikuuntelija.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                System.out.println("piirretty");
-
-                if (this.muistipeli.pelilaudanKortitValittu()) {
-
-                    if (!this.muistipeli.pari()) {
-                        this.muistipeli.kaannaPelilaudanValitutKortit();
-                    }
-                    this.muistipeli.tyhjennaPelilaudanValitutKortit();
-                }
-            }
-        }
-        if (this.muistipeli.peliPaattyi()) {
-            this.muistipeli.TallennaPelaajaTilastoon();
-            this.muistipeli.AvaaLopetusValikko();
+            this.piirtoalusta.getMuistipeli().logiikka(e);
 
         }
 
+//            KuvallinenKortti kuvakortti = klikattuKortti(e);
+//            Kortti kortti = kuvakortti.getKortti();
+//
+//            if (this.muistipeli.pelilaudanKortitValittu()) {
+//
+//                if (!this.muistipeli.pari()) {
+//                    this.muistipeli.kaannaPelilaudanValitutKortit();
+//                }
+//                this.muistipeli.tyhjennaPelilaudanValitutKortit();
+//            }
+//
+//            if (!kortti.kaannetty()) {
+//                kortti.kaannaKortti();
+//                this.muistipeli.lisaaPistePelaajalle();
+//
+//                if (!this.muistipeli.PelilaudanEkaKorttiValittu()) {
+//                    this.muistipeli.ValitaanEkaksiKortiksi(kortti);
+//                } else if (this.muistipeli.PelilaudanEkaKorttiValittu()) {
+//                    if (!this.muistipeli.PelilaudanTokaKorttiValittu()) {
+//                        this.muistipeli.ValitaanToiseksiKortiksi(kortti);
+//
+//                    }
+//                }
+//
+//                this.piirtoalusta.repaint();
+//
+//                try {
+//                    Thread.sleep(500);
+//                } catch (InterruptedException ex) {
+//                    Logger.getLogger(Hiirikuuntelija.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//
+//            }
+//        }
+//        if (this.muistipeli.peliPaattyi()) {
+//            this.muistipeli.TallennaPelaajaTilastoon();
+//            this.muistipeli.AvaaLopetusValikko();
+//
+//        }
+//
     }
 
     /**
@@ -89,7 +89,7 @@ public class Hiirikuuntelija implements MouseListener {
      * @return kuvallinen kortin
      */
     public KuvallinenKortti klikattuKortti(MouseEvent e) {
-        for (KuvallinenKortti kuva : this.muistipeli.getKuvallisetKortit()) {
+        for (KuvallinenKortti kuva : this.piirtoalusta.getMuistipeli().getKuvallisetKortit()) {
             Kortti kortti = kuva.getKortti();
 
             if (e.getX() > kortti.getX() * 100 + 50 && e.getY() > kortti.getY() * 100 + 50) {
@@ -106,7 +106,6 @@ public class Hiirikuuntelija implements MouseListener {
     public boolean korttiaKlikattu(MouseEvent e) {
         return !(this.klikattuKortti(e) == null);
     }
-
 
     @Override
     public void mousePressed(MouseEvent e

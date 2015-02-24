@@ -10,8 +10,6 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import memorygame.memorygame.Muistipeli;
@@ -31,12 +29,11 @@ public class Piirtoalusta extends JPanel {
     private BufferedImage kansikuva;
     private BufferedImage kuva;
     private BufferedImage pohja;
-    List<Kortti> kokeilu;
 
     public Piirtoalusta(Muistipeli muistipeli) {
         this.muistipeli = muistipeli;
         super.setBackground(Color.WHITE);
-        this.luoKuvallisetKortit();
+        luoKuvallisetKortit();
         lisaaKuuntelija(this);
 
     }
@@ -45,15 +42,14 @@ public class Piirtoalusta extends JPanel {
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
 
-//        haePohjaTiedostosta();  // ei vielä pohjakuvaa
+//        haePohjaTiedostosta();  // ei vielä taustakuvaa
 //        this.piirraTausta(graphics);
-        
         graphics.drawString("Muistipeli     " + "     Vaikeustaso: " + this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().toString() + "     Pelaaja: " + muistipeli.getPelaaja(), 17, 700);
 
         for (Kortti k : this.muistipeli.getPelilauta().getKorttipakka().haeKorttipakka()) {
             Kortti kortti = k;
             if (kortti.kaannetty()) {
-                haeKuvaTiedostosta(kortti.getTyyppi());
+                this.haeKuvaTiedostosta(kortti.getTyyppi());
                 this.piirraKortinKuva(kortti, graphics);
             } else {
                 haeKansikuvaTiedostosta();
@@ -78,7 +74,7 @@ public class Piirtoalusta extends JPanel {
      *
      */
     private void lisaaKuuntelija(Piirtoalusta piirtoalusta) {
-        Hiirikuuntelija k = new Hiirikuuntelija(piirtoalusta, muistipeli);
+        Hiirikuuntelija k = new Hiirikuuntelija(piirtoalusta);
         this.addMouseListener(k);
     }
 
@@ -104,6 +100,8 @@ public class Piirtoalusta extends JPanel {
     /**
      * Metodi piirtää kortin kuvan.
      *
+     * @param k
+     * @param graphics
      */
     public void piirraKortinKuva(Kortti k, Graphics graphics) {
         graphics.drawImage(kuva, k.getX() * 105 + 50, k.getY() * 123 + 50, k.getLeveys(), k.getKorkeus(), this);
@@ -117,6 +115,7 @@ public class Piirtoalusta extends JPanel {
     public void luoKuvallisetKortit() {
 
         for (Kortti kortti : this.muistipeli.getPelilauta().getKorttipakka().haeKorttipakka()) {
+
             KuvallinenKortti kuvallinenkortti = new KuvallinenKortti(kortti);
             this.muistipeli.getKuvallisetKortit().add(kuvallinenkortti);
 
@@ -124,19 +123,15 @@ public class Piirtoalusta extends JPanel {
 
     }
 
-    /**
-     * Metodi hakee listan kuvallisita korteista.
-     *
-     * @return kuvalliset kortit
-     *
-     */
     public void haeKuvaTiedostosta(int tyyppi) {
 
         try {
             File kuvatiedosto = new File("./kuva" + tyyppi + ".jpg");
             kuva = ImageIO.read(kuvatiedosto);
+
         } catch (IOException e) {
             System.out.println("tiedoston luku ei onnistu.");
+
         }
     }
 //
@@ -145,10 +140,15 @@ public class Piirtoalusta extends JPanel {
         try {
             File kuvatiedosto = new File("./kansikuva.png");
             kansikuva = ImageIO.read(kuvatiedosto);
+
         } catch (IOException e) {
             System.out.println("tiedoston luku ei onnistu.");
+
         }
 
+    }
+    public Muistipeli getMuistipeli(){
+        return this.muistipeli;
     }
 
 //    private boolean piirraTausta(Graphics graphics) {

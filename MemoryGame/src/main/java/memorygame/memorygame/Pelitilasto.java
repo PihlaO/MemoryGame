@@ -63,16 +63,15 @@ public class Pelitilasto {
      *
      */
     public void tulostaTilasto() {
-        for (int i = 0; i < tilasto.size(); i++) {
-            System.out.println(tilasto.get(i));
-
+        for (Pelaaja tilasto1 : this.tilasto) {
+            System.out.println(tilasto1);
         }
     }
 
     /**
      * Metodi palauttaa pelaajan listasta indeksin perusteella.
      *
-     * @param indeksi
+     * @param indeksi pelaajan sijainti listalla
      * @return Pelaaja
      *
      */
@@ -80,6 +79,9 @@ public class Pelitilasto {
         return this.tilasto.get(indeksi);
     }
 
+    /**
+     * Metodi järjetää listan.
+     */
     public void jarjetaTilasto() {
         Collections.sort(this.tilasto);
     }
