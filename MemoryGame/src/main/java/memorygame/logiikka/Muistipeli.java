@@ -25,7 +25,7 @@ import memorygame.kayttoliittyma.valikot.LopetusKayttoliittyma;
  * @author okpiok
  */
 /*
- * Muistipeli
+ * Muistipelin luokka. Luokka sisältää pelin logiikan.
  */
 public class Muistipeli {
 
@@ -58,6 +58,11 @@ public class Muistipeli {
 
     }
 
+    /**
+     * Metodissa on muistipelin logiikka.
+     *
+     * @param e hiiren klikkaus.
+     */
     public void logiikka(MouseEvent e) {
 
         KuvallinenKortti kuvakortti = klikattuKortti(e);
@@ -77,7 +82,7 @@ public class Muistipeli {
 
             if (!this.PelilaudanEkaKorttiValittu()) {
                 this.ValitaanEkaksiKortiksi(kortti);
-            } else if (this.PelilaudanEkaKorttiValittu()) {
+            } else {
                 if (!this.PelilaudanTokaKorttiValittu()) {
                     this.ValitaanToiseksiKortiksi(kortti);
 
@@ -91,11 +96,10 @@ public class Muistipeli {
 //            } catch (InterruptedException ex) {
 //                Logger.getLogger(Muistipeli.class.getName()).log(Level.SEVERE, null, ex);
 //            }
-
         }
 
         if (this.peliPaattyi()) {
-            this.getPelitilasto().tallennaTilastoon(this.pelaaja);
+            this.tilasto.tallennaTilastoon(this.pelaaja);
             this.AvaaLopetusValikko();
 
         }
@@ -109,13 +113,13 @@ public class Muistipeli {
      * @return kuvallinen kortin
      */
     public KuvallinenKortti klikattuKortti(MouseEvent e) {
-        for (KuvallinenKortti kuva : this.getKuvallisetKortit()) {
-            Kortti kortti = kuva.getKortti();
+        for (KuvallinenKortti kuvallinenKortti : this.kuvallisetKortit) {
+            Kortti kortti = kuvallinenKortti.getKortti();
 
             if (e.getX() > kortti.getX() * 100 + 50 && e.getY() > kortti.getY() * 100 + 50) {
                 if (e.getX() < kortti.getX() * 105 + 50 + kortti.getLeveys() && e.getY() < kortti.getY() * 123 + 50 + kortti.getKorkeus()) {
 
-                    return kuva;
+                    return kuvallinenKortti;
                 }
             }
 
@@ -123,6 +127,13 @@ public class Muistipeli {
         return null;
     }
 
+    /**
+     * Metodi kertoo, onko hiiren klikkaus osunut korttiin. Jos korttia on
+     * klikattu metodi palauttaa true, muulloin false.
+     *
+     * @param e Hiiren klikkaus
+     * @return totuusarvo
+     */
     public boolean korttiaKlikattu(MouseEvent e) {
         return !(this.klikattuKortti(e) == null);
     }
@@ -151,14 +162,21 @@ public class Muistipeli {
         return this.kuvallisetKortit;
     }
 
-    private Pelitilasto valitunVaikeustasonTilasto(int vaikeustaso, AloitusKayttoliittyma aloituskali1) {
+    /**
+     * Metodi palautta pelaajan valitseman vaikeustasontason.
+     *
+     * @param vaikeustaso pelaajan valitsema vaikeustaso
+     * @param aloituskayttoliittyma
+     * @return Pelitilasto
+     */
+    private Pelitilasto valitunVaikeustasonTilasto(int vaikeustaso, AloitusKayttoliittyma aloituskayttoliittyma) {
         if (vaikeustaso == 1) {
-            return aloituskali1.getHelponTasonTilasto();
+            return aloituskayttoliittyma.getHelponTasonTilasto();
         }
         if (vaikeustaso == 2) {
-            return aloituskali1.getKeskiTasonTilasto();
+            return aloituskayttoliittyma.getKeskiTasonTilasto();
         } else {
-            return aloituskali1.getVaikeanTasonTilasto();
+            return aloituskayttoliittyma.getVaikeanTasonTilasto();
         }
     }
 
@@ -168,7 +186,7 @@ public class Muistipeli {
      * @param kortti klikattu kortti
      */
     public void ValitaanToiseksiKortiksi(Kortti kortti) {
-        this.getPelilauta().setValittuKortti2(kortti);
+        this.pelilauta.setValittuKortti2(kortti);
 
     }
 
@@ -178,7 +196,7 @@ public class Muistipeli {
      * @param kortti klikattu kortti
      */
     public void ValitaanEkaksiKortiksi(Kortti kortti) {
-        this.getPelilauta().setValittuKortti1(kortti);
+        this.pelilauta.setValittuKortti1(kortti);
     }
 
     /**
@@ -202,8 +220,8 @@ public class Muistipeli {
     }
 
     /**
-     * Metodi tarkistaa onko pelilaudan kortti1:seen asetettu kortti. Jos on
-     * asetettu,metodi palauttaa true. Muulloin false.
+     * Metodi tarkistaa onko pelilaudan kortti1:seen ja kortti2:seen asetettu
+     * kortti. Jos on asetettu,metodi palauttaa true. Muulloin false.
      *
      * @return totuusarvo
      */
@@ -212,8 +230,7 @@ public class Muistipeli {
     }
 
     /**
-     * Metodi tyhjennaPelilaudanValitusKortit asettaa null Pelilaudan kortti1 ja
-     * kortti2 arvoiksi.
+     * Metodi asettaa null Pelilaudan kortti1 ja kortti2 arvoiksi.
      *
      */
     public void tyhjennaPelilaudanValitutKortit() {
@@ -222,8 +239,7 @@ public class Muistipeli {
     }
 
     /**
-     * Metodi kaannaPelilaudanValitutKortit kääntää Pelilaudan kortti1 ja
-     * kortti2.
+     * Metodi kääntää Pelilaudan kortti1 ja kortti2.
      *
      */
     public void kaannaPelilaudanValitutKortit() {
@@ -248,12 +264,12 @@ public class Muistipeli {
      */
     public boolean peliPaattyi() {
         int i = 0;
-        for (KuvallinenKortti kortti : this.getKuvallisetKortit()) {
+        for (KuvallinenKortti kortti : this.kuvallisetKortit) {
             if (kortti.getKortti().kaannetty() == true) {
                 i++;
             }
         }
-        if (i == this.getKuvallisetKortit().size()) {
+        if (i == this.kuvallisetKortit.size()) {
             return true;
         } else {
             return false;

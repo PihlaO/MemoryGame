@@ -5,14 +5,12 @@
  */
 package memorygame.domain;
 
-import memorygame.domain.Kortti;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 /**
  *
- * import memorygame.memorygame.domain.Vaikeustaso;
 @author okpiok
  */
 
@@ -65,7 +63,7 @@ public class Korttipakka {
     }
 
     /**
-     * Metodi palauttaa korttipakan eli listan korteista
+     * Metodi palauttaa korttipakan eli listan korteista.
      *
      * @return pelin korttipakka
      */

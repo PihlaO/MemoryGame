@@ -25,6 +25,10 @@ public class Vaikeustaso {
         asetaTasolleNimi();
     }
 
+    /**
+     * Metodi asettaa tasolle nimen tasonTunnuksen perusteella.
+     *
+     */
     private void asetaTasolleNimi() {
         if (tasonTunnus == 1) {
             this.nimi = "Helppo";
@@ -38,7 +42,7 @@ public class Vaikeustaso {
     }
 
     public int getTasonTunnus() {
-        return tasonTunnus;
+        return this.tasonTunnus;
     }
 
     @Override

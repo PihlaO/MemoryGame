@@ -5,7 +5,6 @@
  */
 package memorygame.kayttoliittyma.valikot;
 
-import memorygame.kayttoliittyma.valikot.AloitusKayttoliittyma;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;

@@ -14,10 +14,9 @@ import memorygame.domain.Kortti;
 /* 
  * Luokka muistipelin korttien kuville.
  */
-public class KuvallinenKortti  {
+public class KuvallinenKortti {
 
     Kortti kortti;
- 
 
     public KuvallinenKortti(Kortti kortti) {
 

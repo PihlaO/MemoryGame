@@ -5,7 +5,6 @@
  */
 package memorygame.kayttoliittyma;
 
-import memorygame.kayttoliittyma.Hiirikuuntelija;
 import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.JFrame;
@@ -14,8 +13,7 @@ import memorygame.logiikka.Muistipeli;
 
 /**
  *
- * import memorygame.memorygame.kayttoliittyma.Piirtoalusta;
-@author okpiok
+ * @author okpiok
  */
 /*
  *Luodaan muistipelin käyttöliittymä.

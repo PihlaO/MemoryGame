@@ -5,16 +5,12 @@
  */
 package memorygame.domain;
 
-import memorygame.domain.Korttipakka;
-import memorygame.domain.Kortti;
-
-
 /**
  *
  * @author okpiok
  */
 /* 
- * Luodaan korttipakka ja taulukko korteista. Lisäksi asetetaan korteille koordinaatit.
+ * Pelilaudan luokka, jossa luodaan korttipakka ja taulukko korteista. Lisäksi asetetaan korteille koordinaatit.
  */
 public class Pelilauta {
 
@@ -26,8 +22,8 @@ public class Pelilauta {
     public Pelilauta(Korttipakka pakka) {
         this.korttipakka = pakka;
         this.TaulukkoKorteista = new Kortti[pelilaudanSarakkeidenLukumaara()][pelilaudanRivienLukumaara()];
-        this.valittuKortti1=null;
-        this.valittuKortti2= null;
+        this.valittuKortti1 = null;
+        this.valittuKortti2 = null;
     }
 
     /**
@@ -45,7 +41,7 @@ public class Pelilauta {
      */
     public void luoPakka() {
         this.korttipakka.luoKortit();
-        korttipakka.sekoitaPakka();
+        this.korttipakka.sekoitaPakka();
     }
 
     /**
@@ -53,7 +49,7 @@ public class Pelilauta {
      *
      */
     public void luoTaulukkoKorteilla() {
-        asetaKorttiTaulukkoon();
+        this.asetaKorttiTaulukkoon();
         this.AsetaPakanKorteilleKoordinaatit();
     }
 
@@ -70,7 +66,7 @@ public class Pelilauta {
         for (int i = 0; i < pelilaudanSarakkeidenLukumaara(); i++) {
 
             for (int j = 0; j < pelilaudanRivienLukumaara(); j++) {
-                TaulukkoKorteista[i][j] = korttipakka.pakka.get(kortinIndeksiPakassa);
+                this.TaulukkoKorteista[i][j] = korttipakka.haeKorttipakka().get(kortinIndeksiPakassa);
                 kortinIndeksiPakassa++;
             }
 
@@ -83,7 +79,7 @@ public class Pelilauta {
      */
     public void AsetaPakanKorteilleKoordinaatit() {
         for (Kortti kortti : this.korttipakka.haeKorttipakka()) {
-            AsetaKortilleKoordinaatit(kortti);
+            this.AsetaKortilleKoordinaatit(kortti);
         }
 
     }
@@ -105,25 +101,34 @@ public class Pelilauta {
         }
     }
 
-    public void tulostaPelilauta() {
-        for (int i = 0; i < this.pelilaudanSarakkeidenLukumaara(); i++) {
-            for (int j = 0; j < pelilaudanRivienLukumaara(); j++) {
-                System.out.println(this.getKorttiXY(i, j));
-
-            }
-
-        }
-
-    }
-
+    /**
+     * Metodi palauttaa sarakkeiden lukumäärän..
+     *
+     *
+     * @return sarakkeiden lukumäärä
+     */
     public int pelilaudanSarakkeidenLukumaara() {
         return 4;
     }
 
+    /**
+     * Metodi palauttaa rivien lukumäärän..
+     *
+     *
+     * @return rivien lukumäärä
+     */
     public int pelilaudanRivienLukumaara() {
         return korttipakka.vaikeustaso.haeKorttienLukumaara() / 4;
     }
 
+    /**
+     * Metodi palauttaa kortin x-ja y-koordinaattien perusteella.
+     *
+     *
+     * @param x kortin sijainnin x-koordinaatti taulukossa.
+     * @param y kortin sijainnin y-koordinaatti taulukossa.
+     * @return kortti
+     */
     public Kortti getKorttiXY(int x, int y) {
         return this.TaulukkoKorteista[x][y];
     }
@@ -147,8 +152,5 @@ public class Pelilauta {
     public void setValittuKortti2(Kortti k) {
         this.valittuKortti2 = k;
     }
-    
-
-
 
 }

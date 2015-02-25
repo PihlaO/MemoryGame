@@ -16,7 +16,6 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import memorygame.domain.Pelitilasto;
 
-
 /**
  *
  * @author okpiok
@@ -57,12 +56,12 @@ public class AloitusKayttoliittyma implements Runnable { //miten voidaan sulkea
 
         JLabel valitseTasoTeksti = new JLabel("Aloita peli valitsemalla vaikeustaso:");
         JButton helppo = new JButton("Helppo");
-        JButton keskitaso = new JButton("Keskitaso");
+        JButton keskivaikea = new JButton("Keskitaso");
         JButton vaikea = new JButton("Vaikea");
-        lisaaKuuntelijat(nimiKentta, helppo, keskitaso, vaikea, this);
+        lisaaKuuntelijat(nimiKentta, helppo, keskivaikea, vaikea, this);
         ButtonGroup buttonGroup = new ButtonGroup();
         buttonGroup.add(helppo);
-        buttonGroup.add(keskitaso);
+        buttonGroup.add(keskivaikea);
         buttonGroup.add(vaikea);
 
         container.add(teksti);
@@ -70,7 +69,7 @@ public class AloitusKayttoliittyma implements Runnable { //miten voidaan sulkea
         container.add(nimiKentta);
         container.add(valitseTasoTeksti);
         container.add(helppo);
-        container.add(keskitaso);
+        container.add(keskivaikea);
         container.add(vaikea);
 
     }
@@ -84,14 +83,16 @@ public class AloitusKayttoliittyma implements Runnable { //miten voidaan sulkea
     public JFrame getFrame() {
         return frame;
     }
-    
-    public Pelitilasto getHelponTasonTilasto(){
+
+    public Pelitilasto getHelponTasonTilasto() {
         return this.helppotaso;
     }
-    public Pelitilasto getKeskiTasonTilasto(){
+
+    public Pelitilasto getKeskiTasonTilasto() {
         return this.keskitaso;
     }
-    public Pelitilasto getVaikeanTasonTilasto(){
+
+    public Pelitilasto getVaikeanTasonTilasto() {
         return this.vaikeataso;
     }
 

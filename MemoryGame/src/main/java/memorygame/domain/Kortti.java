@@ -72,7 +72,7 @@ public class Kortti {
      *
      */
     public void kaannaKortti() {
-        if (this.kaannetty() == true) {
+        if (kaannetty()) {
             this.kaannettu = false;
         } else {
             this.kaannettu = true;
@@ -81,7 +81,7 @@ public class Kortti {
 
     /**
      * Metodi vertaa kahden kortin tyyppejä ja selvittää onko kortit samat.
-     *
+     * Jos kortit ovat samat, niin metodi palauttaa true, muulloin false.
      * @param kortti varrattava kortti
      * @return totuusarvo
      *

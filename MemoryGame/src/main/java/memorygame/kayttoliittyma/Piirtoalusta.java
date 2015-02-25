@@ -5,7 +5,6 @@
  */
 package memorygame.kayttoliittyma;
 
-import memorygame.kayttoliittyma.KuvallinenKortti;
 import memorygame.kayttoliittyma.Hiirikuuntelija;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -30,7 +29,7 @@ public class Piirtoalusta extends JPanel {
     Muistipeli muistipeli;
     private BufferedImage kansikuva;
     private BufferedImage kuva;
-    private BufferedImage pohja;
+    private BufferedImage taustakuva;
 
     public Piirtoalusta(Muistipeli muistipeli) {
         this.muistipeli = muistipeli;
@@ -54,21 +53,13 @@ public class Piirtoalusta extends JPanel {
                 this.haeKuvaTiedostosta(kortti.getTyyppi());
                 this.piirraKortinKuva(kortti, graphics);
             } else {
-                haeKansikuvaTiedostosta();
+                this.haeKansikuvaTiedostosta();
                 this.piirraKortinKansi(k, graphics);
             }
         }
 
     }
 
-    /**
-     * Metodi lukee tiedostosta kansikuvan.
-     *
-     */
-    /**
-     * Metodi lukee tiedostosta kuvan.
-     *
-     */
     /**
      * Metodi lisaa kuuntelijan.
      *
@@ -80,6 +71,12 @@ public class Piirtoalusta extends JPanel {
         this.addMouseListener(k);
     }
 
+    /**
+     * Metodi piirtää korteille kansikuvat.
+     *
+     * @param k
+     * @param graphics
+     */
     private void piirraPakanKorteilleKansi(Korttipakka pakka, Graphics graphics) {
         for (Kortti kortti : this.muistipeli.getPelilauta().getKorttipakka().haeKorttipakka()) {
             this.piirraKortinKansi(kortti, graphics);
@@ -111,6 +108,14 @@ public class Piirtoalusta extends JPanel {
     }
 
     /**
+     * Metodi piirtää muistipelille taustakuvan.
+     *
+     */
+    private void piirraTausta(Graphics graphics) {
+        graphics.drawImage(taustakuva, 0, 0, 750, 750, this);
+    }
+
+    /**
      * Metodi luo kuvalliset kortit.
      *
      */
@@ -125,6 +130,12 @@ public class Piirtoalusta extends JPanel {
 
     }
 
+    /**
+     * Metodi lukee tiedostosta kuvan.
+     *
+     * @param tyyppi
+     *
+     */
     public void haeKuvaTiedostosta(int tyyppi) {
 
         try {
@@ -136,8 +147,11 @@ public class Piirtoalusta extends JPanel {
 
         }
     }
-//
 
+    /**
+     * Metodi lukee tiedostosta kansikuvan.
+     *
+     */
     public void haeKansikuvaTiedostosta() {
         try {
             File kuvatiedosto = new File("./kansikuva.png");
@@ -149,19 +163,22 @@ public class Piirtoalusta extends JPanel {
         }
 
     }
-    public Muistipeli getMuistipeli(){
+
+    /**
+     * Metodi lukee tiedostosta muistipelin taustakuvan.
+     *
+     */
+    private void haePohjaTiedostosta() {
+        try {
+            File kuvatiedosto = new File("./kansikuva.png");
+            taustakuva = ImageIO.read(kuvatiedosto);
+        } catch (IOException e) {
+            System.out.println("tiedoston luku ei onnistu.");
+        }
+    }
+
+    public Muistipeli getMuistipeli() {
         return this.muistipeli;
     }
 
-//    private boolean piirraTausta(Graphics graphics) {
-//        return graphics.drawImage(pohja, 0 ,0, 750, 750, this);
-//    }
-//        private void haePohjaTiedostosta() {  
-//        try {
-//            File kuvatiedosto = new File("./******.jpg");
-//            pohja = ImageIO.read(kuvatiedosto);
-//        } catch (IOException e) {
-//            System.out.println("tiedoston luku ei onnistu.");
-//        }
-//    }
 }

@@ -42,7 +42,10 @@ public class Pelaaja implements Comparable<Pelaaja> {
             this.pisteet = luku;
         }
     }
-
+    /**
+     * Metodi lisää pelaajalle 1 pisteen.
+     *
+     */
     public void lisaaPiste() {
         this.pisteet++;
     }
