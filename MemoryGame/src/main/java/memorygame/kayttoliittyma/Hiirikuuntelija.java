@@ -29,11 +29,51 @@ public class Hiirikuuntelija implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
 
-        if (this.piirtoalusta.getMuistipeli().korttiaKlikattu(e)) {
-            this.piirtoalusta.getMuistipeli().klikkausHavaittu(e);
+        if (korttiaKlikattu(e)) {
+            this.piirtoalusta.muistipeli.logiikka(this.klikattuKortti(e).getKortti());
         }
-        this.piirtoalusta.repaint();
+                    this.piirtoalusta.repaint();
+
+//            try {
+//                Thread.sleep(500);
+//            } catch (InterruptedException ex) {
+//                Logger.getLogger(Muistipeli.class.getName()).log(Level.SEVERE, null, ex);
+//            }
     }
+    
+    
+    /**
+     * Metodi hakee klikatun kortin.
+     *
+     * @param e Hiiren klikkaus
+     * @return kuvallinen kortin
+     */
+    public KuvallinenKortti klikattuKortti(MouseEvent e) {
+        for (KuvallinenKortti kuvallinenKortti : this.piirtoalusta.muistipeli.getKuvallisetKortit()) {
+            Kortti kortti = kuvallinenKortti.getKortti();
+
+            if (e.getX() > kortti.getX() * 100 + 50 && e.getY() > kortti.getY() * 100 + 50) {
+                if (e.getX() < kortti.getX() * 105 + 50 + kortti.getLeveys() && e.getY() < kortti.getY() * 123 + 50 + kortti.getKorkeus()) {
+
+                    return kuvallinenKortti;
+                }
+            }
+
+        }
+        return null;
+    }
+
+    /**
+     * Metodi kertoo, onko hiiren klikkaus osunut korttiin. Jos korttia on
+     * klikattu metodi palauttaa true, muulloin false.
+     *
+     * @param e Hiiren klikkaus
+     * @return totuusarvo
+     */
+    public boolean korttiaKlikattu(MouseEvent e) {
+        return !(this.klikattuKortti(e) == null);
+    }
+
 
 
     @Override

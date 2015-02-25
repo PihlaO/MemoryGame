@@ -33,7 +33,7 @@ public class MuistipeliTest {
     Kayttoliittyma pelikali;
     Pelaaja pelaaja;
     AloitusKayttoliittyma aloituskali;
-    LopetusKayttoliittyma lopetusvalikko;
+ 
 
     public MuistipeliTest() {
     }
@@ -54,7 +54,7 @@ public class MuistipeliTest {
         this.muistipeliKeskitaso = new Muistipeli(2, this.pelaaja, aloituskali, new ArrayList<KuvallinenKortti>());
         this.muistipeliVaikea = new Muistipeli(3, this.pelaaja, aloituskali, new ArrayList<KuvallinenKortti>());
         this.pelikali = new Kayttoliittyma(muistipeliHelppo);
-        this.lopetusvalikko = new LopetusKayttoliittyma(this.muistipeliHelppo, this.aloituskali);
+
 
     }
 
@@ -282,7 +282,7 @@ public class MuistipeliTest {
     }
     
         @Test
-    public void logiikkaVertaaPariaOikeinOikein() {
+    public void logiikkaTyhjentaaValitutKortitOikein() {
         try {
             this.muistipeliHelppo.kaynnista();
             Kortti kortti = new Kortti(1);
