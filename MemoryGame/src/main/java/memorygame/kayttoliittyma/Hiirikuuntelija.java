@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package memorygame.memorygame.kayttoliittyma;
+package memorygame.kayttoliittyma;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -11,12 +11,14 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
-import memorygame.memorygame.Muistipeli;
-import memorygame.memorygame.domain.Kortti;
+import memorygame.logiikka.Muistipeli;
+import memorygame.domain.Kortti;
 
 /**
  *
- * @author okpiok
+ * import memorygame.memorygame.kayttoliittyma.KuvallinenKortti;
+import memorygame.memorygame.kayttoliittyma.Piirtoalusta;
+@author okpiok
  */
 /*
  *Luodaan muistipelille hiirenkuuntelija.

@@ -3,15 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package memorygame.memorygame.domain;
+package memorygame.domain;
 
+import memorygame.domain.Kortti;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 /**
  *
- * @author okpiok
+ * import memorygame.memorygame.domain.Vaikeustaso;
+@author okpiok
  */
 
 /* 
@@ -33,7 +35,7 @@ public class Korttipakka {
      */
     public void luoKortit() {
         int uniikkienKorttienLukumaara = 0;
-        uniikkienKorttienLukumaara = this.haeVaikeustaso().haeKorttienLukumaara() / 2;
+        uniikkienKorttienLukumaara = this.vaikeustaso.haeKorttienLukumaara() / 2;
         for (int i = 1; i <= uniikkienKorttienLukumaara; i++) {
             Kortti kortti = new Kortti(i);
             this.pakka.add(kortti);

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package memorygame.memorygame.domain;
+package memorygame.domain;
 
 /**
  *
@@ -44,8 +44,7 @@ public class Pelaaja implements Comparable<Pelaaja> {
     }
 
     public void lisaaPiste() {
-        int luku = getPisteet() + 1;
-        setPisteet(luku);
+        this.pisteet++;
     }
 
     @Override

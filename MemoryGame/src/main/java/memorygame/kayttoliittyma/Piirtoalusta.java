@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package memorygame.memorygame.kayttoliittyma;
+package memorygame.kayttoliittyma;
 
+import memorygame.kayttoliittyma.KuvallinenKortti;
+import memorygame.kayttoliittyma.Hiirikuuntelija;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -12,9 +14,9 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-import memorygame.memorygame.Muistipeli;
-import memorygame.memorygame.domain.Kortti;
-import memorygame.memorygame.domain.Korttipakka;
+import memorygame.logiikka.Muistipeli;
+import memorygame.domain.Kortti;
+import memorygame.domain.Korttipakka;
 
 /**
  *

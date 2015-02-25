@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package memorygame.memorygame.domain;
+package memorygame.domain;
 
-import memorygame.memorygame.domain.Korttipakka;
+import memorygame.domain.Korttipakka;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

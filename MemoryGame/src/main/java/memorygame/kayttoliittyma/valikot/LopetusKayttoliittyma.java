@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package memorygame.memorygame.valikot;
+package memorygame.kayttoliittyma.valikot;
 
 import java.awt.Container;
 import java.awt.Dimension;
@@ -12,7 +12,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
-import memorygame.memorygame.Muistipeli;
+import memorygame.kayttoliittyma.valikot.AloitusKayttoliittyma;
+import memorygame.logiikka.Muistipeli;
 
 /**
  *

@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package memorygame.memorygame;
+package memorygame;
 
+import memorygame.domain.Pelitilasto;
 import javax.swing.SwingUtilities;
-import memorygame.memorygame.valikot.AloitusKayttoliittyma;
+import memorygame.kayttoliittyma.valikot.AloitusKayttoliittyma;
 
 /**
  *
@@ -23,7 +24,7 @@ public class Paaohjelma {
         Pelitilasto helppoTasoTilasto = new Pelitilasto("top 3");
         Pelitilasto keskiTasoTilasto = new Pelitilasto("top 3");
         Pelitilasto vaikeaTasoTilasto = new Pelitilasto("top 3");
-   
+
         AloitusKayttoliittyma kayttoliittymaA = new AloitusKayttoliittyma(helppoTasoTilasto,keskiTasoTilasto, vaikeaTasoTilasto);
         SwingUtilities.invokeLater(kayttoliittymaA);
 

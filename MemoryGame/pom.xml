@@ -40,11 +40,13 @@
                 <version>0.30</version>
                 <configuration>
                     <targetClasses>
-                        <param>memorygame.memorygame.*</param>
+                        <param>memorygame.domain.*</param>
+                        <param>memorygame.logiikka.*</param>
                        
                     </targetClasses>
                     <targetTests>
-                        <param>memorygame.memorygame.*</param>
+                        <param>memorygame.domain.*</param>
+                        <param>memorygame.logiikka.*</param>
              
                     </targetTests>
                 </configuration>

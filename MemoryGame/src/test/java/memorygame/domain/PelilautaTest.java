@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package memorygame.memorygame.domain;
+package memorygame.domain;
 
+import memorygame.domain.Pelilauta;
+import memorygame.domain.Korttipakka;
+import memorygame.domain.Kortti;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

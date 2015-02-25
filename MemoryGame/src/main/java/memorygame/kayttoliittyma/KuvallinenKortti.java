@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package memorygame.memorygame.kayttoliittyma;
+package memorygame.kayttoliittyma;
 
-import memorygame.memorygame.domain.Kortti;
+import memorygame.domain.Kortti;
 
 /**
  *

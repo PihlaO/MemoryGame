@@ -3,17 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package memorygame.memorygame.kayttoliittyma;
+package memorygame.kayttoliittyma;
 
+import memorygame.kayttoliittyma.Hiirikuuntelija;
 import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
-import memorygame.memorygame.Muistipeli;
+import memorygame.logiikka.Muistipeli;
 
 /**
  *
- * @author okpiok
+ * import memorygame.memorygame.kayttoliittyma.Piirtoalusta;
+@author okpiok
  */
 /*
  *Luodaan muistipelin käyttöliittymä.

@@ -3,21 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package memorygame.memorygame;
+package memorygame.logiikka;
 
 import java.awt.event.MouseEvent;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
-import memorygame.memorygame.domain.Kortti;
-import memorygame.memorygame.domain.Korttipakka;
-import memorygame.memorygame.domain.Pelaaja;
-import memorygame.memorygame.domain.Pelilauta;
-import memorygame.memorygame.kayttoliittyma.Kayttoliittyma;
-import memorygame.memorygame.kayttoliittyma.KuvallinenKortti;
-import memorygame.memorygame.valikot.AloitusKayttoliittyma;
-import memorygame.memorygame.valikot.LopetusKayttoliittyma;
+import memorygame.domain.Pelitilasto;
+import memorygame.domain.Kortti;
+import memorygame.domain.Korttipakka;
+import memorygame.domain.Pelaaja;
+import memorygame.domain.Pelilauta;
+import memorygame.kayttoliittyma.Kayttoliittyma;
+import memorygame.kayttoliittyma.KuvallinenKortti;
+import memorygame.kayttoliittyma.valikot.AloitusKayttoliittyma;
+import memorygame.kayttoliittyma.valikot.LopetusKayttoliittyma;
 
 /**
  *
@@ -72,7 +73,7 @@ public class Muistipeli {
 
         if (!kortti.kaannetty()) {
             kortti.kaannaKortti();
-            this.lisaaPistePelaajalle();
+            this.pelaaja.lisaaPiste();
 
             if (!this.PelilaudanEkaKorttiValittu()) {
                 this.ValitaanEkaksiKortiksi(kortti);
@@ -85,16 +86,16 @@ public class Muistipeli {
 
             this.kayttoliittyma.getPiirtoalusta().repaint();
 
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Muistipeli.class.getName()).log(Level.SEVERE, null, ex);
-            }
+//            try {
+//                Thread.sleep(500);
+//            } catch (InterruptedException ex) {
+//                Logger.getLogger(Muistipeli.class.getName()).log(Level.SEVERE, null, ex);
+//            }
 
         }
 
         if (this.peliPaattyi()) {
-            this.TallennaPelaajaTilastoon();
+            this.getPelitilasto().tallennaTilastoon(this.pelaaja);
             this.AvaaLopetusValikko();
 
         }
@@ -187,7 +188,7 @@ public class Muistipeli {
      * @return totuusarvo
      */
     public boolean PelilaudanEkaKorttiValittu() {
-        return !(this.getPelilauta().getValittuKortti1() == null);
+        return !(this.pelilauta.getValittuKortti1() == null);
     }
 
     /**
@@ -197,7 +198,7 @@ public class Muistipeli {
      * @return totuusarvo
      */
     public boolean PelilaudanTokaKorttiValittu() {
-        return !(this.getPelilauta().getValittuKortti2() == null);
+        return !(this.pelilauta.getValittuKortti2() == null);
     }
 
     /**
@@ -207,7 +208,7 @@ public class Muistipeli {
      * @return totuusarvo
      */
     public boolean pelilaudanKortitValittu() {
-        return !(this.getPelilauta().getValittuKortti1() == null) && !(this.getPelilauta().getValittuKortti2() == null);
+        return !(this.pelilauta.getValittuKortti1() == null) && !(this.pelilauta.getValittuKortti2() == null);
     }
 
     /**
@@ -216,8 +217,8 @@ public class Muistipeli {
      *
      */
     public void tyhjennaPelilaudanValitutKortit() {
-        this.getPelilauta().setValittuKortti1(null);
-        this.getPelilauta().setValittuKortti2(null);
+        this.pelilauta.setValittuKortti1(null);
+        this.pelilauta.setValittuKortti2(null);
     }
 
     /**
@@ -226,8 +227,8 @@ public class Muistipeli {
      *
      */
     public void kaannaPelilaudanValitutKortit() {
-        this.getPelilauta().getValittuKortti1().kaannaKortti();
-        this.getPelilauta().getValittuKortti2().kaannaKortti();
+        this.pelilauta.getValittuKortti1().kaannaKortti();
+        this.pelilauta.getValittuKortti2().kaannaKortti();
     }
 
     /**
@@ -237,23 +238,7 @@ public class Muistipeli {
      * @return totuusarvo
      */
     public boolean pari() {
-        return this.getPelilauta().getValittuKortti1().onkoKortitSamat(this.getPelilauta().getValittuKortti2());
-    }
-
-    /**
-     * Metodi lisää 1 pisteen pelaajalle.
-     *
-     */
-    public void lisaaPistePelaajalle() {
-        this.getPelaaja().lisaaPiste();
-    }
-
-    /**
-     * Metodi tallemtaa pelaajan tiedot pelitilastoon.
-     *
-     */
-    public void TallennaPelaajaTilastoon() {
-        this.getPelitilasto().tallennaTilastoon(this.getPelaaja());
+        return this.pelilauta.getValittuKortti1().onkoKortitSamat(this.getPelilauta().getValittuKortti2());
     }
 
     /**

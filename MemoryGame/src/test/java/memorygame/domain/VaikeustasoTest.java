@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package memorygame.memorygame.domain;
+package memorygame.domain;
 
-import memorygame.memorygame.domain.Vaikeustaso;
+import memorygame.domain.Vaikeustaso;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

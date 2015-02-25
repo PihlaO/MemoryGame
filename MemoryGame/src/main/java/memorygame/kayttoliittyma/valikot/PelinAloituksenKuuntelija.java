@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package memorygame.memorygame.valikot;
+package memorygame.kayttoliittyma.valikot;
 
+import memorygame.kayttoliittyma.valikot.AloitusKayttoliittyma;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JTextField;
-import memorygame.memorygame.Muistipeli;
-import memorygame.memorygame.domain.Pelaaja;
-import memorygame.memorygame.kayttoliittyma.KuvallinenKortti;
+import memorygame.logiikka.Muistipeli;
+import memorygame.domain.Pelaaja;
+import memorygame.kayttoliittyma.KuvallinenKortti;
 
 /**
  *
