@@ -13,6 +13,7 @@ import memorygame.domain.Pelitilasto;
 import memorygame.kayttoliittyma.Kayttoliittyma;
 import memorygame.kayttoliittyma.KuvallinenKortti;
 import memorygame.kayttoliittyma.valikot.AloitusKayttoliittyma;
+import memorygame.kayttoliittyma.valikot.LopetusKayttoliittyma;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.*;
@@ -26,10 +27,13 @@ import org.junit.Test;
  */
 public class MuistipeliTest {
 
-    Muistipeli muistipeli;
+    Muistipeli muistipeliHelppo;
+    Muistipeli muistipeliKeskitaso;
+    Muistipeli muistipeliVaikea;
     Kayttoliittyma pelikali;
     Pelaaja pelaaja;
     AloitusKayttoliittyma aloituskali;
+    LopetusKayttoliittyma lopetusvalikko;
 
     public MuistipeliTest() {
     }
@@ -45,9 +49,13 @@ public class MuistipeliTest {
     @Before
     public void setUp() {
         this.pelaaja = new Pelaaja("Anna");
-        this.aloituskali = new AloitusKayttoliittyma(new Pelitilasto("top3"), new Pelitilasto("top3"), new Pelitilasto("top3"));
-        muistipeli = new Muistipeli(1, this.pelaaja, aloituskali, new ArrayList<KuvallinenKortti>());
-        this.pelikali = new Kayttoliittyma(muistipeli);
+        this.aloituskali = new AloitusKayttoliittyma(new Pelitilasto("top3"), new Pelitilasto("top3k"), new Pelitilasto("top3v"));
+        this.muistipeliHelppo = new Muistipeli(1, this.pelaaja, aloituskali, new ArrayList<KuvallinenKortti>());
+        this.muistipeliKeskitaso = new Muistipeli(2, this.pelaaja, aloituskali, new ArrayList<KuvallinenKortti>());
+        this.muistipeliVaikea = new Muistipeli(3, this.pelaaja, aloituskali, new ArrayList<KuvallinenKortti>());
+        this.pelikali = new Kayttoliittyma(muistipeliHelppo);
+        this.lopetusvalikko = new LopetusKayttoliittyma(this.muistipeliHelppo, this.aloituskali);
+
     }
 
     @After
@@ -57,118 +65,237 @@ public class MuistipeliTest {
     @Test
     public void palauttaaPelilaudanOikein() {
 
-        assertEquals(this.muistipeli.pelilauta, muistipeli.getPelilauta());
+        assertEquals(this.muistipeliHelppo.pelilauta, muistipeliHelppo.getPelilauta());
     }
 
     @Test
     public void palauttaaPelaajanOikein() {
 
-        assertEquals(this.pelaaja, this.muistipeli.getPelaaja());
+        assertEquals(this.pelaaja, this.muistipeliHelppo.getPelaaja());
     }
 
     @Test
     public void palauttaaKayttoliittymanOikein() {
 
-        assertEquals(this.aloituskali, muistipeli.getAloitusKayttoliittyma());
+        assertEquals(this.aloituskali, muistipeliHelppo.getAloitusKayttoliittyma());
     }
 
     @Test
     public void asettaaToisenaValitunKortinOikein() {
         Kortti kortti = new Kortti(3);
-        muistipeli.ValitaanToiseksiKortiksi(kortti);
-        assertEquals(kortti, muistipeli.pelilauta.getValittuKortti2());
+        muistipeliHelppo.ValitaanToiseksiKortiksi(kortti);
+        assertEquals(kortti, muistipeliHelppo.pelilauta.getValittuKortti2());
     }
 
     @Test
     public void asettaaEnsinValitunKortinOikein() {
         Kortti kortti = new Kortti(3);
-        muistipeli.ValitaanEkaksiKortiksi(kortti);
-        assertEquals(kortti, muistipeli.pelilauta.getValittuKortti1());
+        muistipeliHelppo.ValitaanEkaksiKortiksi(kortti);
+        assertEquals(kortti, muistipeliHelppo.pelilauta.getValittuKortti1());
     }
 
     @Test
     public void ensimmainenKorttiValittu() {
         Kortti kortti = new Kortti(3);
-        muistipeli.ValitaanEkaksiKortiksi(kortti);
+        muistipeliHelppo.ValitaanEkaksiKortiksi(kortti);
 
-        assertEquals(true, muistipeli.PelilaudanEkaKorttiValittu());
+        assertEquals(true, muistipeliHelppo.PelilaudanEkaKorttiValittu());
     }
 
     @Test
     public void toinenKorttiValittu() {
         Kortti kortti = new Kortti(3);
-        muistipeli.ValitaanToiseksiKortiksi(kortti);
+        muistipeliHelppo.ValitaanToiseksiKortiksi(kortti);
 
-        assertEquals(true, muistipeli.PelilaudanTokaKorttiValittu());
+        assertEquals(true, muistipeliHelppo.PelilaudanTokaKorttiValittu());
     }
 
     @Test
     public void pelilaudanMolemmatKortitValittu() {
 
         Kortti kortti = new Kortti(3);
-        muistipeli.ValitaanEkaksiKortiksi(kortti);
+        muistipeliHelppo.ValitaanEkaksiKortiksi(kortti);
         Kortti kortti2 = new Kortti(3);
-        muistipeli.ValitaanToiseksiKortiksi(kortti);
+        muistipeliHelppo.ValitaanToiseksiKortiksi(kortti);
 
-        assertEquals(true, muistipeli.pelilaudanKortitValittu());
+        assertEquals(true, muistipeliHelppo.pelilaudanKortitValittu());
     }
 
     @Test
     public void tyhjentaaValitutKortitOikein() {
 
         Kortti kortti = new Kortti(3);
-        muistipeli.ValitaanEkaksiKortiksi(kortti);
+        muistipeliHelppo.ValitaanEkaksiKortiksi(kortti);
         Kortti kortti2 = new Kortti(3);
-        muistipeli.ValitaanToiseksiKortiksi(kortti);
-        muistipeli.tyhjennaPelilaudanValitutKortit();
+        muistipeliHelppo.ValitaanToiseksiKortiksi(kortti);
+        muistipeliHelppo.tyhjennaPelilaudanValitutKortit();
 
-        assertEquals(null, muistipeli.getPelilauta().getValittuKortti1());
-        assertEquals(null, muistipeli.getPelilauta().getValittuKortti2());
+        assertEquals(null, muistipeliHelppo.getPelilauta().getValittuKortti1());
+        assertEquals(null, muistipeliHelppo.getPelilauta().getValittuKortti2());
     }
 
     @Test
     public void kaantaaPelilaudanValitutKortitOikein() {
         Kortti kortti = new Kortti(3);
-        muistipeli.ValitaanEkaksiKortiksi(kortti);
+        muistipeliHelppo.ValitaanEkaksiKortiksi(kortti);
         Kortti kortti2 = new Kortti(3);
-        muistipeli.ValitaanToiseksiKortiksi(kortti2);
-        muistipeli.kaannaPelilaudanValitutKortit();
+        muistipeliHelppo.ValitaanToiseksiKortiksi(kortti2);
+        muistipeliHelppo.kaannaPelilaudanValitutKortit();
 
-        assertEquals(true, muistipeli.getPelilauta().getValittuKortti1().kaannetty());
-        assertEquals(true, muistipeli.getPelilauta().getValittuKortti2().kaannetty());
+        assertEquals(true, muistipeliHelppo.getPelilauta().getValittuKortti1().kaannetty());
+        assertEquals(true, muistipeliHelppo.getPelilauta().getValittuKortti2().kaannetty());
     }
 
     @Test
     public void testaaPari() {
         Kortti kortti = new Kortti(3);
-        muistipeli.ValitaanEkaksiKortiksi(kortti);
+        muistipeliHelppo.ValitaanEkaksiKortiksi(kortti);
         Kortti kortti2 = new Kortti(3);
-        muistipeli.ValitaanToiseksiKortiksi(kortti2);
-        assertEquals(true, muistipeli.pari());
+        muistipeliHelppo.ValitaanToiseksiKortiksi(kortti2);
+        assertEquals(true, muistipeliHelppo.pari());
     }
 
     @Test
     public void testaaEiPari() {
         Kortti kortti = new Kortti(3);
-        muistipeli.ValitaanEkaksiKortiksi(kortti);
+        muistipeliHelppo.ValitaanEkaksiKortiksi(kortti);
         Kortti kortti2 = new Kortti(4);
-        muistipeli.ValitaanToiseksiKortiksi(kortti2);
-        assertEquals(false, muistipeli.pari());
+        muistipeliHelppo.ValitaanToiseksiKortiksi(kortti2);
+        assertEquals(false, muistipeliHelppo.pari());
     }
 
     @Test
     public void lisaaPisteenPelaajalleOikein() {
         this.pelaaja.lisaaPiste();
         this.pelaaja.lisaaPiste();
-        assertEquals(2, muistipeli.getPelaaja().getPisteet());
+        assertEquals(2, muistipeliHelppo.getPelaaja().getPisteet());
     }
-
-
 
     @Test
     public void asettaaKuvallisetKortitListanOiekin() {
         List<KuvallinenKortti> lista = new ArrayList<>();
-        this.muistipeli.setKuvallisetKortit(lista);
-        assertEquals(lista, this.muistipeli.getKuvallisetKortit());
+        this.muistipeliHelppo.setKuvallisetKortit(lista);
+        assertEquals(lista, this.muistipeliHelppo.getKuvallisetKortit());
+    }
+
+    @Test
+    public void palauttaPelinKayttoliittymanOikein() {
+        boolean totuus = false;
+        muistipeliHelppo.kaynnista();
+        if (!(this.muistipeliHelppo.getPelinKayttoliittyma() == null)) {
+            totuus = true;
+        }
+        assertEquals(true, totuus);
+    }
+
+    @Test
+    public void hakeeTilastonOikein() {
+        assertEquals(this.muistipeliHelppo.tilasto, this.muistipeliHelppo.getPelitilasto());
+    }
+
+    @Test
+    public void hakeeHelponPelitilastonOikein() {
+
+        this.muistipeliHelppo.valitunVaikeustasonTilasto(1, aloituskali);
+
+        assertEquals("top3", this.muistipeliHelppo.tilasto.getNimi());
+    }
+
+    @Test
+    public void hakeeKeskivaikeanPelitilastonOikein() {
+
+        this.muistipeliKeskitaso.valitunVaikeustasonTilasto(2, aloituskali);
+
+        assertEquals("top3k", this.muistipeliKeskitaso.tilasto.getNimi());
+    }
+
+    @Test
+    public void hakeePelitilastonOikein4() {
+
+        this.muistipeliHelppo.valitunVaikeustasonTilasto(3, aloituskali);
+
+        assertEquals("top3v", this.muistipeliVaikea.tilasto.getNimi());
+    }
+
+    @Test
+    public void hakeeVaikeanPelitilastonOikein() {
+
+        this.muistipeliHelppo.valitunVaikeustasonTilasto(-1, aloituskali);
+
+        assertEquals("top3", this.muistipeliHelppo.tilasto.getNimi());
+    }
+
+    @Test
+    public void peliEiPaaty() {
+        KuvallinenKortti k1 = new KuvallinenKortti(new Kortti(1));
+        KuvallinenKortti k2 = new KuvallinenKortti(new Kortti(2));
+        KuvallinenKortti k3 = new KuvallinenKortti(new Kortti(3));
+        k2.getKortti().kaannaKortti();
+        this.muistipeliHelppo.getKuvallisetKortit().add(k1);
+        this.muistipeliHelppo.getKuvallisetKortit().add(k2);
+        this.muistipeliHelppo.getKuvallisetKortit().add(k3);
+        assertEquals(false, this.muistipeliHelppo.peliPaattyi());
+    }
+
+    @Test
+    public void peliPaattyiOikein() {
+        KuvallinenKortti k1 = new KuvallinenKortti(new Kortti(1));
+        KuvallinenKortti k2 = new KuvallinenKortti(new Kortti(2));
+        KuvallinenKortti k3 = new KuvallinenKortti(new Kortti(3));
+        k1.getKortti().kaannaKortti();
+        k2.getKortti().kaannaKortti();
+        k3.getKortti().kaannaKortti();
+        this.muistipeliHelppo.getKuvallisetKortit().add(k1);
+        this.muistipeliHelppo.getKuvallisetKortit().add(k2);
+        this.muistipeliHelppo.getKuvallisetKortit().add(k3);
+        assertEquals(true, this.muistipeliHelppo.peliPaattyi());
+    }
+
+    @Test
+    public void logiikkaValitseeEkanKortinOikein() {
+        try {
+            this.muistipeliHelppo.kaynnista();
+            Kortti kortti = this.muistipeliHelppo.getPelilauta().getKorttiXY(1, 2);
+            this.muistipeliHelppo.logiikka(kortti);
+
+        } catch (Exception e) {
+
+        }
+
+        assertEquals(true, this.muistipeliHelppo.PelilaudanEkaKorttiValittu());
+    }
+
+    @Test
+    public void logiikkaValitseeTokanKortinOikein() {
+        try {
+            this.muistipeliHelppo.kaynnista();
+            Kortti kortti = this.muistipeliHelppo.getPelilauta().getKorttiXY(1, 2);
+            Kortti kortti2 = this.muistipeliHelppo.getPelilauta().getKorttiXY(1, 2);
+            this.muistipeliHelppo.pelilauta.setValittuKortti1(kortti);
+            this.muistipeliHelppo.logiikka(kortti2);
+
+        } catch (Exception e) {
+
+        }
+
+        assertEquals(true, this.muistipeliHelppo.PelilaudanTokaKorttiValittu());
+    }
+    
+        @Test
+    public void logiikkaVertaaPariaOikeinOikein() {
+        try {
+            this.muistipeliHelppo.kaynnista();
+            Kortti kortti = new Kortti(1);
+            Kortti kortti2 = new Kortti(2);
+            this.muistipeliHelppo.pelilauta.setValittuKortti1(kortti);
+            this.muistipeliHelppo.pelilauta.setValittuKortti2(kortti2);
+    
+            this.muistipeliHelppo.logiikka(this.muistipeliHelppo.getPelilauta().getKorttiXY(1, 2));
+        } catch (Exception e) {
+
+        }
+
+        assertEquals(this.muistipeliHelppo.getPelilauta().getKorttiXY(1, 2), this.muistipeliHelppo.pelilauta.getValittuKortti1());
+        assertEquals(null, this.muistipeliHelppo.pelilauta.getValittuKortti2());
     }
 }

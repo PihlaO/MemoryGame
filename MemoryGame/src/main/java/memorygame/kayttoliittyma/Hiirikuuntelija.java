@@ -30,9 +30,9 @@ public class Hiirikuuntelija implements MouseListener {
     public void mouseClicked(MouseEvent e) {
 
         if (this.piirtoalusta.getMuistipeli().korttiaKlikattu(e)) {
-            this.piirtoalusta.getMuistipeli().logiikka(e);
-
+            this.piirtoalusta.getMuistipeli().klikkausHavaittu(e);
         }
+        this.piirtoalusta.repaint();
     }
 
 

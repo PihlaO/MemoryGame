@@ -61,12 +61,9 @@ public class Muistipeli {
     /**
      * Metodissa on muistipelin logiikka.
      *
-     * @param e hiiren klikkaus.
+     * @param kortti
      */
-    public void logiikka(MouseEvent e) {
-
-        KuvallinenKortti kuvakortti = klikattuKortti(e);
-        Kortti kortti = kuvakortti.getKortti();
+    public void logiikka(Kortti kortti) {
 
         if (this.pelilaudanKortitValittu()) {
 
@@ -89,7 +86,7 @@ public class Muistipeli {
                 }
             }
 
-            this.kayttoliittyma.getPiirtoalusta().repaint();
+//            this.kayttoliittyma.getPiirtoalusta().repaint();
 
 //            try {
 //                Thread.sleep(500);
@@ -104,6 +101,17 @@ public class Muistipeli {
 
         }
 
+    }
+
+    /**
+     * Metodi havaitsee klikkauksen.
+     *
+     * @param e
+     */
+    public void klikkausHavaittu(MouseEvent e) {
+        KuvallinenKortti kuvakortti = klikattuKortti(e);
+        Kortti kortti = kuvakortti.getKortti();
+        logiikka(kortti);
     }
 
     /**
@@ -169,7 +177,7 @@ public class Muistipeli {
      * @param aloituskayttoliittyma
      * @return Pelitilasto
      */
-    private Pelitilasto valitunVaikeustasonTilasto(int vaikeustaso, AloitusKayttoliittyma aloituskayttoliittyma) {
+    public Pelitilasto valitunVaikeustasonTilasto(int vaikeustaso, AloitusKayttoliittyma aloituskayttoliittyma) {
         if (vaikeustaso == 1) {
             return aloituskayttoliittyma.getHelponTasonTilasto();
         }
