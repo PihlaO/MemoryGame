@@ -87,7 +87,7 @@ public class Muistipeli {
         }
 
         if (this.peliPaattyi()) {
-            this.tilasto.tallennaTilastoon(this.pelaaja);
+            this.tilasto.haeTilastolista().add(pelaaja);
             this.AvaaLopetusValikko();
 
         }

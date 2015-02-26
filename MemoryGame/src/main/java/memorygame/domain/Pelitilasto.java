@@ -37,7 +37,7 @@ public class Pelitilasto {
      */
     public void tallennaTilastoon(Pelaaja pelaaja) {
         this.tilasto.add(pelaaja);
-        jarjetaTilasto();
+        jarjestaTilasto();
     }
 
     /**
@@ -58,16 +58,6 @@ public class Pelitilasto {
     }
 
     /**
-     * Metodi tulostaa pelitilaston.
-     *
-     */
-    public void tulostaTilasto() {
-        for (Pelaaja pelaaja : this.tilasto) {
-            System.out.println(pelaaja);
-        }
-    }
-
-    /**
      * Metodi palauttaa pelaajan listasta indeksin perusteella.
      *
      * @param indeksi pelaajan sijainti listalla
@@ -81,7 +71,7 @@ public class Pelitilasto {
     /**
      * Metodi järjetää listan.
      */
-    public void jarjetaTilasto() {
+    public void jarjestaTilasto() {
         Collections.sort(this.tilasto);
     }
     

@@ -257,7 +257,7 @@ public class MuistipeliTest {
             this.muistipeliHelppo.logiikka(kortti);
 
         } catch (Exception e) {
-            System.out.println("Lopetusvalikkoa ei avattu");
+
         }
 
         assertEquals(true, this.muistipeliHelppo.PelilaudanEkaKorttiValittu());
@@ -273,7 +273,7 @@ public class MuistipeliTest {
             this.muistipeliHelppo.logiikka(kortti2);
 
         } catch (Exception e) {
-            System.out.println("Lopetusvalikkoa ei avattu");
+
         }
 
         assertEquals(true, this.muistipeliHelppo.PelilaudanTokaKorttiValittu());
@@ -290,7 +290,7 @@ public class MuistipeliTest {
 
             this.muistipeliHelppo.logiikka(this.muistipeliHelppo.getPelilauta().getKorttiXY(1, 2));
         } catch (Exception e) {
-            System.out.println("Lopetusvalikkoa ei avattu");
+
         }
 
         assertEquals(this.muistipeliHelppo.getPelilauta().getKorttiXY(1, 2), this.muistipeliHelppo.pelilauta.getValittuKortti1());
