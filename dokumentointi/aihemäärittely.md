@@ -8,10 +8,7 @@ Käyttäjä: Pelin pelaaja
 
 Käyttäjän toiminnot:
 
-nimen kirjoittaminen ja pelin aloittaminen
-
-korttien kääntäminen
-
-pelin lopettaminen
-
-parhaiden tulosten tarkastelu
+-nimen kirjoittaminen ja pelin aloittaminen
+-korttien kääntäminen
+-pelin lopettaminen
+-parhaiden tulosten tarkastelu
