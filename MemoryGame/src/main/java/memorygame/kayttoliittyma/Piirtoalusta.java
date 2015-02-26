@@ -46,7 +46,7 @@ public class Piirtoalusta extends JPanel {
 
         haePohjaTiedostosta();  // ei vielä taustakuvaa
         this.piirraTausta(graphics);
-        
+
         tilanneTeksti(graphics, this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().getTasonTunnus());
 
         for (Kortti k : this.muistipeli.getPelilauta().getKorttipakka().haeKorttipakka()) {
@@ -171,7 +171,7 @@ public class Piirtoalusta extends JPanel {
     public void haeKuvaTiedostosta(int tyyppi) {
 
         try {
-            File kuvatiedosto = new File("./kuva" + tyyppi + ".jpg");
+            File kuvatiedosto = new File("./src/kuva" + tyyppi + ".jpg");
             kuva = ImageIO.read(kuvatiedosto);
 
         } catch (IOException e) {
@@ -186,7 +186,7 @@ public class Piirtoalusta extends JPanel {
      */
     public void haeKansikuvaTiedostosta() {
         try {
-            File kuvatiedosto = new File("./k.jpg");
+            File kuvatiedosto = new File("./src/k.jpg");
             kansikuva = ImageIO.read(kuvatiedosto);
 
         } catch (IOException e) {
@@ -202,7 +202,7 @@ public class Piirtoalusta extends JPanel {
      */
     private void haePohjaTiedostosta() {
         try {
-            File kuvatiedosto = new File("./taustakuva1.jpg");
+            File kuvatiedosto = new File("./src/taustakuva1.jpg");
             taustakuva = ImageIO.read(kuvatiedosto);
         } catch (IOException e) {
             System.out.println("tiedoston luku ei onnistu.");
