@@ -15,3 +15,5 @@ Käyttäjän toiminnot:
 - pelin lopettaminen
 
 - parhaiden tulosten tarkastelu
+
+- pelin aloittaminen uudelleen
