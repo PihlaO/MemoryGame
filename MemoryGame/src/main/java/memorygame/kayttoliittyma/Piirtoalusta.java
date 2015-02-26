@@ -15,7 +15,6 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import memorygame.domain.Kortti;
 import memorygame.domain.Korttipakka;
-import memorygame.kayttoliittyma.Hiirikuuntelija;
 import memorygame.logiikka.Muistipeli;
 
 /**
@@ -44,12 +43,12 @@ public class Piirtoalusta extends JPanel {
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
 
-        haePohjaTiedostosta();  // ei vielä taustakuvaa
+        haePohjaTiedostosta();
         this.piirraTausta(graphics);
 
         tilanneTeksti(graphics, this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().getTasonTunnus());
 
-        for (Kortti k : this.muistipeli.getPelilauta().getKorttipakka().haeKorttipakka()) {
+        for (Kortti k : this.muistipeli.getPelilauta().getKorttipakka().haeListaKorteista()) {
             Kortti kortti = k;
             if (kortti.kaannetty()) {
                 this.haeKuvaTiedostosta(kortti.getTyyppi());
@@ -67,20 +66,20 @@ public class Piirtoalusta extends JPanel {
             kirjoitaHelpontasonTilanne(graphics);
         }
         if (tasontunnus == 2) {
-            kirjoitaKeskitasonTunnus(graphics);
+            kirjoitaKeskitasonTilanne(graphics);
         }
 
         if (tasontunnus == 3) {
-            KirjoitaVaikeanTasonTunnus(graphics);
+            KirjoitaVaikeanTasonTilanne(graphics);
 
         }
     }
 
-    private void KirjoitaVaikeanTasonTunnus(Graphics graphics) {
+    private void KirjoitaVaikeanTasonTilanne(Graphics graphics) {
         graphics.drawString("Muistipeli     " + "     Vaikeustaso: " + this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().toString() + "     Pelaaja: " + muistipeli.getPelaaja(), 20, 700);
     }
 
-    private void kirjoitaKeskitasonTunnus(Graphics graphics) {
+    private void kirjoitaKeskitasonTilanne(Graphics graphics) {
 
         graphics.drawString("Muistipeli     " + "     Vaikeustaso: " + this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().toString() + "     Pelaaja: " + muistipeli.getPelaaja(), 20, 600);
 
@@ -110,7 +109,7 @@ public class Piirtoalusta extends JPanel {
      * @param graphics
      */
     private void piirraPakanKorteilleKansi(Korttipakka pakka, Graphics graphics) {
-        for (Kortti kortti : this.muistipeli.getPelilauta().getKorttipakka().haeKorttipakka()) {
+        for (Kortti kortti : this.muistipeli.getPelilauta().getKorttipakka().haeListaKorteista()) {
             this.piirraKortinKansi(kortti, graphics);
 
         }
@@ -153,7 +152,7 @@ public class Piirtoalusta extends JPanel {
      */
     public void luoKuvallisetKortit() {
 
-        for (Kortti kortti : this.muistipeli.getPelilauta().getKorttipakka().haeKorttipakka()) {
+        for (Kortti kortti : this.muistipeli.getPelilauta().getKorttipakka().haeListaKorteista()) {
 
             KuvallinenKortti kuvallinenkortti = new KuvallinenKortti(kortti);
             this.muistipeli.getKuvallisetKortit().add(kuvallinenkortti);

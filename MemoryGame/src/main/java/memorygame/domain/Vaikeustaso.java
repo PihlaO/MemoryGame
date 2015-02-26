@@ -20,8 +20,8 @@ public class Vaikeustaso {
     int tasonTunnus;
     String nimi;
 
-    public Vaikeustaso(int taso) {
-        this.tasonTunnus = taso;
+    public Vaikeustaso(int tunnus) {
+        this.tasonTunnus = tunnus;
         asetaTasolleNimi();
     }
 

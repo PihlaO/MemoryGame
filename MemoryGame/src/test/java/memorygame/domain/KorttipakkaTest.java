@@ -70,7 +70,7 @@ public class KorttipakkaTest {
     public void luodaankoKortitOikein() {
         int pakassaKortteja = 0;
         korttipakkaHelppo.luoKortit();
-        pakassaKortteja = korttipakkaHelppo.haeKorttipakka().size();
+        pakassaKortteja = korttipakkaHelppo.haeListaKorteista().size();
         assertEquals(12, pakassaKortteja);
 
     }

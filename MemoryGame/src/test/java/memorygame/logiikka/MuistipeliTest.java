@@ -33,7 +33,6 @@ public class MuistipeliTest {
     Kayttoliittyma pelikali;
     Pelaaja pelaaja;
     AloitusKayttoliittyma aloituskali;
- 
 
     public MuistipeliTest() {
     }
@@ -54,7 +53,6 @@ public class MuistipeliTest {
         this.muistipeliKeskitaso = new Muistipeli(2, this.pelaaja, aloituskali, new ArrayList<KuvallinenKortti>());
         this.muistipeliVaikea = new Muistipeli(3, this.pelaaja, aloituskali, new ArrayList<KuvallinenKortti>());
         this.pelikali = new Kayttoliittyma(muistipeliHelppo);
-
 
     }
 
@@ -259,7 +257,7 @@ public class MuistipeliTest {
             this.muistipeliHelppo.logiikka(kortti);
 
         } catch (Exception e) {
-
+            System.out.println("Lopetusvalikkoa ei avattu");
         }
 
         assertEquals(true, this.muistipeliHelppo.PelilaudanEkaKorttiValittu());
@@ -275,13 +273,13 @@ public class MuistipeliTest {
             this.muistipeliHelppo.logiikka(kortti2);
 
         } catch (Exception e) {
-
+            System.out.println("Lopetusvalikkoa ei avattu");
         }
 
         assertEquals(true, this.muistipeliHelppo.PelilaudanTokaKorttiValittu());
     }
-    
-        @Test
+
+    @Test
     public void logiikkaTyhjentaaValitutKortitOikein() {
         try {
             this.muistipeliHelppo.kaynnista();
@@ -289,10 +287,10 @@ public class MuistipeliTest {
             Kortti kortti2 = new Kortti(2);
             this.muistipeliHelppo.pelilauta.setValittuKortti1(kortti);
             this.muistipeliHelppo.pelilauta.setValittuKortti2(kortti2);
-    
+
             this.muistipeliHelppo.logiikka(this.muistipeliHelppo.getPelilauta().getKorttiXY(1, 2));
         } catch (Exception e) {
-
+            System.out.println("Lopetusvalikkoa ei avattu");
         }
 
         assertEquals(this.muistipeliHelppo.getPelilauta().getKorttiXY(1, 2), this.muistipeliHelppo.pelilauta.getValittuKortti1());

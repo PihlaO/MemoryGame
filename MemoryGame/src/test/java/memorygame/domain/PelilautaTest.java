@@ -5,9 +5,6 @@
  */
 package memorygame.domain;
 
-import memorygame.domain.Pelilauta;
-import memorygame.domain.Korttipakka;
-import memorygame.domain.Kortti;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -70,7 +67,7 @@ public class PelilautaTest {
     @Test
     public void asettaaKortinTaulukkoonOikein() {
         pelilauta.korttipakka.luoKortit();
-        Kortti k = pelilauta.korttipakka.haeKorttipakka().get(0);
+        Kortti k = pelilauta.korttipakka.haeListaKorteista().get(0);
         this.pelilauta.asetaKorttiTaulukkoon();
         assertEquals(this.pelilauta.getTaulukkoKorteista()[0][0], k);
     }
@@ -78,7 +75,7 @@ public class PelilautaTest {
     @Test
     public void asettaaKortinTaulukkoonOikein2() {
         pelilauta.korttipakka.luoKortit();
-        Kortti k = pelilauta.korttipakka.haeKorttipakka().get(0);
+        Kortti k = pelilauta.getKorttipakka().haeListaKorteista().get(0);
         this.pelilauta.asetaKorttiTaulukkoon();
         assertEquals(this.pelilauta.getTaulukkoKorteista()[0][0].getX(), k.getX());
 

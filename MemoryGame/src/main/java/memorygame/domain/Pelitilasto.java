@@ -36,7 +36,7 @@ public class Pelitilasto {
      * @param pelaaja Pelin pelaaja
      */
     public void tallennaTilastoon(Pelaaja pelaaja) {
-        tilasto.add(pelaaja);
+        this.tilasto.add(pelaaja);
         jarjetaTilasto();
     }
 
@@ -62,8 +62,8 @@ public class Pelitilasto {
      *
      */
     public void tulostaTilasto() {
-        for (Pelaaja tilasto1 : this.tilasto) {
-            System.out.println(tilasto1);
+        for (Pelaaja pelaaja : this.tilasto) {
+            System.out.println(pelaaja);
         }
     }
 

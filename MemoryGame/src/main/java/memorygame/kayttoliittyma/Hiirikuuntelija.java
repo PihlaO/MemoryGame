@@ -31,7 +31,7 @@ public class Hiirikuuntelija implements MouseListener {
     public void mouseClicked(MouseEvent e) {
 
         if (korttiaKlikattu(e)) {
-            this.piirtoalusta.muistipeli.logiikka(this.klikattuKortti(e).getKortti());
+            this.piirtoalusta.muistipeli.logiikka(this.klikattuKortti(e));
         }
                     this.piirtoalusta.repaint();
 
@@ -49,14 +49,14 @@ public class Hiirikuuntelija implements MouseListener {
      * @param e Hiiren klikkaus
      * @return kuvallinen kortin
      */
-    public KuvallinenKortti klikattuKortti(MouseEvent e) {
+    public Kortti klikattuKortti(MouseEvent e) {
         for (KuvallinenKortti kuvallinenKortti : this.piirtoalusta.muistipeli.getKuvallisetKortit()) {
             Kortti kortti = kuvallinenKortti.getKortti();
 
             if (e.getX() > kortti.getX() * 100 + 50 && e.getY() > kortti.getY() * 100 + 50) {
                 if (e.getX() < kortti.getX() * 105 + 50 + kortti.getLeveys() && e.getY() < kortti.getY() * 123 + 50 + kortti.getKorkeus()) {
 
-                    return kuvallinenKortti;
+                    return kortti;
                 }
             }
 

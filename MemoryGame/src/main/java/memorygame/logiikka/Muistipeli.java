@@ -31,20 +31,18 @@ public class Muistipeli {
     Pelaaja pelaaja;
     Pelitilasto tilasto;
     Kayttoliittyma kayttoliittyma;
-    AloitusKayttoliittyma aloituskali;
+    AloitusKayttoliittyma aloituskayttoliittyma;
     List<KuvallinenKortti> kuvallisetKortit;
-
 
     public Muistipeli(int vaikeustaso, Pelaaja pelaaja, AloitusKayttoliittyma aloituskali, List<KuvallinenKortti> kuvallisetKortit) {
 
         this.pelilauta = new Pelilauta(new Korttipakka(vaikeustaso));
         this.pelaaja = pelaaja;
-        this.aloituskali = aloituskali;
+        this.aloituskayttoliittyma = aloituskali;
         this.kuvallisetKortit = kuvallisetKortit;
         this.tilasto = valitunVaikeustasonTilasto(vaikeustaso, aloituskali);
 
     }
-    
 
     /**
      * Metodi käynnistää muistipelin.
@@ -90,7 +88,6 @@ public class Muistipeli {
 
         if (this.peliPaattyi()) {
             this.tilasto.tallennaTilastoon(this.pelaaja);
-
             this.AvaaLopetusValikko();
 
         }
@@ -110,7 +107,7 @@ public class Muistipeli {
     }
 
     public AloitusKayttoliittyma getAloitusKayttoliittyma() {
-        return this.aloituskali;
+        return this.aloituskayttoliittyma;
     }
 
     public Pelitilasto getPelitilasto() {

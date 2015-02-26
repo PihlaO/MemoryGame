@@ -9,10 +9,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
-import memorygame.logiikka.Muistipeli;
-import memorygame.domain.Pelaaja;
 import memorygame.domain.KuvallinenKortti;
+import memorygame.domain.Pelaaja;
+import memorygame.logiikka.Muistipeli;
 
 /**
  *
@@ -39,15 +40,14 @@ public class PelinAloituksenKuuntelija implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String teksti = nimiKentta.getText();
 //        teksti.trim();
-
-        if (!(teksti.length() < 13)) {
-            return;
-        } else {
-
+        if (teksti.length() == 0) {
+            Pelaaja pelaaja = new Pelaaja("Tuntematon");
+            luoJaKaynnistaPeli(e, pelaaja);
+        }
+        if (teksti.length() > 0 && teksti.length() < 13) {
             Pelaaja pelaaja = new Pelaaja(teksti);
             luoJaKaynnistaPeli(e, pelaaja);
         }
-
     }
 
     private void luoJaKaynnistaPeli(ActionEvent e, Pelaaja pelaaja) {

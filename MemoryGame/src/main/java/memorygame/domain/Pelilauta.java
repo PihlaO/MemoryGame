@@ -66,7 +66,7 @@ public class Pelilauta {
         for (int i = 0; i < pelilaudanSarakkeidenLukumaara(); i++) {
 
             for (int j = 0; j < pelilaudanRivienLukumaara(); j++) {
-                this.TaulukkoKorteista[i][j] = korttipakka.haeKorttipakka().get(kortinIndeksiPakassa);
+                this.TaulukkoKorteista[i][j] = korttipakka.haeListaKorteista().get(kortinIndeksiPakassa);
                 kortinIndeksiPakassa++;
             }
 
@@ -78,7 +78,7 @@ public class Pelilauta {
      *
      */
     public void AsetaPakanKorteilleKoordinaatit() {
-        for (Kortti kortti : this.korttipakka.haeKorttipakka()) {
+        for (Kortti kortti : this.korttipakka.haeListaKorteista()) {
             this.AsetaKortilleKoordinaatit(kortti);
         }
 
@@ -118,7 +118,7 @@ public class Pelilauta {
      * @return rivien lukumäärä
      */
     public int pelilaudanRivienLukumaara() {
-        return korttipakka.vaikeustaso.haeKorttienLukumaara() / 4;
+        return korttipakka.vaikeustaso.haeKorttienLukumaara() / this.pelilaudanSarakkeidenLukumaara();
     }
 
     /**

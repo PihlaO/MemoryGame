@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
-@author okpiok
+ * @author okpiok
  */
 
 /* 
@@ -32,8 +32,7 @@ public class Korttipakka {
      *
      */
     public void luoKortit() {
-        int uniikkienKorttienLukumaara = 0;
-        uniikkienKorttienLukumaara = this.vaikeustaso.haeKorttienLukumaara() / 2;
+        int uniikkienKorttienLukumaara = this.vaikeustaso.haeKorttienLukumaara() / 2;
         for (int i = 1; i <= uniikkienKorttienLukumaara; i++) {
             Kortti kortti = new Kortti(i);
             this.pakka.add(kortti);
@@ -63,11 +62,11 @@ public class Korttipakka {
     }
 
     /**
-     * Metodi palauttaa korttipakan eli listan korteista.
+     * Metodi palauttaa listan korteista.
      *
      * @return pelin korttipakka
      */
-    public List<Kortti> haeKorttipakka() {
+    public List<Kortti> haeListaKorteista() {
         return this.pakka;
     }
 }

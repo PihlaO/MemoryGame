@@ -5,6 +5,7 @@
  */
 package memorygame.kayttoliittyma.valikot;
 
+import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -63,6 +64,7 @@ public class AloitusKayttoliittyma implements Runnable { //miten voidaan sulkea
         buttonGroup.add(helppo);
         buttonGroup.add(keskivaikea);
         buttonGroup.add(vaikea);
+        JLabel huomio = new JLabel("Syötä nimi oikein (max 12 merkkiä)");
 
         container.add(teksti);
         container.add(nimiTeksti);
@@ -71,7 +73,6 @@ public class AloitusKayttoliittyma implements Runnable { //miten voidaan sulkea
         container.add(helppo);
         container.add(keskivaikea);
         container.add(vaikea);
-
     }
 
     private void lisaaKuuntelijat(JTextField nimiKentta, JButton helppo, JButton keskitaso, JButton vaikea, AloitusKayttoliittyma kali) {
@@ -96,7 +97,4 @@ public class AloitusKayttoliittyma implements Runnable { //miten voidaan sulkea
         return this.vaikeataso;
     }
 
-    public AloitusKayttoliittyma getAloitusKali() {
-        return this;
-    }
 }
