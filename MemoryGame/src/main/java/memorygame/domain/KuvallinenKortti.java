@@ -10,7 +10,7 @@ package memorygame.domain;
  * @author okpiok
  */
 /* 
- * Luokka muistipelin korttien kuville.
+ * Luokka muistipelin korttien kuvien piirtämisen avuksi.
  */
 public class KuvallinenKortti{
 
