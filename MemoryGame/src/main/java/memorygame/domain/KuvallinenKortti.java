@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package memorygame.kayttoliittyma;
-
-import memorygame.domain.Kortti;
+package memorygame.domain;
 
 /**
  *
@@ -14,7 +12,7 @@ import memorygame.domain.Kortti;
 /* 
  * Luokka muistipelin korttien kuville.
  */
-public class KuvallinenKortti {
+public class KuvallinenKortti{
 
     Kortti kortti;
 

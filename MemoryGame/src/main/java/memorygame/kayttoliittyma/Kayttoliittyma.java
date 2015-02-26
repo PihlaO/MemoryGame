@@ -31,7 +31,8 @@ public class Kayttoliittyma implements Runnable {
     @Override
     public void run() {
         frame = new JFrame("Muistipeli");
-        frame.setPreferredSize(new Dimension(750, 750));
+
+        valitaanKayttoliittymanKoko();
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,6 +40,23 @@ public class Kayttoliittyma implements Runnable {
 
         frame.pack();
         frame.setVisible(true);
+    }
+
+       /**
+     * Metodi asettaa käyttöliittymälle koon vaikeustason mukaan.
+     *
+     */
+    private void valitaanKayttoliittymanKoko() {
+        
+        if (this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().getTasonTunnus() == 1) {
+            frame.setPreferredSize(new Dimension(600, 600));
+        }
+        if (this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().getTasonTunnus() == 2) {
+            frame.setPreferredSize(new Dimension(600, 650));
+        }
+        if (this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().getTasonTunnus() == 3)  {
+            frame.setPreferredSize(new Dimension(600, 750));
+        }
     }
 
     /**

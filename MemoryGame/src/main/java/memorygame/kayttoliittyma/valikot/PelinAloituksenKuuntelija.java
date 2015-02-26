@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import memorygame.logiikka.Muistipeli;
 import memorygame.domain.Pelaaja;
-import memorygame.kayttoliittyma.KuvallinenKortti;
+import memorygame.domain.KuvallinenKortti;
 
 /**
  *

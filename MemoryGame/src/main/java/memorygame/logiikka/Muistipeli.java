@@ -5,18 +5,16 @@
  */
 package memorygame.logiikka;
 
-import java.awt.event.MouseEvent;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
-import memorygame.domain.Pelitilasto;
 import memorygame.domain.Kortti;
 import memorygame.domain.Korttipakka;
 import memorygame.domain.Pelaaja;
 import memorygame.domain.Pelilauta;
+import memorygame.domain.Pelitilasto;
 import memorygame.kayttoliittyma.Kayttoliittyma;
-import memorygame.kayttoliittyma.KuvallinenKortti;
+import memorygame.domain.KuvallinenKortti;
 import memorygame.kayttoliittyma.valikot.AloitusKayttoliittyma;
 import memorygame.kayttoliittyma.valikot.LopetusKayttoliittyma;
 
@@ -36,6 +34,7 @@ public class Muistipeli {
     AloitusKayttoliittyma aloituskali;
     List<KuvallinenKortti> kuvallisetKortit;
 
+
     public Muistipeli(int vaikeustaso, Pelaaja pelaaja, AloitusKayttoliittyma aloituskali, List<KuvallinenKortti> kuvallisetKortit) {
 
         this.pelilauta = new Pelilauta(new Korttipakka(vaikeustaso));
@@ -45,6 +44,7 @@ public class Muistipeli {
         this.tilasto = valitunVaikeustasonTilasto(vaikeustaso, aloituskali);
 
     }
+    
 
     /**
      * Metodi käynnistää muistipelin.
@@ -90,11 +90,7 @@ public class Muistipeli {
 
         if (this.peliPaattyi()) {
             this.tilasto.tallennaTilastoon(this.pelaaja);
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Muistipeli.class.getName()).log(Level.SEVERE, null, ex);
-            }
+
             this.AvaaLopetusValikko();
 
         }
@@ -247,7 +243,7 @@ public class Muistipeli {
      */
     public void AvaaLopetusValikko() {
         this.getPelinKayttoliittyma().getFrame().setVisible(false);
-        LopetusKayttoliittyma lopetusvalikko = new LopetusKayttoliittyma(this, this.getAloitusKayttoliittyma());
+        LopetusKayttoliittyma lopetusvalikko = new LopetusKayttoliittyma(this);
         SwingUtilities.invokeLater(lopetusvalikko);
     }
 

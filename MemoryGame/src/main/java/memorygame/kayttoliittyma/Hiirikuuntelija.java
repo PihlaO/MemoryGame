@@ -5,6 +5,7 @@
  */
 package memorygame.kayttoliittyma;
 
+import memorygame.domain.KuvallinenKortti;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import memorygame.domain.Kortti;

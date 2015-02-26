@@ -11,7 +11,7 @@ import memorygame.domain.Kortti;
 import memorygame.domain.Pelaaja;
 import memorygame.domain.Pelitilasto;
 import memorygame.kayttoliittyma.Kayttoliittyma;
-import memorygame.kayttoliittyma.KuvallinenKortti;
+import memorygame.domain.KuvallinenKortti;
 import memorygame.kayttoliittyma.valikot.AloitusKayttoliittyma;
 import memorygame.kayttoliittyma.valikot.LopetusKayttoliittyma;
 import org.junit.After;

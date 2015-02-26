@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
-import memorygame.kayttoliittyma.valikot.AloitusKayttoliittyma;
+
 import memorygame.logiikka.Muistipeli;
 
 /**
@@ -23,11 +23,11 @@ public class LopetusKayttoliittyma implements Runnable {
 
     private JFrame frame;
     Muistipeli muistipeli;
-    AloitusKayttoliittyma alotuskali;
 
-    public LopetusKayttoliittyma(Muistipeli muistipeli,AloitusKayttoliittyma alotuskali) {
+
+    public LopetusKayttoliittyma(Muistipeli muistipeli) {
         this.muistipeli = muistipeli;
-        this.alotuskali = alotuskali;
+
     }
 
     @Override
@@ -52,7 +52,7 @@ public class LopetusKayttoliittyma implements Runnable {
         JLabel pisteesi = new JLabel("Pisteesi:");
         JLabel tulokset = new JLabel(muistipeli.getPelaaja().toString());
         JLabel tyhja1 = new JLabel("    ");
-        JLabel tilastonListaus = new JLabel("Top 3 -tilasto:");
+        JLabel tilastonListaus = new JLabel(this.muistipeli.getPelitilasto().getNimi());
         JLabel eka = new JLabel("1. " + muistipeli.getPelitilasto().palautaPelaajaTilastosta(0).toString());
 
         JLabel tyhja2 = new JLabel("   ");
@@ -75,7 +75,7 @@ public class LopetusKayttoliittyma implements Runnable {
         }
 
         container.add(uudelleen);
-        uudelleen.addActionListener(new PelinLopetuksenKuuntelija(uudelleen, this, this.alotuskali));
+        uudelleen.addActionListener(new PelinLopetuksenKuuntelija(uudelleen, this));
 
     }
 

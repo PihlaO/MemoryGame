@@ -8,7 +8,6 @@ package memorygame.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import memorygame.domain.Pelaaja;
 
 /**
  *
@@ -85,5 +84,6 @@ public class Pelitilasto {
     public void jarjetaTilasto() {
         Collections.sort(this.tilasto);
     }
+    
 
 }

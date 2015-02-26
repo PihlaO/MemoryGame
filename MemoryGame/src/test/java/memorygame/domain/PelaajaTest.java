@@ -5,7 +5,6 @@ package memorygame.domain;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import memorygame.domain.Pelaaja;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.*;
@@ -76,8 +75,8 @@ public class PelaajaTest {
         Pelaaja pelaaja2 = new Pelaaja("Pekka");
         pelaaja.setPisteet(6);
         boolean x = false;
-        if(pelaaja.compareTo(pelaaja2)>0){
-           x = true;
+        if (pelaaja.compareTo(pelaaja2) > 0) {
+            x = true;
         }
         assertEquals(true, x);
     }

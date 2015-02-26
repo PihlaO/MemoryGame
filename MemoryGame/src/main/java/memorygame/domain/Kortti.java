@@ -80,8 +80,9 @@ public class Kortti {
     }
 
     /**
-     * Metodi vertaa kahden kortin tyyppejä ja selvittää onko kortit samat.
-     * Jos kortit ovat samat, niin metodi palauttaa true, muulloin false.
+     * Metodi vertaa kahden kortin tyyppejä ja selvittää onko kortit samat. Jos
+     * kortit ovat samat, niin metodi palauttaa true, muulloin false.
+     *
      * @param kortti varrattava kortti
      * @return totuusarvo
      *
@@ -94,10 +95,9 @@ public class Kortti {
         }
     }
 
+    @Override
     public String toString() {
         return "Kortin tyyppi on " + this.tyyppi + "käännetty" + this.kaannettu;
     }
-
-
 
 }

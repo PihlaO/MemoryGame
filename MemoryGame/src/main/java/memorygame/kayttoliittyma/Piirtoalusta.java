@@ -5,7 +5,7 @@
  */
 package memorygame.kayttoliittyma;
 
-import memorygame.kayttoliittyma.Hiirikuuntelija;
+import memorygame.domain.KuvallinenKortti;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -13,9 +13,10 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-import memorygame.logiikka.Muistipeli;
 import memorygame.domain.Kortti;
 import memorygame.domain.Korttipakka;
+import memorygame.kayttoliittyma.Hiirikuuntelija;
+import memorygame.logiikka.Muistipeli;
 
 /**
  *
@@ -43,9 +44,10 @@ public class Piirtoalusta extends JPanel {
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
 
-//        haePohjaTiedostosta();  // ei vielä taustakuvaa
-//        this.piirraTausta(graphics);
-        graphics.drawString("Muistipeli     " + "     Vaikeustaso: " + this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().toString() + "     Pelaaja: " + muistipeli.getPelaaja(), 17, 700);
+        haePohjaTiedostosta();  // ei vielä taustakuvaa
+        this.piirraTausta(graphics);
+        
+        tilanneTeksti(graphics, this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().getTasonTunnus());
 
         for (Kortti k : this.muistipeli.getPelilauta().getKorttipakka().haeKorttipakka()) {
             Kortti kortti = k;
@@ -57,6 +59,36 @@ public class Piirtoalusta extends JPanel {
                 this.piirraKortinKansi(k, graphics);
             }
         }
+
+    }
+
+    private void tilanneTeksti(Graphics graphics, int tasontunnus) {
+        if (tasontunnus == 1) {
+            kirjoitaHelpontasonTilanne(graphics);
+        }
+        if (tasontunnus == 2) {
+            kirjoitaKeskitasonTunnus(graphics);
+        }
+
+        if (tasontunnus == 3) {
+            KirjoitaVaikeanTasonTunnus(graphics);
+
+        }
+    }
+
+    private void KirjoitaVaikeanTasonTunnus(Graphics graphics) {
+        graphics.drawString("Muistipeli     " + "     Vaikeustaso: " + this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().toString() + "     Pelaaja: " + muistipeli.getPelaaja(), 20, 700);
+    }
+
+    private void kirjoitaKeskitasonTunnus(Graphics graphics) {
+
+        graphics.drawString("Muistipeli     " + "     Vaikeustaso: " + this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().toString() + "     Pelaaja: " + muistipeli.getPelaaja(), 20, 600);
+
+    }
+
+    private void kirjoitaHelpontasonTilanne(Graphics graphics) {
+
+        graphics.drawString("Muistipeli     " + "     Vaikeustaso: " + this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().toString() + "     Pelaaja: " + muistipeli.getPelaaja(), 20, 550);
 
     }
 
@@ -154,7 +186,7 @@ public class Piirtoalusta extends JPanel {
      */
     public void haeKansikuvaTiedostosta() {
         try {
-            File kuvatiedosto = new File("./kansikuva.png");
+            File kuvatiedosto = new File("./k.jpg");
             kansikuva = ImageIO.read(kuvatiedosto);
 
         } catch (IOException e) {
@@ -170,7 +202,7 @@ public class Piirtoalusta extends JPanel {
      */
     private void haePohjaTiedostosta() {
         try {
-            File kuvatiedosto = new File("./kansikuva.png");
+            File kuvatiedosto = new File("./taustakuva1.jpg");
             taustakuva = ImageIO.read(kuvatiedosto);
         } catch (IOException e) {
             System.out.println("tiedoston luku ei onnistu.");
