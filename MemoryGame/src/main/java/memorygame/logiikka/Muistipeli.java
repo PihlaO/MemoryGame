@@ -86,17 +86,20 @@ public class Muistipeli {
                 }
             }
 
-
         }
 
         if (this.peliPaattyi()) {
             this.tilasto.tallennaTilastoon(this.pelaaja);
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Muistipeli.class.getName()).log(Level.SEVERE, null, ex);
+            }
             this.AvaaLopetusValikko();
 
         }
 
     }
-
 
     public Pelilauta getPelilauta() {
         return this.pelilauta;
