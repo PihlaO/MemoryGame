@@ -60,6 +60,7 @@ Viikko 9
 
 Muistipelin koodausta, testien tekemistä sekä JavaDocin kirjoittamista. Lisäksi sekvenssi-ja luokkakaavioiden tekemistä ja päivittämistä.
 Työn palautuksen valmistelua.
+
 Maananatai: 5 tuntia
 
 Tiistai: 5 tuntia
