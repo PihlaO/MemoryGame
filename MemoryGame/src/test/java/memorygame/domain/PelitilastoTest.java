@@ -5,17 +5,14 @@ package memorygame.domain;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import memorygame.domain.Pelitilasto;
 import java.util.ArrayList;
 import java.util.List;
-import memorygame.domain.Pelaaja;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import sun.org.mozilla.javascript.ast.ForInLoop;
 
 /**
  *
@@ -63,8 +60,8 @@ public class PelitilastoTest {
     public void lisaaPelaajanTilastoon() {
         pelitilasto.tallennaTilastoon(pelaaja);
         String teksti = "";
-        for (Pelaaja pelaaja : this.pelitilasto.tilasto) {
-            teksti = pelaaja.toString();
+        for (Pelaaja p : this.pelitilasto.tilasto) {
+            teksti = p.toString();
         }
         assertEquals("Anna      Pisteet: 0", teksti);
     }
@@ -90,18 +87,18 @@ public class PelitilastoTest {
         Pelaaja pekka = new Pelaaja("Pekka");
         pekka.setPisteet(10);
         pelitilasto.tallennaTilastoon(pekka);
-        
+
         pelitilasto.tallennaTilastoon(pelaaja);
-       
+
         Pelaaja jussi = new Pelaaja("Jussi");
         jussi.setPisteet(100);
         pelitilasto.tallennaTilastoon(jussi);
-        
+
         List<Pelaaja> apulista = new ArrayList<>();
         apulista.add(this.pelaaja);
         apulista.add(pekka);
         apulista.add(jussi);
-        
+
         this.pelitilasto.jarjestaTilasto();
 
         assertEquals(apulista, this.pelitilasto.tilasto);

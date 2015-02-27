@@ -295,5 +295,5 @@ public class MuistipeliTest {
         assertEquals(this.muistipeliHelppo.getPelilauta().getKorttiXY(1, 2), this.muistipeliHelppo.pelilauta.getValittuKortti1());
         assertEquals(null, this.muistipeliHelppo.pelilauta.getValittuKortti2());
     }
-    
+
 }

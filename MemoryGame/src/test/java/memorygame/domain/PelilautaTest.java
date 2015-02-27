@@ -97,9 +97,4 @@ public class PelilautaTest {
 
     }
 
-    @Test
-    public void asettaaPakanKorteilleOikeinKoordinaatit() {
-
-    }
-
 }
