@@ -2,4 +2,4 @@
 
 Muistipeli 
 
-Huom! Jar-tiedosto sijaitsee MemoryGame-kansion sisällä.
+#HUOM! Jar-tiedosto sijaitsee MemoryGame-kansion sisällä.
