@@ -6,7 +6,6 @@
 package memorygame.logiikka;
 
 import java.util.List;
-import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 import memorygame.domain.Kortti;
 import memorygame.domain.Korttipakka;
@@ -87,7 +86,7 @@ public class Muistipeli {
         }
 
         if (this.peliPaattyi()) {
-            this.tilasto.haeTilastolista().add(pelaaja);
+            this.tilasto.tallennaTilastoon(pelaaja);
             this.AvaaLopetusValikko();
 
         }

@@ -170,7 +170,7 @@ public class Piirtoalusta extends JPanel {
     public void haeKuvaTiedostosta(int tyyppi) {
 
         try {
-            File kuvatiedosto = new File("./src/kuva" + tyyppi + ".jpg");
+            File kuvatiedosto = new File("./src/kuva" + tyyppi + ".JPG");
             kuva = ImageIO.read(kuvatiedosto);
 
         } catch (IOException e) {
@@ -185,7 +185,7 @@ public class Piirtoalusta extends JPanel {
      */
     public void haeKansikuvaTiedostosta() {
         try {
-            File kuvatiedosto = new File("./src/k.jpg");
+            File kuvatiedosto = new File("./src/kansi.JPG");
             kansikuva = ImageIO.read(kuvatiedosto);
 
         } catch (IOException e) {
@@ -201,7 +201,7 @@ public class Piirtoalusta extends JPanel {
      */
     private void haePohjaTiedostosta() {
         try {
-            File kuvatiedosto = new File("./src/taustakuva1.jpg");
+            File kuvatiedosto = new File("./src/pohja.JPG");
             taustakuva = ImageIO.read(kuvatiedosto);
         } catch (IOException e) {
             System.out.println("tiedoston luku ei onnistu.");
