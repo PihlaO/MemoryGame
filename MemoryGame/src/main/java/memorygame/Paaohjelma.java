@@ -19,17 +19,14 @@ public class Paaohjelma {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-          
+
         Pelitilasto helppoTasoTilasto = new Pelitilasto("Helpon tason top 3 -tilasto:");
         Pelitilasto keskiTasoTilasto = new Pelitilasto("Keskitason top 3 -tilasto:");
         Pelitilasto vaikeaTasoTilasto = new Pelitilasto("Vaikean tason top 3 -tilasto:");
 
-        AloitusKayttoliittyma kayttoliittymaA = new AloitusKayttoliittyma(helppoTasoTilasto,keskiTasoTilasto, vaikeaTasoTilasto);
+        AloitusKayttoliittyma kayttoliittymaA = new AloitusKayttoliittyma(helppoTasoTilasto, keskiTasoTilasto, vaikeaTasoTilasto);
         SwingUtilities.invokeLater(kayttoliittymaA);
 
     }
-
-
 
 }

@@ -42,19 +42,19 @@ public class Kayttoliittyma implements Runnable {
         frame.setVisible(true);
     }
 
-       /**
+    /**
      * Metodi asettaa käyttöliittymälle koon vaikeustason mukaan.
      *
      */
     private void valitaanKayttoliittymanKoko() {
-        
+
         if (this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().getTasonTunnus() == 1) {
             frame.setPreferredSize(new Dimension(600, 600));
         }
         if (this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().getTasonTunnus() == 2) {
             frame.setPreferredSize(new Dimension(600, 650));
         }
-        if (this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().getTasonTunnus() == 3)  {
+        if (this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().getTasonTunnus() == 3) {
             frame.setPreferredSize(new Dimension(600, 750));
         }
     }

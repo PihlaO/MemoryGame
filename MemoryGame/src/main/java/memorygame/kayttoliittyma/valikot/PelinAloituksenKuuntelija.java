@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JTextField;
 import memorygame.domain.KuvallinenKortti;
 import memorygame.domain.Pelaaja;
@@ -18,6 +17,9 @@ import memorygame.logiikka.Muistipeli;
 /**
  *
  * @author okpiok
+ */
+/*
+ *Muistipelin aloituskäyttöliittymän kuuntelijan luokka.
  */
 public class PelinAloituksenKuuntelija implements ActionListener {
 
@@ -39,7 +41,6 @@ public class PelinAloituksenKuuntelija implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String teksti = nimiKentta.getText();
-//        teksti.trim();
         if (teksti.length() == 0) {
             Pelaaja pelaaja = new Pelaaja("Tuntematon");
             luoJaKaynnistaPeli(e, pelaaja);
@@ -62,26 +63,25 @@ public class PelinAloituksenKuuntelija implements ActionListener {
             luoJaKaynnistaVaikeaPeli(pelaaja);
         }
 
+        this.aloituskali.getFrame().setVisible(false);
+
     }
 
     private void luoJaKaynnistaVaikeaPeli(Pelaaja pelaaja) {
         Muistipeli m = new Muistipeli(3, pelaaja, this.aloituskali, new ArrayList<KuvallinenKortti>());
         m.kaynnista();
-        this.aloituskali.getFrame().setVisible(false);
 
     }
 
     private void luoJaKaynnistaKeskitasonPeli(Pelaaja pelaaja) {
         Muistipeli m = new Muistipeli(2, pelaaja, this.aloituskali, new ArrayList<KuvallinenKortti>());
         m.kaynnista();
-        this.aloituskali.getFrame().setVisible(false);
+
     }
 
     private void luoJaKaynnistaHelppoPeli(Pelaaja pelaaja) {
-
         Muistipeli m = new Muistipeli(1, pelaaja, this.aloituskali, new ArrayList<KuvallinenKortti>());
         m.kaynnista();
-        this.aloituskali.getFrame().setVisible(false);
 
     }
 

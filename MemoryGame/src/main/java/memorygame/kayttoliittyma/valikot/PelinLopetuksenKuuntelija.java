@@ -13,11 +13,14 @@ import javax.swing.JButton;
  *
  * @author okpiok
  */
+/*
+ *Muistipelin lopetuskäyttöliittymän kuuntelijan luokka.
+ */
 public class PelinLopetuksenKuuntelija implements ActionListener {
 
     JButton uudelleen;
     LopetusKayttoliittyma lopetuskali;
-  
+
     public PelinLopetuksenKuuntelija(JButton uudelleen, LopetusKayttoliittyma lopetuskali) {
         this.uudelleen = uudelleen;
         this.lopetuskali = lopetuskali;

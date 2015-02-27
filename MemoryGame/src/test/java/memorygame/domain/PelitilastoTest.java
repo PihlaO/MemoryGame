@@ -79,8 +79,32 @@ public class PelitilastoTest {
     }
 
     @Test
-    public void tulostaaTilastonOikein() {
+    public void hakeePelaajanListastaIndeksillaOikein() {
+        pelitilasto.tallennaTilastoon(pelaaja);
 
+        assertEquals(this.pelaaja, pelitilasto.palautaPelaajaTilastosta(0));
+    }
+
+    @Test
+    public void jarjestaaTilastonOikein() {
+        Pelaaja pekka = new Pelaaja("Pekka");
+        pekka.setPisteet(10);
+        pelitilasto.tallennaTilastoon(pekka);
+        
+        pelitilasto.tallennaTilastoon(pelaaja);
+       
+        Pelaaja jussi = new Pelaaja("Jussi");
+        jussi.setPisteet(100);
+        pelitilasto.tallennaTilastoon(jussi);
+        
+        List<Pelaaja> apulista = new ArrayList<>();
+        apulista.add(this.pelaaja);
+        apulista.add(pekka);
+        apulista.add(jussi);
+        
+        this.pelitilasto.jarjestaTilasto();
+
+        assertEquals(apulista, this.pelitilasto.tilasto);
     }
 
 }

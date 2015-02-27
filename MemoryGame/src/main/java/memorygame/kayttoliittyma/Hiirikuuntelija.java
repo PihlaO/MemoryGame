@@ -33,21 +33,15 @@ public class Hiirikuuntelija implements MouseListener {
         if (korttiaKlikattu(e)) {
             this.piirtoalusta.muistipeli.logiikka(this.klikattuKortti(e));
         }
-                    this.piirtoalusta.repaint();
+        this.piirtoalusta.repaint();
 
-//            try {
-//                Thread.sleep(500);
-//            } catch (InterruptedException ex) {
-//                Logger.getLogger(Muistipeli.class.getName()).log(Level.SEVERE, null, ex);
-//            }
     }
-    
-    
+
     /**
      * Metodi hakee klikatun kortin.
      *
      * @param e Hiiren klikkaus
-     * @return kuvallinen kortin
+     * @return klikattu kortti
      */
     public Kortti klikattuKortti(MouseEvent e) {
         for (KuvallinenKortti kuvallinenKortti : this.piirtoalusta.muistipeli.getKuvallisetKortit()) {
@@ -74,8 +68,6 @@ public class Hiirikuuntelija implements MouseListener {
     public boolean korttiaKlikattu(MouseEvent e) {
         return !(this.klikattuKortti(e) == null);
     }
-
-
 
     @Override
     public void mousePressed(MouseEvent e

@@ -12,7 +12,7 @@ package memorygame.domain;
 /* 
  * Luokka muistipelin korttien kuvien piirtämisen avuksi.
  */
-public class KuvallinenKortti{
+public class KuvallinenKortti {
 
     Kortti kortti;
 

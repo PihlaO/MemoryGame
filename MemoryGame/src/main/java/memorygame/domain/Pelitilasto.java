@@ -74,6 +74,5 @@ public class Pelitilasto {
     public void jarjestaTilasto() {
         Collections.sort(this.tilasto);
     }
-    
 
 }

@@ -5,7 +5,6 @@
  */
 package memorygame.kayttoliittyma.valikot;
 
-import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -21,7 +20,11 @@ import memorygame.domain.Pelitilasto;
  *
  * @author okpiok
  */
-public class AloitusKayttoliittyma implements Runnable { //miten voidaan sulkea
+
+/*
+ *Muistipelin aloituskäyttöliittymän luokka.
+ */
+public class AloitusKayttoliittyma implements Runnable {
 
     private JFrame frame;
     Pelitilasto helppotaso;

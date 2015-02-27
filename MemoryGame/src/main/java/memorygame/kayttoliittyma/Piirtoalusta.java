@@ -5,8 +5,8 @@
  */
 package memorygame.kayttoliittyma;
 
-import memorygame.domain.KuvallinenKortti;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -15,6 +15,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import memorygame.domain.Kortti;
 import memorygame.domain.Korttipakka;
+import memorygame.domain.KuvallinenKortti;
 import memorygame.logiikka.Muistipeli;
 
 /**
@@ -46,8 +47,17 @@ public class Piirtoalusta extends JPanel {
         haePohjaTiedostosta();
         this.piirraTausta(graphics);
 
-        tilanneTeksti(graphics, this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().getTasonTunnus());
+        luoFontti(graphics);
+        TilanneTeksti(this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().getTasonTunnus(), graphics);
+        piirraKortit(graphics);
 
+    }
+
+    /**
+     * Metodi hakee ja piirtää kuvat.
+     *
+     */
+    private void piirraKortit(Graphics graphics) {
         for (Kortti k : this.muistipeli.getPelilauta().getKorttipakka().haeListaKorteista()) {
             Kortti kortti = k;
             if (kortti.kaannetty()) {
@@ -58,36 +68,66 @@ public class Piirtoalusta extends JPanel {
                 this.piirraKortinKansi(k, graphics);
             }
         }
+    }
+
+    /**
+     * Metodi luo fontin.
+     *
+     */
+    private void luoFontti(Graphics graphics) {
+
+        Font stringFont = new Font("Fontti", Font.BOLD, 12);
+        graphics.setFont(stringFont);
 
     }
 
-    private void tilanneTeksti(Graphics graphics, int tasontunnus) {
+    /**
+     * Metodi selvittää tilanne tekstin.
+     *
+     */
+    private void TilanneTeksti(int tasontunnus, Graphics graphics) {
+        String teksti = "       Vaikeustaso: " + this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().toString() + "     Pelaaja: " + muistipeli.getPelaaja();
+
         if (tasontunnus == 1) {
-            kirjoitaHelpontasonTilanne(graphics);
+            kirjoitaHelpontasonTilanne(graphics, teksti);
         }
         if (tasontunnus == 2) {
-            kirjoitaKeskitasonTilanne(graphics);
+            kirjoitaKeskitasonTilanne(graphics, teksti);
         }
 
         if (tasontunnus == 3) {
-            KirjoitaVaikeanTasonTilanne(graphics);
+            KirjoitaVaikeanTasonTilanne(graphics, teksti);
 
         }
     }
 
-    private void KirjoitaVaikeanTasonTilanne(Graphics graphics) {
-        graphics.drawString("Muistipeli     " + "     Vaikeustaso: " + this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().toString() + "     Pelaaja: " + muistipeli.getPelaaja(), 20, 700);
+    /**
+     * Metodi kirjoittaa tilannetekstin vaikealle tasolle.
+     *
+     */
+    private void KirjoitaVaikeanTasonTilanne(Graphics graphics, String teksti) {
+
+        graphics.drawString(teksti, 20, 700);
+
     }
 
-    private void kirjoitaKeskitasonTilanne(Graphics graphics) {
+    /**
+     * Metodi kirjoittaa tilannetekstin keskitasolle.
+     *
+     */
+    private void kirjoitaKeskitasonTilanne(Graphics graphics, String teksti) {
 
-        graphics.drawString("Muistipeli     " + "     Vaikeustaso: " + this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().toString() + "     Pelaaja: " + muistipeli.getPelaaja(), 20, 600);
+        graphics.drawString(teksti, 20, 600);
 
     }
 
-    private void kirjoitaHelpontasonTilanne(Graphics graphics) {
+    /**
+     * Metodi kirjoittaa tilannetekstin helpolle tasolle.
+     *
+     */
+    private void kirjoitaHelpontasonTilanne(Graphics graphics, String teksti) {
 
-        graphics.drawString("Muistipeli     " + "     Vaikeustaso: " + this.muistipeli.getPelilauta().getKorttipakka().haeVaikeustaso().toString() + "     Pelaaja: " + muistipeli.getPelaaja(), 20, 550);
+        graphics.drawString(teksti, 20, 550);
 
     }
 

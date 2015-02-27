@@ -83,7 +83,7 @@ public class Kortti {
      * Metodi vertaa kahden kortin tyyppejä ja selvittää onko kortit samat. Jos
      * kortit ovat samat, niin metodi palauttaa true, muulloin false.
      *
-     * @param kortti varrattava kortti
+     * @param kortti verrattava kortti
      * @return totuusarvo
      *
      */

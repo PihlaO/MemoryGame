@@ -13,7 +13,6 @@ import memorygame.domain.Pelitilasto;
 import memorygame.kayttoliittyma.Kayttoliittyma;
 import memorygame.domain.KuvallinenKortti;
 import memorygame.kayttoliittyma.valikot.AloitusKayttoliittyma;
-import memorygame.kayttoliittyma.valikot.LopetusKayttoliittyma;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.*;
@@ -114,7 +113,7 @@ public class MuistipeliTest {
         Kortti kortti = new Kortti(3);
         muistipeliHelppo.ValitaanEkaksiKortiksi(kortti);
         Kortti kortti2 = new Kortti(3);
-        muistipeliHelppo.ValitaanToiseksiKortiksi(kortti);
+        muistipeliHelppo.ValitaanToiseksiKortiksi(kortti2);
 
         assertEquals(true, muistipeliHelppo.pelilaudanKortitValittu());
     }
@@ -208,7 +207,7 @@ public class MuistipeliTest {
     }
 
     @Test
-    public void hakeePelitilastonOikein4() {
+    public void hakeeVaikeanPelitilastonOikein() {
 
         this.muistipeliHelppo.valitunVaikeustasonTilasto(3, aloituskali);
 
@@ -216,7 +215,7 @@ public class MuistipeliTest {
     }
 
     @Test
-    public void hakeeVaikeanPelitilastonOikein() {
+    public void hakeePelitilastonOikein() {
 
         this.muistipeliHelppo.valitunVaikeustasonTilasto(-1, aloituskali);
 
@@ -296,4 +295,5 @@ public class MuistipeliTest {
         assertEquals(this.muistipeliHelppo.getPelilauta().getKorttiXY(1, 2), this.muistipeliHelppo.pelilauta.getValittuKortti1());
         assertEquals(null, this.muistipeliHelppo.pelilauta.getValittuKortti2());
     }
+    
 }
