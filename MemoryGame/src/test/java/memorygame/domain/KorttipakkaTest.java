@@ -5,7 +5,6 @@
  */
 package memorygame.domain;
 
-import memorygame.domain.Korttipakka;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -68,9 +67,9 @@ public class KorttipakkaTest {
 
     @Test
     public void luodaankoKortitOikein() {
-        int pakassaKortteja = 0;
+
         korttipakkaHelppo.luoKortit();
-        pakassaKortteja = korttipakkaHelppo.haeListaKorteista().size();
+        int pakassaKortteja = korttipakkaHelppo.haeListaKorteista().size();
         assertEquals(12, pakassaKortteja);
 
     }

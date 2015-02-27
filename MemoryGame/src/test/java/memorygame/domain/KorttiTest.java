@@ -5,7 +5,6 @@ package memorygame.domain;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import memorygame.domain.Kortti;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.*;
@@ -43,8 +42,8 @@ public class KorttiTest {
 
     @Test
     public void konstruktoriAsettaaTyypinOikein() {
-        Kortti kortti = new Kortti(1);
-        assertEquals(1, kortti.getTyyppi());
+        Kortti k = new Kortti(1);
+        assertEquals(1, k.getTyyppi());
 
     }
 
@@ -55,16 +54,16 @@ public class KorttiTest {
 
     @Test
     public void tarkistaakoSamatKortitOikein() {
-        Kortti kortti = new Kortti(1);
+        Kortti kortti1 = new Kortti(1);
         Kortti kortinPari = new Kortti(1);
-        assertEquals(true, kortti.onkoKortitSamat(kortinPari));
+        assertEquals(true, kortti1.onkoKortitSamat(kortinPari));
     }
 
     @Test
     public void tarkistaakoErillaisetKortitOikein() {
-        Kortti kortti = new Kortti(1);
+        Kortti kortti1 = new Kortti(1);
         Kortti kortinPari = new Kortti(2);
-        assertEquals(false, kortti.onkoKortitSamat(kortinPari));
+        assertEquals(false, kortti1.onkoKortitSamat(kortinPari));
     }
 
     @Test
@@ -89,14 +88,14 @@ public class KorttiTest {
         assertEquals(100, kortti.getLeveys());
     }
 
-    @Test 
-    public void kaantaaKortinOikeinpain(){
+    @Test
+    public void kaantaaKortinOikeinpain() {
         kortti.kaannaKortti();
         assertEquals(true, kortti.kaannetty());
     }
-    
-    @Test 
-    public void kaantaaKortinVaarinpain(){
+
+    @Test
+    public void kaantaaKortinVaarinpain() {
         kortti.kaannaKortti();
         kortti.kaannaKortti();
         assertEquals(false, kortti.kaannetty());
